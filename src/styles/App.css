@@ -26,7 +26,6 @@ a {
 
 .home {
   background-color: rgb(24,19,62);
-  z-index: -1;
   padding: 100px 0;
   position: relative;
   

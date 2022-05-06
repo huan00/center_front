@@ -147,9 +147,9 @@ position: absolute;
 /*******SignUp*******/
 .signup {
   width: 30vh;
-  height: 50vh;
+  height: fit-content;
   background-color: rgb(24,19,62);
-  padding: 40px 20px;
+  padding: 40px 20px 20px;
   color: white;
   text-align: center;
 
@@ -168,7 +168,7 @@ position: absolute;
   position: absolute;
   right: 20px;
   top: 10px;
-
+  cursor: pointer;
 }
 
 .signup-img {

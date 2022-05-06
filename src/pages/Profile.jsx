@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faGear } from '@fortawesome/free-solid-svg-icons'
-
+import SignUp from '../components/SignUp'
 import Banner from '../components/Banner'
 import InfoCard from '../components/InfoCard'
 
