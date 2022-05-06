@@ -16,10 +16,11 @@
   padding: 30px 20px;
   position: relative;
   height: 5vh;
+  border-bottom: 1px rgb(40,38,61) solid;
 }
 
 .navBar-title{
-  font-size: 20px;
+  font-size: 25px;
   text-align: left;
 }
 
