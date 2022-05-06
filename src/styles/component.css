@@ -1,0 +1,95 @@
+/********InfoCard*******/
+
+.infoCard {
+  width: 350px;
+  height: 400px;
+  border: 1px solid rgb(219, 218, 222);
+
+  padding: 20px;
+}
+
+.infoCard-title {
+  display: flex;
+  align-items: center;
+  height: 75px;
+
+  position: relative;
+}
+
+.infoCard-title img {
+  height: 50px;
+  border-radius: 50px;
+  margin: 0 15px 0 0;
+}
+
+.infoCard-title h4 {
+
+}
+
+.thumbTack {
+  position: absolute;
+  right: 40px;
+  font-size: 1.2em;
+  transform: rotate(45deg);
+}
+
+.ellispsisVert {
+position: absolute;
+  right: 0;
+  font-size: 1.2em;
+  
+}
+
+.infoCard-content {
+  margin: 20px 0;
+  height: 200px;
+  width: 100%;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.infoCard-content h4{
+  margin: 0 0 20px 0;
+  font-weight: 400;
+}
+
+.infoCard-content p {
+  line-height: 1.4em;
+  font-weight: 200;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.infoCard-social {
+  display: flex;
+  align-items: center;
+
+  margin: 20px 0;
+  position: relative;
+}
+
+.faEye {
+  color: rgb(133,131,145);
+  font-size: 1.5em;
+
+  margin: 0 10px 0 0;
+}
+
+.faComment {
+  font-size: 1.5em;
+  margin: 0 10px 0 20px;
+  color: rgb(133,131,145);
+}
+
+.faHeart {
+  position: absolute;
+  right: 0;
+  color: rgb(133,131,145)
+}
+
+.spanHeart {
+  position: absolute;
+  right: 30px
+}
