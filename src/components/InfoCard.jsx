@@ -3,7 +3,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faThumbtack,
   faEllipsisVertical,
-  faEye
+  faEye,
+  faCrown
 } from '@fortawesome/free-solid-svg-icons'
 import { faComment, faHeart } from '@fortawesome/free-regular-svg-icons'
 import '../styles/component.css'
@@ -16,7 +17,9 @@ const InfoCard = () => {
     <div className="infoCard">
       <div className="infoCard-title">
         <img src={profile} alt="" />
-        <h4>{username}</h4>
+        <h4>
+          {username} <FontAwesomeIcon icon={faCrown} />
+        </h4>
         <FontAwesomeIcon className="thumbTack" icon={faThumbtack} />
         <FontAwesomeIcon className="ellispsisVert" icon={faEllipsisVertical} />
       </div>
@@ -43,7 +46,7 @@ const InfoCard = () => {
       <hr></hr>
       <div className="infoCard-footer">
         <p>Recent Activity:</p>
-        <img src="" alt="" />
+        <img src={profile} alt="" />
         <p>2h</p>
       </div>
     </div>

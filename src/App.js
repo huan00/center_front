@@ -1,7 +1,9 @@
+import { Routes, Route } from 'react-router-dom'
 import InfoCard from './components/InfoCard'
 import NavBar from './components/NavBar'
 import SignUp from './components/SignUp'
 import Home from './pages/Home'
+import Profile from './pages/Profile'
 import './styles/index.css'
 
 function App() {
@@ -11,11 +13,12 @@ function App() {
         <NavBar />
       </nav>
       <main>
-        <Home />
+        <Routes>
+          <Route path="" element={<Home />} />
+          <Route path="profile" element={<Profile />} />
+        </Routes>
       </main>
-      <footer>
-        <InfoCard />
-      </footer>
+      <footer></footer>
     </div>
   )
 }

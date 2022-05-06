@@ -7,6 +7,9 @@
 /*************/
 /******NavBar*******/
 /*************/
+nav {
+  /* height: 5vh; */
+}
 
 .navBar {
   background-color: rgb(22,19,44);
@@ -14,9 +17,10 @@
   font-family: Helvetica;
 
   padding: 30px 20px;
-  position: relative;
-  height: 5vh;
+  height: 75px;
   border-bottom: 1px rgb(40,38,61) solid;
+
+  position: relative;
 }
 
 .navBar-title{
