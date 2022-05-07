@@ -1,6 +1,7 @@
 
 body {
-  height: 100vh;
+  width: 375px;
+  height: 812px;
   /* background-color: rgb(24,19,62); */
 }
 
@@ -23,18 +24,28 @@ a {
 }
 
 /******HOME*******/
-
 .home {
-  background-color: rgb(24,19,62);
+  height: 90%;
+  width: 315px;
+  margin: 20px auto 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* .home {
+  /* background-color: rgb(24,19,62); */
   padding: 100px 0;
   position: relative;
   
   height: 80%;
   overflow: hidden;
   
-}
+ */
 
-.home-bg {
+/* .home-bg {
   height: 100%;
   background-image: url("../assets/images/window.jpg");
   background-repeat: none;
@@ -50,7 +61,7 @@ a {
 
   position: relative;
   top: 30%;
-}
+} */
 
 
 

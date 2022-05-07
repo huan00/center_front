@@ -1,53 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+
 * {
   margin: 0;
   padding: 0;
-  font-family: Helvetica;
+  font-family: 'DM Sans', sans-serif;
 }
 
 /*************/
 /******NavBar*******/
 /*************/
 nav {
-  /* height: 5vh; */
-}
-
-.navBar {
-  background-color: rgb(22,19,44);
-  color: white;
-  font-family: Helvetica;
-
-  padding: 30px 20px;
-  height: 75px;
-  border-bottom: 1px rgb(40,38,61) solid;
-
-  position: relative;
-}
-
-.navBar-title{
-  font-size: 25px;
-  text-align: left;
-}
-
-.navBar hr {
-  margin: 12px 50px;
+  
   
 }
 
-.navBar-list {
-  list-style-type: none;
+.navBar {
+  height: 43px;
+  width: 315px;
+  margin: 29px auto 0px;;
+  border-bottom: 1px solid black;
+
   display: flex;
-  font-size: 14px;
-  font-weight: 100;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.navBar-user{
-  position: absolute;
+.navBar-title {
+  font-weight: 700;
+  font-size: 18px;
+  margin: 0 0 10px;
+}
+
+.navBar-menu-icon {
+  width: 45%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 10px
+}
+
+.menu-icon {
   font-size: 20px;
-  right: 30px;
-  bottom: 50px;
+  border: 1px solid black;
+  border-radius: 50%;
+  padding: 5px;
+  
 }
-
-.navBar-list li {
-  margin: 0 15px 0 0;
-}
-

@@ -2,16 +2,21 @@ import React, { useState } from 'react'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 const SignUp = () => {
   const [xMark, setXMark] = useState('show')
   const [login, setLogin] = useState(false)
+  const [authMsg, setAuthMsg] = useState('Sign Up')
+  const [user, setUser] = useState({ id: '', email: '' })
   const [formData, setFormData] = useState({
     email: '',
-    password: '',
-    firstName: '',
-    lastName: ''
+    password: ''
+    // firstName: '',
+    // lastName: ''
   })
+
+  let navigate = useNavigate()
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -21,7 +26,7 @@ const SignUp = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     if (login) {
-      handleLogin()
+      handleLogin(formData)
     } else {
       console.log('signup')
       handleSignUp(formData)
@@ -34,15 +39,24 @@ const SignUp = () => {
   }
 
   const handleLogin = async (data) => {
-    const res = await axios.post('')
-    console.log('login')
+    const payload = await axios.post(`http://localhost:3001/users/login`, data)
+    setUser(payload.data)
+    setFormData('')
+    console.log(user)
+    navigate(`/profile`)
   }
 
   const toggleXMark = () => {
     xMark === 'show' ? setXMark('none') : setXMark('show')
   }
   const toggleLogin = () => {
-    login ? setLogin(false) : setLogin(true)
+    if (login) {
+      setLogin(false)
+      setAuthMsg('Sign Up')
+    } else {
+      setLogin(true)
+      setAuthMsg('Login')
+    }
   }
 
   return (
@@ -54,11 +68,11 @@ const SignUp = () => {
       />
       <div className="signup-img"></div>
       <div className="signup-msg">
-        <h1>Sign Up</h1>
+        <h1>{authMsg}</h1>
         <p>Start getting motivational advise from Us</p>
       </div>
 
-      <form className="signup-form">
+      <form className="signup-form" onSubmit={handleSubmit}>
         <input
           onChange={handleChange}
           name="email"
@@ -87,11 +101,14 @@ const SignUp = () => {
             />
           </>
         )}
-        <button onSubmit={handleSubmit}>Sign Up</button>
+        <button>{authMsg}</button>
       </form>
       <div className="signup-login">
         <p>
-          Already a member? <span onClick={toggleLogin}>login</span>
+          Already a member?{' '}
+          <span onClick={toggleLogin} className="signup-click">
+            {login ? <>Sign Up</> : <>Login</>}
+          </span>
         </p>
       </div>
     </div>

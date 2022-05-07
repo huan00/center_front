@@ -1,20 +1,25 @@
 import React from 'react'
-import { FaUser } from 'react-icons/fa'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {
+  faMehBlank,
+  faHourglass,
+  faComments
+} from '@fortawesome/free-regular-svg-icons'
+import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom'
 
 const NavBar = () => {
   return (
     <div className="navBar">
-      <h3 className="navBar-title">Center</h3>
-      <hr></hr>
-      <FaUser className="navBar-user" />
-      <ul className="navBar-list">
-        <li>
-          <Link to="">Home</Link>
-        </li>
-        <li>Forum</li>
-        <li>About Us</li>
-      </ul>
+      <div>
+        <h3 className="navBar-title">Center</h3>
+      </div>
+      <div className="navBar-menu-icon">
+        <FontAwesomeIcon className="menu-icon faMehBlank" icon={faMehBlank} />
+        <FontAwesomeIcon className="menu-icon faHourGlass" icon={faHourglass} />
+        <FontAwesomeIcon className="menu-icon faBars" icon={faBars} />
+        <FontAwesomeIcon className="menu-icon faComments" icon={faComments} />
+      </div>
     </div>
   )
 }

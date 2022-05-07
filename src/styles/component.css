@@ -210,3 +210,63 @@ position: absolute;
 .signup-login {
   margin: 10px 0;
 }
+
+.signup-click {
+  cursor: pointer;
+}
+
+.signup-click:hover {
+  color: red
+}
+
+
+/*********Slider*********/
+.slider {
+  width: 315px;
+}
+
+.slider h1 {
+  margin: 10px 0;
+}
+
+.slider-input {
+  width: 100%;
+  height: 2px;
+  background: black;
+}
+
+/********Mood************/
+.mood {
+  width: 315px;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  
+  align-items: center;
+
+}
+
+.mood-content {
+  width: 220px;
+  height: 200px;
+  background-color: rgb(217, 220, 222);
+  border-radius: 50%;
+  margin: 0 0 15px 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  
+  align-items: center;
+
+  cursor: pointer;
+}
+
+
+
+.mood-icon {
+  font-size: 100px;
+}
+
+.mood p {
+  color: rgb(217, 220, 222)
+}
