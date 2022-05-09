@@ -202,3 +202,36 @@ font-size: 32px;
 .prompt-arrow {
   color: #333333
 }
+
+/*********Breath**********/
+.breath {
+  height: 100%;
+  width: 315px;
+  margin: 20px auto 0;
+  
+  font-size: 32px;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  /* position: relative; */
+}
+
+.breath-bg {
+  height: 100%;
+  width: 375px;
+  background-color: #D5E8F9;
+
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: -1;
+
+  animation: mybg 60s forwards linear
+}
+
+@keyframes mybg {
+  from {top: -100%}
+  to {top: 0%}
+}

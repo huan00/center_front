@@ -1,10 +1,12 @@
 import React from 'react'
 import SignUp from '../components/SignUp'
+import { useNavigate } from 'react-router-dom'
 
 const Login = ({ setUser, user }) => {
+  let navigate = useNavigate()
   return (
     <div>
-      <SignUp setUser={setUser} user={user} />
+      {user ? navigate('select') : <SignUp setUser={setUser} user={user} />}
     </div>
   )
 }

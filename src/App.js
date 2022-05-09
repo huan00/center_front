@@ -11,6 +11,9 @@ import PromptActivity from './pages/PromptActivity'
 import Login from './pages/Login'
 import { getMood } from './services/mood-service'
 import { CheckSession } from './services/Auth-service'
+import Breathing from './pages/Breathing'
+import Distraction from './pages/Distraction'
+import LogIt from './pages/LogIt'
 
 function App() {
   let navigate = useNavigate()
@@ -39,17 +42,13 @@ function App() {
   useEffect(() => {
     const token = localStorage.getItem('token')
     if (token) {
-      console.log('fire!!!')
       checkToken()
-    } else {
-      console.log('no token')
     }
     getMoodList()
   }, [])
 
   const checkToken = async () => {
     const user = await CheckSession()
-    console.log(user)
     setUser(user)
   }
 
@@ -67,8 +66,6 @@ function App() {
     console.log(slider)
     // setSurvey({ ...survey, answer: mood[slider].mood, moodId: slider - 1 })
   }
-
-  console.log(survey)
 
   const handleConfirmMood = () => {
     setSurvey({ ...survey, answer: mood[slider].mood, moodId: slider })
@@ -114,6 +111,12 @@ function App() {
               <PromptActivity handleSlider={handleSlider} survey={survey} />
             }
           />
+          <Route path="select/prompt/activity/breath" element={<Breathing />} />
+          <Route
+            path="select/prompt/activity/disctraction"
+            element={<Distraction />}
+          />
+          <Route path="select/prompt/activity/logit" element={<LogIt />} />
 
           <Route path="profile" element={<Profile />} />
         </Routes>

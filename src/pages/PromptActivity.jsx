@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { BsArrowRight } from 'react-icons/bs'
+import { Link } from 'react-router-dom'
 import { postSurvey } from '../services/survey-service'
 
 const PromptActivity = ({ survey }) => {
@@ -28,8 +29,10 @@ const PromptActivity = ({ survey }) => {
       <div className="prompt-selection">
         {answer.map((ans, idx) => (
           <div className="prompt-selection-ans" key={idx}>
-            <p>{ans}</p>
-            <BsArrowRight />
+            <Link to="breath">
+              <p>{ans}</p>
+              <BsArrowRight />
+            </Link>
           </div>
         ))}
       </div>

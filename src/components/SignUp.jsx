@@ -7,8 +7,8 @@ import { Login, SignUpUser } from '../services/Auth-service'
 
 const SignUp = ({ setUser, user }) => {
   const [xMark, setXMark] = useState('show')
-  const [login, setLogin] = useState(false)
-  const [authMsg, setAuthMsg] = useState('Sign Up')
+  const [login, setLogin] = useState(true)
+  const [authMsg, setAuthMsg] = useState('Login')
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -109,10 +109,21 @@ const SignUp = ({ setUser, user }) => {
       </form>
       <div className="signup-login">
         <p>
-          Already a member?{' '}
-          <span onClick={toggleLogin} className="signup-click">
-            {login ? <>Sign Up</> : <>Login</>}
-          </span>
+          {login ? (
+            <>
+              Not a member?
+              <span onClick={toggleLogin} className="signup-click">
+                Sign Up
+              </span>{' '}
+            </>
+          ) : (
+            <>
+              Already a member?
+              <span onClick={toggleLogin} className="signup-click">
+                Login
+              </span>
+            </>
+          )}
         </p>
       </div>
     </div>
