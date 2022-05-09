@@ -10,7 +10,7 @@ const PromptActivity = ({ survey }) => {
   const [answer, setAnswer] = useState([
     'Breathing',
     'Distraction',
-    'Positivity',
+    'Logit',
     'Not right now'
   ])
 
@@ -29,7 +29,7 @@ const PromptActivity = ({ survey }) => {
       <div className="prompt-selection">
         {answer.map((ans, idx) => (
           <div className="prompt-selection-ans" key={idx}>
-            <Link to="breath">
+            <Link to={ans}>
               <p>{ans}</p>
               <BsArrowRight />
             </Link>

@@ -111,12 +111,18 @@ function App() {
               <PromptActivity handleSlider={handleSlider} survey={survey} />
             }
           />
-          <Route path="select/prompt/activity/breath" element={<Breathing />} />
+          <Route
+            path="select/prompt/activity/breathing"
+            element={<Breathing />}
+          />
           <Route
             path="select/prompt/activity/disctraction"
             element={<Distraction />}
           />
-          <Route path="select/prompt/activity/logit" element={<LogIt />} />
+          <Route
+            path="select/prompt/activity/logit"
+            element={<LogIt user={user} />}
+          />
 
           <Route path="profile" element={<Profile />} />
         </Routes>
