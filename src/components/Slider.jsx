@@ -3,7 +3,7 @@ import React from 'react'
 const Slider = ({ handleSlider, mood, slider, setSlider }) => {
   return (
     <div className="slider">
-      {mood && slider && <h1>{mood[slider].mood}</h1>}
+      {mood && slider > 0 && <h1>{mood[slider].mood}</h1>}
       <input
         className="slider-input"
         type="range"

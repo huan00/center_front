@@ -10,9 +10,11 @@ import { useEffect, useState } from 'react'
 import PromptActivity from './pages/PromptActivity'
 import Login from './pages/Login'
 import { getMood } from './services/mood-service'
+import { CheckSession } from './services/Auth-service'
 
 function App() {
   let navigate = useNavigate()
+  const [user, setUser] = useState(null)
 
   const [slider, setSlider] = useState(0)
   const [moodEmoji, setMoodEmoji] = useState([
@@ -24,7 +26,6 @@ function App() {
     '😍',
     '😬'
   ])
-  const [captureMood, setCaptureMood] = useState(null)
   const [mood, setMood] = useState([''])
 
   const [survey, setSurvey] = useState({
@@ -36,8 +37,21 @@ function App() {
   })
 
   useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      console.log('fire!!!')
+      checkToken()
+    } else {
+      console.log('no token')
+    }
     getMoodList()
   }, [])
+
+  const checkToken = async () => {
+    const user = await CheckSession()
+    console.log(user)
+    setUser(user)
+  }
 
   const handleSurvey = (e) => {
     setSurvey({ ...survey, [e.target.name]: e.target.value })
@@ -51,13 +65,13 @@ function App() {
   const handleSlider = (e) => {
     setSlider(e.target.value)
     console.log(slider)
-    setSurvey({ ...survey, answer: mood[slider].mood, moodId: slider - 1 })
+    // setSurvey({ ...survey, answer: mood[slider].mood, moodId: slider - 1 })
   }
 
   console.log(survey)
 
   const handleConfirmMood = () => {
-    setCaptureMood(mood[slider])
+    setSurvey({ ...survey, answer: mood[slider].mood, moodId: slider })
     navigate('/select/prompt')
   }
 
@@ -68,7 +82,7 @@ function App() {
       </nav>
       <main>
         <Routes>
-          <Route path="" element={<Login />} />
+          <Route path="" element={<Login setUser={setUser} user={user} />} />
           <Route
             path="/select"
             element={
@@ -76,6 +90,7 @@ function App() {
                 handleSurvey={handleSurvey}
                 handleSlider={handleSlider}
                 slider={slider}
+                user={user}
                 setSlider={setSlider}
                 moodEmoji={moodEmoji}
                 mood={mood}

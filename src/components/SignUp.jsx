@@ -3,12 +3,12 @@ import { faXmark } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import { Login, SignUpUser } from '../services/Auth-service'
 
-const SignUp = () => {
+const SignUp = ({ setUser, user }) => {
   const [xMark, setXMark] = useState('show')
   const [login, setLogin] = useState(false)
   const [authMsg, setAuthMsg] = useState('Sign Up')
-  const [user, setUser] = useState({ id: '', email: '' })
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -34,15 +34,17 @@ const SignUp = () => {
   }
 
   const handleSignUp = async (data) => {
-    const res = await axios.post(`http://localhost:3001/users/signup`, data)
-    console.log(res)
+    const res = await SignUpUser(data)
+    setFormData({ email: '', password: '' })
+    toggleLogin()
   }
 
   const handleLogin = async (data) => {
-    const payload = await axios.post(`http://localhost:3001/users/login`, data)
-    setUser(payload.data)
-    setFormData('')
-    console.log(user)
+    const payload = await Login(data)
+    console.log(payload)
+    setUser(payload)
+
+    setFormData({ email: '', password: '' })
     navigate(`/select`)
   }
 
@@ -58,6 +60,8 @@ const SignUp = () => {
       setAuthMsg('Login')
     }
   }
+
+  console.log(user)
 
   return (
     <div className="signup" style={{ display: xMark }}>

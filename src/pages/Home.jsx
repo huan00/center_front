@@ -10,20 +10,22 @@ const Home = ({
   mood,
   moodEmoji,
   handleConfirmMood,
-  handleSurvey
+  handleSurvey,
+  user
 }) => {
   const [greeting, setGreeting] = useState(
-    'Morning, Anna How are you feeling right now?'
+    `Morning, How are you feeling right now?`
   )
 
+  console.log(user)
   useEffect(() => {}, [])
 
-  return (
+  return user ? (
     <div className="home">
       <div className="home-greeting">
         <h1 className="home-title">{greeting}</h1>
       </div>
-      {slider && (
+      {slider > 0 && (
         <div className="home-mood">
           <Mood
             slider={slider}
@@ -41,6 +43,10 @@ const Home = ({
           handleSurvey={handleSurvey}
         />
       </div>
+    </div>
+  ) : (
+    <div>
+      <h3>Loading...</h3>
     </div>
   )
 }

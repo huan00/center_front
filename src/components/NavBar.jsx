@@ -15,7 +15,7 @@ const NavBar = ({}) => {
         ''
       ) : (
         <div className="navBar-menu-icon">
-          <Link to="">
+          <Link to="select">
             <BiMehBlank className="menu-icon BiMehBlank" />
           </Link>
           <BiHourglass className="menu-icon BiHourGlass" />
