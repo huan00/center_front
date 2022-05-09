@@ -24,6 +24,12 @@ main {
   color: white;
 } */
 
+.container {
+  height: 90%;
+  width: 315px;
+  margin: 20px auto 0;
+}
+
 /******HOME*******/
 .home {
   height: 90%;
@@ -234,4 +240,19 @@ font-size: 32px;
 @keyframes mybg {
   from {top: -100%}
   to {top: 0%}
+}
+
+
+/*********distraction*************/
+.distraction {
+  overflow-y: auto;
+
+}
+
+.distraction-video {
+  
+}
+
+.videos {
+  margin: 10px 0;
 }

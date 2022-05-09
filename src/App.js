@@ -116,7 +116,7 @@ function App() {
             element={<Breathing />}
           />
           <Route
-            path="select/prompt/activity/disctraction"
+            path="select/prompt/activity/distraction"
             element={<Distraction />}
           />
           <Route
