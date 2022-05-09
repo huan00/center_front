@@ -43,7 +43,7 @@ const SignUp = () => {
     setUser(payload.data)
     setFormData('')
     console.log(user)
-    navigate(`/profile`)
+    navigate(`/select`)
   }
 
   const toggleXMark = () => {

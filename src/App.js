@@ -3,32 +3,62 @@ import InfoCard from './components/InfoCard'
 import NavBar from './components/NavBar'
 import SignUp from './components/SignUp'
 import Home from './pages/Home'
-import PromptOne from './pages/PromptOne'
+import Prompt from './pages/Prompt'
 import Profile from './pages/Profile'
 import './styles/index.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import PromptActivity from './pages/PromptActivity'
+import Login from './pages/Login'
+import { getMood } from './services/mood-service'
 
 function App() {
   let navigate = useNavigate()
-  const [slider, setSlider] = useState(null)
-  const [mood, setMood] = useState(['😁', '😔', '🤩', '😡', '😰', '🥰'])
-  const [captureMood, setCaptureMood] = useState(null)
-  const [moodWord, setMoodWord] = useState([
-    'Happy',
-    'Sad',
-    'Excited',
-    'Angry',
-    'Nervous',
-    'Loved'
+
+  const [slider, setSlider] = useState(0)
+  const [moodEmoji, setMoodEmoji] = useState([
+    '',
+    '😔',
+    '😁',
+    '😡',
+    '😱',
+    '😍',
+    '😬'
   ])
+  const [captureMood, setCaptureMood] = useState(null)
+  const [mood, setMood] = useState([''])
+
+  const [survey, setSurvey] = useState({
+    question: 'How are you feeling right now?',
+    answer: '',
+    moodId: '',
+    reason: '',
+    userId: 1
+  })
+
+  useEffect(() => {
+    getMoodList()
+  }, [])
+
+  const handleSurvey = (e) => {
+    setSurvey({ ...survey, [e.target.name]: e.target.value })
+  }
+
+  const getMoodList = async () => {
+    const res = await getMood()
+    setMood([...mood, ...res.data])
+  }
 
   const handleSlider = (e) => {
     setSlider(e.target.value)
+    console.log(slider)
+    setSurvey({ ...survey, answer: mood[slider].mood, moodId: slider - 1 })
   }
 
+  console.log(survey)
+
   const handleConfirmMood = () => {
-    setCaptureMood(moodWord[slider])
-    navigate('/promptone')
+    setCaptureMood(mood[slider])
+    navigate('/select/prompt')
   }
 
   return (
@@ -38,22 +68,38 @@ function App() {
       </nav>
       <main>
         <Routes>
+          <Route path="" element={<Login />} />
           <Route
-            path=""
+            path="/select"
             element={
               <Home
+                handleSurvey={handleSurvey}
                 handleSlider={handleSlider}
                 slider={slider}
+                setSlider={setSlider}
+                moodEmoji={moodEmoji}
                 mood={mood}
-                moodWord={moodWord}
                 handleConfirmMood={handleConfirmMood}
               />
             }
           />
           <Route
-            path="promptone"
-            element={<PromptOne handleSlider={handleSlider} />}
+            path="select/prompt"
+            element={
+              <Prompt
+                handleSlider={handleSlider}
+                setSurvey={setSurvey}
+                survey={survey}
+              />
+            }
           />
+          <Route
+            path="select/prompt/activity"
+            element={
+              <PromptActivity handleSlider={handleSlider} survey={survey} />
+            }
+          />
+
           <Route path="profile" element={<Profile />} />
         </Routes>
         {/* <SignUp /> */}

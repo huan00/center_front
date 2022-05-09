@@ -1,15 +1,16 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {} from '@fortawesome/free-regular-svg-icons'
-import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react'
 
-const Mood = ({ slider, mood, handleConfirmMood }) => {
+const Mood = ({ slider, moodEmoji, handleConfirmMood }) => {
   return (
     <div className="mood">
-      <div className="mood-content" onClick={handleConfirmMood}>
-        <span className="mood-icon">{mood[slider]}</span>
-      </div>
-      <p>Tab to confirm</p>
+      {slider > 0 && (
+        <>
+          <div className="mood-content" onClick={handleConfirmMood}>
+            <span className="mood-icon">{moodEmoji[slider]}</span>
+          </div>
+          <p>Tab to confirm</p>
+        </>
+      )}
     </div>
   )
 }

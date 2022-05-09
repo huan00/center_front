@@ -3,6 +3,7 @@ body {
   width: 375px;
   height: 812px;
   /* background-color: rgb(24,19,62); */
+  overflow: hidden;
 }
 
 #root {
@@ -10,18 +11,18 @@ body {
 }
 
 .App {
-  height: 100%;
+  height: 760px;
 }
 
 main {
-  height: 85%;
+  height: 100%;
   /* overflow: hidden; */
 }
 
-a {
+/* a {
   text-decoration: none;
   color: white;
-}
+} */
 
 /******HOME*******/
 .home {
@@ -161,3 +162,43 @@ a {
   flex-wrap: wrap;
 }
 
+/***********Prompt************/
+.prompt {
+  width: 315px;
+  height: 90%;
+  margin: 20px auto 0;
+  font-size: 32px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.prompt-message {
+font-size: 32px;
+}
+
+.prompt-selection {
+  height: 50%;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.prompt-selection-ans {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 1px solid #000000;
+  padding: 0 0 10px 0;
+  font-size: 32px;
+}
+.prompt-selection-ans:last-child {
+  border: none;
+}
+
+.prompt-arrow {
+  color: #333333
+}

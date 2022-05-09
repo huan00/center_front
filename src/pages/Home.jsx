@@ -4,12 +4,17 @@ import SignUp from '../components/SignUp'
 import Slider from '../components/Slider'
 import Mood from '../components/Mood'
 
-const Home = ({ handleSlider, slider, mood, moodWord, handleConfirmMood }) => {
+const Home = ({
+  handleSlider,
+  slider,
+  mood,
+  moodEmoji,
+  handleConfirmMood,
+  handleSurvey
+}) => {
   const [greeting, setGreeting] = useState(
     'Morning, Anna How are you feeling right now?'
   )
-
-  const [signupState, setSignupState] = useState('true')
 
   useEffect(() => {}, [])
 
@@ -23,6 +28,7 @@ const Home = ({ handleSlider, slider, mood, moodWord, handleConfirmMood }) => {
           <Mood
             slider={slider}
             mood={mood}
+            moodEmoji={moodEmoji}
             handleConfirmMood={handleConfirmMood}
           />
         </div>
@@ -30,8 +36,9 @@ const Home = ({ handleSlider, slider, mood, moodWord, handleConfirmMood }) => {
       <div className="home-slider">
         <Slider
           handleSlider={handleSlider}
-          moodWord={moodWord}
+          mood={mood}
           slider={slider}
+          handleSurvey={handleSurvey}
         />
       </div>
     </div>
