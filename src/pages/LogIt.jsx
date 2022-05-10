@@ -3,15 +3,15 @@ import { postMessage } from '../services/Message-service'
 import MessageInput from '../components/MessageInput'
 
 const LogIt = ({ user, setSurvey, survey, postSurveyResult }) => {
-  const [message, setMessage] = useState({ message: '', userId: user.id })
+  const [message, setMessage] = useState({
+    message: '',
+    userId: user.id,
+    private: true
+  })
+  console.log(message)
 
   useEffect(() => {
-    if (survey.activity) {
-      postSurveyResult()
-    }
-    return () => {
-      setSurvey(null)
-    }
+    postSurveyResult()
   }, [])
 
   const handleMessage = (e) => {
@@ -21,10 +21,11 @@ const LogIt = ({ user, setSurvey, survey, postSurveyResult }) => {
     e.preventDefault()
 
     const msg = await postMessage(message)
+    setMessage({ message: '', userId: user.id, private: true })
   }
 
   return (
-    <div>
+    <div className="container">
       <MessageInput
         handleMessage={handleMessage}
         message={message}

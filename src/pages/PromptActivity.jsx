@@ -5,7 +5,7 @@ import { postSurvey } from '../services/survey-service'
 
 const PromptActivity = ({ survey, setSurvey, postSurveyResult }) => {
   const [message, setMessage] = useState(
-    'Let&apos;s help with that. Pick something that you have a moment for right now'
+    "Let's help with that. Pick something that you have a moment for right now"
   )
   const [answer, setAnswer] = useState([
     'Breathing',
@@ -39,7 +39,6 @@ const PromptActivity = ({ survey, setSurvey, postSurveyResult }) => {
             onClick={() => {
               setSurvey({ ...survey, activity: 'Not right now' })
               postSurveyResult()
-              console.log('hit')
             }}
           >
             <div className="prompt-happy-center">
@@ -59,8 +58,8 @@ const PromptActivity = ({ survey, setSurvey, postSurveyResult }) => {
                   onClick={() => setSurvey({ ...survey, activity: ans })}
                 >
                   <p>{ans}</p>
-                  <BsArrowRight />
                 </Link>
+                <BsArrowRight />
               </div>
             ))}
           </div>

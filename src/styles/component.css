@@ -1,8 +1,8 @@
 /********InfoCard*******/
 
 .infoCard {
-  width: 320px;
-  height: 400px;
+  width: 250px;
+  height: 330px;
   border: 1px solid rgb(219, 218, 222);
 
   padding: 20px 20px 40px 20px;
@@ -12,7 +12,7 @@
 .infoCard-title {
   display: flex;
   align-items: center;
-  height: 75px;
+  height: 50px;
 
   position: relative;
 }
@@ -43,7 +43,7 @@ position: absolute;
 
 .infoCard-content {
   margin: 20px 0;
-  height: 200px;
+  height: 150px;
   width: 100%;
 
   overflow: hidden;
@@ -55,8 +55,8 @@ position: absolute;
   font-weight: 400;
 }
 
-.infoCard-content p {
-  line-height: 1.4em;
+.infoCard-contentp {
+  line-height: 1.2em;
   font-weight: 200;
 
   overflow: hidden;
@@ -269,4 +269,29 @@ position: absolute;
 
 .mood p {
   color: rgb(217, 220, 222)
+}
+
+
+/**************ChatHome ***********/
+
+.chat-sort-form {
+  display: flex;
+
+  justify-content: space-between;
+
+}
+
+.chat-write {
+  font-size: 25px;
+}
+
+.chat-content {
+  height: 600px;
+  margin: 10px auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  overflow-y: auto;
 }

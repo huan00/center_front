@@ -18,6 +18,7 @@ import LogIt from './pages/LogIt'
 import ActivityHistory from './pages/ActivityHistory'
 
 import ActivityHistoryDetail from './pages/activitydetail/ActivityHistoryDetail'
+import ChatHome from './pages/chat/ChatHome'
 
 function App() {
   let navigate = useNavigate()
@@ -80,11 +81,18 @@ function App() {
     ) {
       const res = await postSurvey(survey)
     }
+    setSurvey({
+      question: 'How are you feeling right now?',
+      answer: '',
+      moodId: '',
+      activity: '',
+      reason: '',
+      userId: user.id
+    })
   }
 
   const handleSlider = (e) => {
     setSlider(e.target.value)
-    console.log(slider)
   }
 
   const handleConfirmMood = () => {
@@ -98,91 +106,98 @@ function App() {
         <NavBar />
       </nav>
       <main>
-        <Routes>
-          <Route path="" element={<Login setUser={setUser} user={user} />} />
-          <Route
-            path="/select"
-            element={
-              <Home
-                handleSurvey={handleSurvey}
-                handleSlider={handleSlider}
-                slider={slider}
-                user={user}
-                setSlider={setSlider}
-                moodEmoji={moodEmoji}
-                mood={mood}
-                handleConfirmMood={handleConfirmMood}
-              />
-            }
-          />
-          <Route
-            path="select/prompt"
-            element={
-              <Prompt
-                handleSlider={handleSlider}
-                setSurvey={setSurvey}
-                survey={survey}
-              />
-            }
-          />
-          <Route
-            path="select/prompt/activity"
-            element={
-              <PromptActivity
-                handleSlider={handleSlider}
-                survey={survey}
-                setSurvey={setSurvey}
-                postSurveyResult={postSurveyResult}
-              />
-            }
-          />
-          <Route
-            path="select/prompt/activity/breathing"
-            element={
-              <Breathing
-                postSurveyResult={postSurveyResult}
-                setSurvey={setSurvey}
-                survey={survey}
-              />
-            }
-          />
-          <Route
-            path="select/prompt/activity/distraction"
-            element={
-              <Distraction
-                postSurveyResult={postSurveyResult}
-                setSurvey={setSurvey}
-                survey={survey}
-              />
-            }
-          />
-          <Route
-            path="select/prompt/activity/logit"
-            element={
-              <LogIt
-                user={user}
-                postSurveyResult={postSurveyResult}
-                setSurvey={setSurvey}
-                survey={survey}
-              />
-            }
-          />
-
-          {user && (
+        {user ? (
+          <Routes>
+            <Route path="" element={<Login setUser={setUser} user={user} />} />
             <Route
-              path="/user/activity"
-              element={<ActivityHistory user={user} checkToken={checkToken} />}
+              path="/select"
+              element={
+                <Home
+                  handleSurvey={handleSurvey}
+                  handleSlider={handleSlider}
+                  slider={slider}
+                  user={user}
+                  setSlider={setSlider}
+                  moodEmoji={moodEmoji}
+                  mood={mood}
+                  handleConfirmMood={handleConfirmMood}
+                />
+              }
             />
-          )}
-          {user && (
             <Route
-              path="/user/activity/history/:id"
-              element={<ActivityHistoryDetail user={user} />}
+              path="select/prompt"
+              element={
+                <Prompt
+                  handleSlider={handleSlider}
+                  setSurvey={setSurvey}
+                  survey={survey}
+                />
+              }
             />
-          )}
-
-          <Route path="profile" element={<Profile />} />
-        </Routes>
+            <Route
+              path="select/prompt/activity"
+              element={
+                <PromptActivity
+                  handleSlider={handleSlider}
+                  survey={survey}
+                  setSurvey={setSurvey}
+                  postSurveyResult={postSurveyResult}
+                />
+              }
+            />
+            <Route
+              path="select/prompt/activity/breathing"
+              element={
+                <Breathing
+                  postSurveyResult={postSurveyResult}
+                  setSurvey={setSurvey}
+                  survey={survey}
+                  user={user}
+                />
+              }
+            />
+            <Route
+              path="select/prompt/activity/distraction"
+              element={
+                <Distraction
+                  postSurveyResult={postSurveyResult}
+                  setSurvey={setSurvey}
+                  survey={survey}
+                />
+              }
+            />
+            <Route
+              path="select/prompt/activity/logit"
+              element={
+                <LogIt
+                  user={user}
+                  postSurveyResult={postSurveyResult}
+                  setSurvey={setSurvey}
+                  survey={survey}
+                />
+              }
+            />
+            {user && (
+              <Route
+                path="user/activity"
+                element={
+                  <ActivityHistory user={user} checkToken={checkToken} />
+                }
+              />
+            )}
+            {user && (
+              <Route
+                path="user/activity/history/:id"
+                element={<ActivityHistoryDetail user={user} />}
+              />
+            )}
+            <Route path="profile" element={<Profile />} />
+            /********CHAT********* */
+            <Route path="chat" element={<ChatHome />} />
+          </Routes>
+        ) : (
+          <div>loading</div>
+        )}
         {/* <SignUp /> */}
       </main>
       <footer></footer>

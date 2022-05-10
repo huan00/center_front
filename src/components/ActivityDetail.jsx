@@ -24,7 +24,7 @@ const ActivityDetail = ({ user, id }) => {
     null,
     'Breathing',
     'Distraction',
-    'LogIt'
+    'Logit'
   ])
   const [monthfilter, setMonthFilter] = useState('')
   const [reasonfilter, setReasonFilter] = useState(id)

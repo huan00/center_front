@@ -238,7 +238,7 @@ font-size: 32px;
 
 /*********Breath**********/
 .breath {
-  height: 100%;
+  height: 90%;
   width: 315px;
   margin: 20px auto 0;
   
@@ -282,6 +282,32 @@ font-size: 32px;
 
 .videos {
   margin: 10px 0;
+}
+
+
+
+/**********Log it**********************/
+
+.message-input {
+  
+}
+
+.message-input form {
+  display: flex;
+  flex-direction: column;
+}
+
+.message-input textarea {
+  height: 300px;
+  font-size: 20px;
+}
+
+.message-input button {
+  height: 35px;
+}
+
+.message-input * {
+  margin: 0 0 10px 0;
 }
 
 
