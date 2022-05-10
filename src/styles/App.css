@@ -318,3 +318,31 @@ font-size: 32px;
 .happy {
   background-color: aqua;
 }
+
+.activity-detail-comp {
+  overflow-y: auto;
+  
+}
+
+.activity-detail-list {
+  overflow: auto;
+  height: 600px;
+}
+
+.render-detail {
+  overflow: hidden;
+  height: 150px;
+  /* background-color: #000000; */
+  margin: 10px 0;
+}
+
+.render-detail * {
+  margin: 5px 0;
+  padding: 0 5px;
+}
+
+.scrollable {
+  height: 50%;
+  overflow-y: hidden;
+  background-color: black;
+}

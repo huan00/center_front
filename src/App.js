@@ -16,7 +16,8 @@ import Breathing from './pages/Breathing'
 import Distraction from './pages/Distraction'
 import LogIt from './pages/LogIt'
 import ActivityHistory from './pages/ActivityHistory'
-import BreathingDetail from './pages/activitydetail/BreathingDetail'
+
+import ActivityHistoryDetail from './pages/activitydetail/ActivityHistoryDetail'
 
 function App() {
   let navigate = useNavigate()
@@ -175,8 +176,8 @@ function App() {
           )}
           {user && (
             <Route
-              path="/user/activity/history"
-              element={<BreathingDetail user={user} />}
+              path="/user/activity/history/:id"
+              element={<ActivityHistoryDetail user={user} />}
             />
           )}
 

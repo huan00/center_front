@@ -2,10 +2,11 @@ import { getUserDetails } from '../services/User-service'
 import React, { useEffect, useState } from 'react'
 import { BiSad } from 'react-icons/bi'
 
-const ActivityDetail = ({ user }) => {
+const ActivityDetail = ({ user, id }) => {
   const [activityDetails, setActivityDetails] = useState([])
   const [breathing, setBreathing] = useState([])
   const [month, setMonth] = useState([
+    null,
     'Jan',
     'Feb',
     'Mar',
@@ -19,9 +20,14 @@ const ActivityDetail = ({ user }) => {
     'Nov',
     'Dec'
   ])
-  const [reasons, setReasons] = useState(['Breathing', 'Distraction', 'LogIt'])
+  const [reasons, setReasons] = useState([
+    null,
+    'Breathing',
+    'Distraction',
+    'LogIt'
+  ])
   const [monthfilter, setMonthFilter] = useState('')
-  const [reasonfilter, setReasonFilter] = useState('')
+  const [reasonfilter, setReasonFilter] = useState(id)
   const [title, setTitle] = useState('Your centers')
 
   useEffect(() => {
@@ -39,7 +45,7 @@ const ActivityDetail = ({ user }) => {
   }
 
   const handleChangeMonth = (e) => {
-    setMonthFilter(parseInt(e.target.value) + 1)
+    setMonthFilter(parseInt(e.target.value))
   }
   const handleChangeReason = (e) => {
     setReasonFilter(e.target.value)
@@ -71,23 +77,26 @@ const ActivityDetail = ({ user }) => {
         <p>Question: {act.question}</p>
         <p>Answer: {act.answer}</p>
         <p>Reason: {act.reason}</p>
+        <p>Activity: {act.activity}</p>
         <p>Created: {act.createdAt}</p>
       </div>
     ))
   }
 
   return (
-    <div className="container">
+    <div className="container activity-detail-comp">
       <div>
         <h1>{title}</h1>
       </div>
-      <div>
+      <div className="activity-detail-list">
         <form action="">
+          <label htmlFor="">Month: </label>
           <select onChange={handleChangeMonth}>
             {month.map((mon, idx) => (
               <option value={idx}>{mon}</option>
             ))}
           </select>
+          <label htmlFor="">Reason: </label>
           <select onChange={handleChangeReason}>
             {reasons.map((reason) => (
               <option value={reason}>{reason}</option>

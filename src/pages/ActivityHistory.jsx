@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { getUserDetails } from '../services/User-service'
 import { BsArrowRight } from 'react-icons/bs'
+import { Link } from 'react-router-dom'
 
 const ActivityHistory = ({ user, checkToken }) => {
   const [activityDetail, setActivityDetail] = useState([])
@@ -21,10 +22,12 @@ const ActivityHistory = ({ user, checkToken }) => {
         <p>
           {activityDetail.filter((act) => act.activity === 'Breathing').length}
         </p>
-        <div className="activity-history-link">
-          <h1>Breathing</h1>
-          <BsArrowRight className="activity-arrow" />
-        </div>
+        <Link to={`history/Breathing`}>
+          <div className="activity-history-link">
+            <h1>Breathing</h1>
+            <BsArrowRight className="activity-arrow" />
+          </div>
+        </Link>
       </div>
       <div className="activity-history-distraction">
         <p>
@@ -33,17 +36,21 @@ const ActivityHistory = ({ user, checkToken }) => {
               .length
           }
         </p>
-        <div className="activity-history-link">
-          <h1>Distraction</h1>
-          <BsArrowRight className="activity-arrow" />
-        </div>
+        <Link to={`history/Distraction`}>
+          <div className="activity-history-link">
+            <h1>Distraction</h1>
+            <BsArrowRight className="activity-arrow" />
+          </div>
+        </Link>
       </div>
       <div className="activity-history-logit">
         <p>{activityDetail.filter((act) => act.activity === 'LogIt').length}</p>
-        <div className="activity-history-link">
-          <h1>Logs</h1>
-          <BsArrowRight className="activity-arrow" />
-        </div>
+        <Link to={`history/LogIt`}>
+          <div className="activity-history-link">
+            <h1>Logs</h1>
+            <BsArrowRight className="activity-arrow" />
+          </div>
+        </Link>
       </div>
     </div>
   )
