@@ -1,13 +1,13 @@
 import React, { useState } from 'react'
 import SelectEmotion from './SelectEmotion'
 
-const MessageInput = ({ handleMessage, handleSubmit }) => {
+const MessageInput = ({ handleChange, handleSubmit }) => {
   return (
     <div className="message-input">
       <form onSubmit={handleSubmit}>
         <label htmlFor="msg">What on your mind?</label>
         <label htmlFor="">What is your current emotion?</label>
-        <SelectEmotion handleMessage={handleMessage} />
+        <SelectEmotion handleChange={handleChange} />
         <section>
           <label htmlFor="">Private: </label>
           <input
@@ -15,7 +15,7 @@ const MessageInput = ({ handleMessage, handleSubmit }) => {
             value="true"
             id="true"
             name="private"
-            onChange={handleMessage}
+            onChange={handleChange}
           />
           <label htmlFor="true">true</label>
           <input
@@ -23,11 +23,11 @@ const MessageInput = ({ handleMessage, handleSubmit }) => {
             value="false"
             id="false"
             name="private"
-            onChange={handleMessage}
+            onChange={handleChange}
           />
           <label htmlFor="false">false</label>
         </section>
-        <textarea id="msg" name="message" onChange={handleMessage}></textarea>
+        <textarea id="msg" name="message" onChange={handleChange}></textarea>
         <button type="submit">submit</button>
       </form>
     </div>

@@ -19,6 +19,7 @@ import ActivityHistory from './pages/ActivityHistory'
 import Compose from './pages/chat/Compose'
 import ActivityHistoryDetail from './pages/activitydetail/ActivityHistoryDetail'
 import ChatHome from './pages/chat/ChatHome'
+import Conversation from './pages/chat/Conversation'
 
 function App() {
   let navigate = useNavigate()
@@ -195,6 +196,7 @@ function App() {
             /********CHAT********* */
             <Route path="chat" element={<ChatHome />} />
             <Route path="chat/compose" element={<Compose user={user} />} />
+            <Route path="chat/conversation" element={<Conversation />} />
           </Routes>
         ) : (
           <div>loading</div>

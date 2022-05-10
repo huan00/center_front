@@ -1,11 +1,11 @@
 import React from 'react'
 
-const SelectEmotion = ({ handleMessage }) => {
+const SelectEmotion = ({ handleChange }) => {
   return (
     <div>
       <form>
         <label htmlFor="">Emotion: </label>
-        <select name="mood" id="" onChange={handleMessage}>
+        <select name="mood" id="" onChange={handleChange}>
           <option value="all">All</option>
           <option value="sad">Sad</option>
           <option value="happy">Happy</option>

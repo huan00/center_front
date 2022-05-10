@@ -12,10 +12,10 @@ const Compose = ({ user }) => {
 
   console.log(message)
 
-  const handleMessage = (e) => {
+  const handleChange = (e) => {
     setMessage({ ...message, [e.target.name]: e.target.value })
   }
-
+  console.log(message)
   const handleSubmit = (e) => {
     e.preventDefault()
     postMessage(message)
@@ -27,7 +27,7 @@ const Compose = ({ user }) => {
 
   return (
     <div className="container">
-      <MessageInput handleMessage={handleMessage} handleSubmit={handleSubmit} />
+      <MessageInput handleChange={handleChange} handleSubmit={handleSubmit} />
     </div>
   )
 }

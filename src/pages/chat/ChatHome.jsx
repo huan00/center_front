@@ -9,8 +9,7 @@ import { render } from '@testing-library/react'
 const ChatHome = () => {
   const [messages, setMessages] = useState([])
   const [sortRecent, setSortRecent] = useState('most recent')
-  const [sortEmotion, setEmotion] = useState('')
-  const [filterArray, setFilterArray] = useState()
+  const [sortEmotion, setEmotion] = useState('all')
 
   useEffect(() => {
     getMessages()
@@ -27,7 +26,17 @@ const ChatHome = () => {
     setMessages(msg)
   }
 
-  console.log(filterArray)
+  const handleSortEmotion = (e) => {
+    setEmotion(e.target.value)
+  }
+
+  const filterSort = (a, b, sort) => {
+    if (sort === 'most recent') {
+      return new Date(b.createdAt) - new Date(a.createdAt)
+    } else {
+      return new Date(a.createdAt) - new Date(b.createdAt)
+    }
+  }
 
   return (
     <div className="container">
@@ -38,24 +47,43 @@ const ChatHome = () => {
             id=""
             onChange={(e) => setSortRecent(e.target.value)}
           >
-            <option value="recent">most recent</option>
-            <option value="">Top Likes</option>
-            <option value="">oldest</option>
+            <option value="most recent">most recent</option>
+            {/* <option value="">Top Likes</option> */}
+            <option value="oldest">oldest</option>
           </select>
         </form>
-        <SelectEmotion />
+        <SelectEmotion handleChange={handleSortEmotion} />
         <Link to="compose">
           <IoCreateOutline className="chat-write" />
         </Link>
       </div>
       <div className="chat-content">
-        {messages.map((message) => (
-          <InfoCard
-            user={message.User.email}
-            message={message.message}
-            all={message}
-          />
-        ))}
+        {sortEmotion === 'all'
+          ? messages
+              .sort((a, b) => filterSort(a, b, sortRecent))
+              .map((message) => (
+                <InfoCard
+                  key={message.id}
+                  user={message.User.email}
+                  message={message.message}
+                  all={message}
+                  posted={new Date(message.createdAt).toDateString()}
+                />
+              ))
+          : messages
+              .sort((a, b) => filterSort(a, b, sortRecent))
+              .filter(
+                (mess) => mess.messageMood[0].mood === sortEmotion.toLowerCase()
+              )
+              .map((message) => (
+                <InfoCard
+                  key={message.id}
+                  user={message.User.email}
+                  message={message.message}
+                  all={message}
+                  posted={new Date(message.createdAt).toDateString()}
+                />
+              ))}
       </div>
     </div>
   )
