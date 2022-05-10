@@ -10,8 +10,11 @@ import { faComment, faHeart } from '@fortawesome/free-regular-svg-icons'
 import '../styles/component.css'
 import profile from '../assets/images/profile.svg'
 
-const InfoCard = () => {
-  const [username, setUsername] = useState('username')
+const InfoCard = ({ mood, message, user, all }) => {
+  const [username, setUsername] = useState(user)
+  const [filter, setFilter] = useState('')
+
+  console.log(all)
 
   return (
     <div className="infoCard">
@@ -24,16 +27,8 @@ const InfoCard = () => {
         <FontAwesomeIcon className="ellispsisVert" icon={faEllipsisVertical} />
       </div>
       <div className="infoCard-content">
-        <h4>General Discussion</h4>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit
-          alias ad ratione minima, sed deserunt quisquam. Provident vel, optio
-          ipsa suscipit sed labore nisi dolorum sapiente saepe sit quod
-          minus!Lorem Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-          Perferendis unde asperiores culpa at recusandae aperiam, corrupti
-          praesentium veniam rerum dignissimos nihil aliquam repellendus earum
-          quo molestias est ea aliquid porro!
-        </p>
+        <h4>{all.messageMood[0] ? all.messageMood[0].mood : 'General'}</h4>
+        <p>{message}</p>
       </div>
       <div className="infoCard-social">
         <FontAwesomeIcon className="faEye" icon={faEye} />

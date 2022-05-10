@@ -27,7 +27,9 @@ const NavBar = ({}) => {
           <BiHourglass className="menu-icon BiHourGlass" />
         </Link>
         <BiMenu className="menu-icon BiMenu" />
-        <IoChatbubblesOutline className="menu-icon faComments" />
+        <Link to="chat">
+          <IoChatbubblesOutline className="menu-icon faComments" />
+        </Link>
       </div>
     </div>
   )

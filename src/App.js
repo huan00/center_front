@@ -16,7 +16,7 @@ import Breathing from './pages/Breathing'
 import Distraction from './pages/Distraction'
 import LogIt from './pages/LogIt'
 import ActivityHistory from './pages/ActivityHistory'
-
+import Compose from './pages/chat/Compose'
 import ActivityHistoryDetail from './pages/activitydetail/ActivityHistoryDetail'
 import ChatHome from './pages/chat/ChatHome'
 
@@ -194,6 +194,7 @@ function App() {
             <Route path="profile" element={<Profile />} />
             /********CHAT********* */
             <Route path="chat" element={<ChatHome />} />
+            <Route path="chat/compose" element={<Compose user={user} />} />
           </Routes>
         ) : (
           <div>loading</div>
