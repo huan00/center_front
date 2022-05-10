@@ -3,9 +3,9 @@ import { BsArrowRight } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 import { postSurvey } from '../services/survey-service'
 
-const PromptActivity = ({ survey, setSurvey }) => {
+const PromptActivity = ({ survey, setSurvey, postSurveyResult }) => {
   const [message, setMessage] = useState(
-    'Let’s help with that. Pick something that you have a moment for right now'
+    'Let&apos;s help with that. Pick something that you have a moment for right now'
   )
   const [answer, setAnswer] = useState([
     'Breathing',
@@ -19,9 +19,34 @@ const PromptActivity = ({ survey, setSurvey }) => {
   return (
     <div className="prompt">
       {survey.moodId === '2' || survey.moodId === '4' ? (
-        <div>
-          <p>what would you like to do?</p>
-          <button>Done</button>
+        <div className="prompt-happy">
+          <p>So good to hear you are having a good day.</p>
+          <div className="prompt-happy-video">
+            <p>Watch some video?</p>
+            <Link
+              to="distraction"
+              onClick={() => setSurvey({ ...survey, activity: 'Distraction' })}
+            >
+              <div>
+                <p>Vides</p>
+                <BsArrowRight />
+              </div>
+            </Link>
+          </div>
+          <p>Or</p>
+          <Link
+            to="/user/activity"
+            onClick={() => {
+              setSurvey({ ...survey, activity: 'Not right now' })
+              postSurveyResult()
+              console.log('hit')
+            }}
+          >
+            <div className="prompt-happy-center">
+              <p>History center</p>
+              <BsArrowRight />
+            </div>
+          </Link>
         </div>
       ) : (
         <>

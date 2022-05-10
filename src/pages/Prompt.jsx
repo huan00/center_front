@@ -22,6 +22,8 @@ const Prompt = ({ setSurvey, survey }) => {
     setSurvey({ ...survey, reason: ans })
   }
 
+  console.log(survey)
+
   useEffect(() => {}, [])
   return (
     <div className="prompt">

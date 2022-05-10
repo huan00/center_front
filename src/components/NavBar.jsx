@@ -18,20 +18,17 @@ const NavBar = ({}) => {
       <div>
         <h3 className="navBar-title">Center</h3>
       </div>
-      {window.location.href.includes('prompt') ? (
-        ''
-      ) : (
-        <div className="navBar-menu-icon">
-          <Link to="select">
-            <BiMehBlank className={`menu-icon BiMehBlank ${hightlight}`} />
-          </Link>
-          <Link to="">
-            <BiHourglass className="menu-icon BiHourGlass" />
-          </Link>
-          <BiMenu className="menu-icon BiMenu" />
-          <IoChatbubblesOutline className="menu-icon faComments" />
-        </div>
-      )}
+
+      <div className="navBar-menu-icon">
+        <Link to="select">
+          <BiMehBlank className={`menu-icon BiMehBlank ${hightlight}`} />
+        </Link>
+        <Link to="user/activity">
+          <BiHourglass className="menu-icon BiHourGlass" />
+        </Link>
+        <BiMenu className="menu-icon BiMenu" />
+        <IoChatbubblesOutline className="menu-icon faComments" />
+      </div>
     </div>
   )
 }

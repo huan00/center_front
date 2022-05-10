@@ -209,6 +209,33 @@ font-size: 32px;
   color: #333333
 }
 
+.prompt-happy {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: space-between;
+}
+
+.prompt-happy-video div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 1px solid black;
+  padding-bottom: 20px;
+  
+}
+
+.prompt-happy-center {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-bottom: 1px solid black;
+  padding-bottom: 20px;
+}
+
 /*********Breath**********/
 .breath {
   height: 100%;
@@ -282,4 +309,12 @@ font-size: 32px;
 
 .activity-arrow {
   font-size: 30px;
+}
+
+.sad {
+  background-color: red;
+}
+
+.happy {
+  background-color: aqua;
 }

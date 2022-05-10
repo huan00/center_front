@@ -73,7 +73,7 @@ function App() {
       survey.question &&
       survey.answer &&
       survey.moodId &&
-      survey.activity &&
+      // survey.activity &&
       survey.reason &&
       survey.userId
     ) {
@@ -131,6 +131,7 @@ function App() {
                 handleSlider={handleSlider}
                 survey={survey}
                 setSurvey={setSurvey}
+                postSurveyResult={postSurveyResult}
               />
             }
           />
@@ -174,7 +175,7 @@ function App() {
           )}
           {user && (
             <Route
-              path="/user/activity/breathing"
+              path="/user/activity/history"
               element={<BreathingDetail user={user} />}
             />
           )}

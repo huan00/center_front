@@ -1,5 +1,6 @@
 import { getUserDetails } from '../services/User-service'
 import React, { useEffect, useState } from 'react'
+import { BiSad } from 'react-icons/bi'
 
 const ActivityDetail = ({ user }) => {
   const [activityDetails, setActivityDetails] = useState([])
@@ -62,7 +63,11 @@ const ActivityDetail = ({ user }) => {
       renderArr = [...activityDetails]
     }
     return renderArr.map((act) => (
-      <div className="render-detail">
+      <div
+        className={`render-detail ${
+          act.answer !== 'happy' && act.answer !== 'loved' ? 'sad' : 'happy'
+        }`}
+      >
         <p>Question: {act.question}</p>
         <p>Answer: {act.answer}</p>
         <p>Reason: {act.reason}</p>
