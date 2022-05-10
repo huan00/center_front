@@ -4,7 +4,10 @@ import { Link } from 'react-router-dom'
 import { postSurvey } from '../services/survey-service'
 
 const Prompt = ({ setSurvey, survey }) => {
-  const [message, setMessage] = useState('Oh no, why?')
+  const [message, setMessage] = useState([
+    'Oh no, why?',
+    "Awesome that's great to hear!"
+  ])
   const [answer, setAnswer] = useState([
     'Parsonal',
     'Work',
@@ -12,6 +15,8 @@ const Prompt = ({ setSurvey, survey }) => {
     'Family',
     'Not Sure'
   ])
+
+  console.log(survey)
 
   const handleClick = (ans) => {
     setSurvey({ ...survey, reason: ans })
@@ -21,7 +26,11 @@ const Prompt = ({ setSurvey, survey }) => {
   return (
     <div className="prompt">
       <div className="prompt-message">
-        <h1>{message}</h1>
+        {survey.moodId === '2' || survey.moodId === '4' ? (
+          <h1>{message[1]}</h1>
+        ) : (
+          <h1>{message[0]}</h1>
+        )}
       </div>
       <div className="prompt-selection">
         {answer.map((ans, idx) => (

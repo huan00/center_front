@@ -11,9 +11,12 @@ import PromptActivity from './pages/PromptActivity'
 import Login from './pages/Login'
 import { getMood } from './services/mood-service'
 import { CheckSession } from './services/Auth-service'
+import { postSurvey } from './services/survey-service'
 import Breathing from './pages/Breathing'
 import Distraction from './pages/Distraction'
 import LogIt from './pages/LogIt'
+import ActivityHistory from './pages/ActivityHistory'
+import BreathingDetail from './pages/activitydetail/BreathingDetail'
 
 function App() {
   let navigate = useNavigate()
@@ -35,8 +38,9 @@ function App() {
     question: 'How are you feeling right now?',
     answer: '',
     moodId: '',
+    activity: '',
     reason: '',
-    userId: 1
+    userId: ''
   })
 
   useEffect(() => {
@@ -50,6 +54,9 @@ function App() {
   const checkToken = async () => {
     const user = await CheckSession()
     setUser(user)
+    if (user) {
+      setSurvey({ ...survey, userId: user.id })
+    }
   }
 
   const handleSurvey = (e) => {
@@ -61,10 +68,22 @@ function App() {
     setMood([...mood, ...res.data])
   }
 
+  const postSurveyResult = async () => {
+    if (
+      survey.question &&
+      survey.answer &&
+      survey.moodId &&
+      survey.activity &&
+      survey.reason &&
+      survey.userId
+    ) {
+      const res = await postSurvey(survey)
+    }
+  }
+
   const handleSlider = (e) => {
     setSlider(e.target.value)
     console.log(slider)
-    // setSurvey({ ...survey, answer: mood[slider].mood, moodId: slider - 1 })
   }
 
   const handleConfirmMood = () => {
@@ -108,21 +127,57 @@ function App() {
           <Route
             path="select/prompt/activity"
             element={
-              <PromptActivity handleSlider={handleSlider} survey={survey} />
+              <PromptActivity
+                handleSlider={handleSlider}
+                survey={survey}
+                setSurvey={setSurvey}
+              />
             }
           />
           <Route
             path="select/prompt/activity/breathing"
-            element={<Breathing />}
+            element={
+              <Breathing
+                postSurveyResult={postSurveyResult}
+                setSurvey={setSurvey}
+                survey={survey}
+              />
+            }
           />
           <Route
             path="select/prompt/activity/distraction"
-            element={<Distraction />}
+            element={
+              <Distraction
+                postSurveyResult={postSurveyResult}
+                setSurvey={setSurvey}
+                survey={survey}
+              />
+            }
           />
           <Route
             path="select/prompt/activity/logit"
-            element={<LogIt user={user} />}
+            element={
+              <LogIt
+                user={user}
+                postSurveyResult={postSurveyResult}
+                setSurvey={setSurvey}
+                survey={survey}
+              />
+            }
           />
+
+          {user && (
+            <Route
+              path="/user/activity"
+              element={<ActivityHistory user={user} checkToken={checkToken} />}
+            />
+          )}
+          {user && (
+            <Route
+              path="/user/activity/breathing"
+              element={<BreathingDetail user={user} />}
+            />
+          )}
 
           <Route path="profile" element={<Profile />} />
         </Routes>

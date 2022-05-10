@@ -2,11 +2,17 @@ import React, { useEffect, useState } from 'react'
 import { getYoutube } from '../services/Api'
 import YouTube from 'react-youtube'
 
-const Distraction = () => {
+const Distraction = ({ postSurveyResult, setSurvey, survey }) => {
   const [videos, setVideos] = useState([])
 
   useEffect(() => {
     getVideo()
+    if (survey.activity) {
+      postSurveyResult()
+    }
+    return () => {
+      setSurvey(null)
+    }
   }, [])
 
   const getVideo = async () => {

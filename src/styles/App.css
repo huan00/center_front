@@ -256,3 +256,30 @@ font-size: 32px;
 .videos {
   margin: 10px 0;
 }
+
+
+/**********ActivityHistory*************/
+.activity-history {
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.activity-history p {
+  font-size: 82px;
+  color: #E0E0E0
+}
+
+.activity-history-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-bottom: 1px solid black;
+  padding-bottom: 18px;
+}
+
+.activity-arrow {
+  font-size: 30px;
+}
