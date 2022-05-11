@@ -15,3 +15,20 @@ export const getAllMessageChat = async (data) => {
 
   return messages.data
 }
+
+export const getMessageDetailById = async (id) => {
+  const message = await Client.get(`/messages/messagedetail/${id}`)
+  return message.data
+}
+
+export const getComments = async (id) => {
+  const comment = await Client.get(`/messages/msgtomsg/${id}`)
+  console.log(comment)
+
+  return comment.data
+}
+
+export const postComment = async (id, data) => {
+  const comment = await Client.post(`/messages/msgtomsg/${id}`, data)
+  return comment
+}

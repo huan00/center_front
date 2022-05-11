@@ -20,6 +20,7 @@ import Compose from './pages/chat/Compose'
 import ActivityHistoryDetail from './pages/activitydetail/ActivityHistoryDetail'
 import ChatHome from './pages/chat/ChatHome'
 import Conversation from './pages/chat/Conversation'
+import Comment from './pages/chat/Comment'
 
 function App() {
   let navigate = useNavigate()
@@ -107,9 +108,11 @@ function App() {
         <NavBar />
       </nav>
       <main>
+        <Routes>
+          <Route path="" element={<Login setUser={setUser} user={user} />} />
+        </Routes>
         {user ? (
           <Routes>
-            <Route path="" element={<Login setUser={setUser} user={user} />} />
             <Route
               path="/select"
               element={
@@ -194,9 +197,13 @@ function App() {
             )}
             <Route path="profile" element={<Profile />} />
             /********CHAT********* */
-            <Route path="chat" element={<ChatHome />} />
+            <Route path="/chat" element={<ChatHome />} />
             <Route path="chat/compose" element={<Compose user={user} />} />
-            <Route path="chat/conversation" element={<Conversation />} />
+            <Route path="chat/conversation/:id" element={<Conversation />} />
+            <Route
+              path="chat/conversation/:id/comment/:id"
+              element={<Comment user={user} />}
+            />
           </Routes>
         ) : (
           <div>loading</div>

@@ -27,7 +27,12 @@ const Compose = ({ user }) => {
 
   return (
     <div className="container">
-      <MessageInput handleChange={handleChange} handleSubmit={handleSubmit} />
+      <MessageInput
+        handleChange={handleChange}
+        handleSubmit={handleSubmit}
+        privateMsg={true}
+        title={'What would you like comments on?'}
+      />
     </div>
   )
 }

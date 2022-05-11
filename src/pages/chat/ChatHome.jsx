@@ -4,7 +4,6 @@ import SelectEmotion from '../../components/SelectEmotion'
 import { IoCreateOutline } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
 import { getAllMessageChat } from '../../services/Message-service'
-import { render } from '@testing-library/react'
 
 const ChatHome = () => {
   const [messages, setMessages] = useState([])

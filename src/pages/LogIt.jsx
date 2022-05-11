@@ -30,6 +30,8 @@ const LogIt = ({ user, setSurvey, survey, postSurveyResult }) => {
         handleMessage={handleMessage}
         message={message}
         handleSubmit={handleSubmit}
+        privateMsg={false}
+        title={'What is on your mind?'}
       />
     </div>
   )

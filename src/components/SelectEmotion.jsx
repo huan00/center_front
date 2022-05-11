@@ -9,10 +9,10 @@ const SelectEmotion = ({ handleChange }) => {
           <option value="all">All</option>
           <option value="sad">Sad</option>
           <option value="happy">Happy</option>
-          <option value="anger">Anger</option>
+          <option value="angry">Angry</option>
           <option value="nervous">Nervous</option>
           <option value="loved">Loved</option>
-          <option value="Anxious">Anxious</option>
+          <option value="anxious">Anxious</option>
         </select>
       </form>
     </div>

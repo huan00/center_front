@@ -8,9 +8,7 @@ import {
 import '../styles/component.css'
 import profile from '../assets/images/profile.svg'
 
-const ReplyMsg = ({ mood, message, user, all, posted }) => {
-  const [username, setUsername] = useState(user)
-
+const ReplyMsg = ({ message, createdAt, username }) => {
   return (
     <div className="infoCard" style={{ height: '200px' }}>
       <div className="infoCard-title">
@@ -26,7 +24,7 @@ const ReplyMsg = ({ mood, message, user, all, posted }) => {
       </div>
       <hr></hr>
       <div className="infoCard-footer">
-        <p>Posted on: {posted}</p>
+        <p>Posted on: {createdAt}</p>
       </div>
     </div>
   )
