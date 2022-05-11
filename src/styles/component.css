@@ -1,20 +1,35 @@
 /********InfoCard*******/
 
 .infoCard {
-  width: 250px;
+  width: 315px;
   height: 330px;
   border: 1px solid rgb(219, 218, 222);
 
-  padding: 20px 20px 40px 20px;
+  
   margin: 0 0 20px 0;
+}
+
+.infoCard a {
+  text-decoration: none;
+  color: #333333
+}
+
+.infoCard-container {
+  padding: 20px 20px;
 }
 
 .infoCard-title {
   display: flex;
   align-items: center;
-  height: 50px;
+  height: 24px;
+  width: fit-content;
+  font-size: 12px;
 
   position: relative;
+  background-color: #f2f2f2;
+  color: #4f4f4f;
+  padding: 4px 8px;
+  border-radius: 20px;
 }
 
 .infoCard-title img {
@@ -23,8 +38,15 @@
   margin: 0 15px 0 0;
 }
 
-.infoCard-title h4 {
-
+.infocard-chat-emoji {
+  height: 32px;
+  width: 32px;
+  background-color: #BDBDBD;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  font-size: 20px;
 }
 
 .thumbTack {
@@ -45,6 +67,12 @@ position: absolute;
   margin: 20px 0;
   height: 150px;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 18px;
+  line-height: 23px;
+  color: #333333;
 
   overflow: hidden;
   text-overflow: ellipsis;
@@ -65,52 +93,44 @@ position: absolute;
 
 .infoCard-social {
   display: flex;
+  justify-content: space-between;
   align-items: center;
 
-  margin: 20px 0;
-  position: relative;
+  /* margin: 20px 0; */
+  padding: 10px 0;
+  border-top: 1px solid #E0E0E0;
 }
 
+.social-icon {
+  width: 20%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
 .infoCard-social span {
   font-size: 1.2em;
+  margin: 0 10px;
 }
 
-.faEye {
-  color: rgb(133,131,145);
-  font-size: 1.5em;
-
-  margin: 0 20px 0 0;
-}
-
-.faComment {
-  font-size: 1.5em;
-  margin: 0 10px 0 20px;
-  color: rgb(133,131,145);
-}
 
 .faHeart {
   font-size: 1.5em;
-  position: absolute;
-  right: 0;
   color: rgb(239,128,134)
 }
 
 .spanHeart {
-  position: absolute;
-  right: 33px
+
 }
 
 .infoCard-footer {
   display: flex;
   align-items: center;
-  margin: 20px 0;
+  padding: 10px 0;
+  font-size: 12px;
 }
 
-.infoCard-footer img {
-  height: 40px;
-  border-radius: 50px;
-  margin: 0 15px;
-}
+
 
 
 
@@ -343,6 +363,58 @@ position: absolute;
 
 /**************ChatHome ***********/
 
+.chat {
+  width: 315px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  margin: 0 auto;
+}
+
+.chat-compose {
+
+}
+
+.chat-compose p {
+  font-size: 32px;
+  margin: 18px 0 18px 0;
+  font-weight: 500;
+}
+
+.chat-compose-input {
+  width: 100%;
+  height: 56px;
+
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+}
+
+.chat-compose-input input {
+  width: 80%;
+  height: 56px;
+  border: none;
+  outline: none;
+  font-size: 18px;
+
+  padding: 0 0 0 22px;
+}
+
+.chat-send {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  width: 32px;
+  font-size: 18px;
+  background-color: #f2f2f2;
+  border-radius: 50px;
+}
+
+.chat-sort {
+  border: none;
+}
 .chat-sort-form {
   display: flex;
 
@@ -356,10 +428,11 @@ position: absolute;
 
 .chat-content {
   height: 600px;
-  /* margin: 10px auto 0; */
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  
 
 
   overflow-y: auto;

@@ -12,12 +12,10 @@ const Compose = ({ user }) => {
     mood: ''
   })
 
-  console.log(message)
-
   const handleChange = (e) => {
     setMessage({ ...message, [e.target.name]: e.target.value })
   }
-  console.log(message)
+
   const handleSubmit = (e) => {
     e.preventDefault()
     postMessage(message)

@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { Login, SignUpUser } from '../services/Auth-service'
 
 const SignUp = ({ setUser, user }) => {
-  const [xMark, setXMark] = useState('show')
+  const [errorMsg, setErrorMsg] = useState('')
   const [loginActive, setLoginActive] = useState('loginActive')
   const [signupActive, setSignUpActive] = useState('signup-active')
   const [login, setLogin] = useState(true)
@@ -25,7 +25,6 @@ const SignUp = ({ setUser, user }) => {
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
-    console.log(formData)
   }
 
   const handleSubmit = (e) => {
@@ -33,7 +32,6 @@ const SignUp = ({ setUser, user }) => {
     if (login) {
       handleLogin(formData)
     } else {
-      console.log('signup')
       handleSignUp(formData)
     }
   }
@@ -46,10 +44,10 @@ const SignUp = ({ setUser, user }) => {
 
   const handleLogin = async (data) => {
     const payload = await Login(data)
-    console.log(payload)
-    setUser(payload)
 
+    setUser(payload)
     setFormData({ email: '', password: '' })
+    setErrorMsg('')
     navigate(`/select`)
   }
 
@@ -75,16 +73,8 @@ const SignUp = ({ setUser, user }) => {
   }
 
   return (
-    <div
-      className="signup container"
-      // style={{ display: xMark }}
-    >
-      {/* <FontAwesomeIcon
-        icon={faXmark}
-        className="signup-close"
-        onClick={toggleXMark}
-      /> */}
-      {/* <div className="signup-img"></div> */}
+    <div className="signup container">
+      <div className="signup-error">{errorMsg}</div>
       <div className="signup-msg">
         <h1 className={`${loginActive} loginSignUp`} onClick={toggleLogin}>
           {authMsg}

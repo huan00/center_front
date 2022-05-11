@@ -22,11 +22,12 @@ import ChatHome from './pages/chat/ChatHome'
 import Conversation from './pages/chat/Conversation'
 import Comment from './pages/chat/Comment'
 import ProfileSetting from './pages/profile/ProfileSetting'
+import { IoIosLogOut } from 'react-icons/io'
 
 function App() {
   let navigate = useNavigate()
   const [user, setUser] = useState(null)
-
+  const [currentUrl, setCurrentUrl] = useState(window.location.href)
   const [slider, setSlider] = useState(0)
   const [moodEmoji, setMoodEmoji] = useState([
     '',
@@ -56,6 +57,8 @@ function App() {
     getMoodList()
   }, [])
 
+  console.log(window.location.href)
+
   const checkToken = async () => {
     const user = await CheckSession()
     setUser(user)
@@ -65,7 +68,6 @@ function App() {
   }
 
   const handleLogout = () => {
-    console.log('click')
     setUser(null)
     localStorage.clear()
     navigate('/')
@@ -205,7 +207,7 @@ function App() {
             )}
             <Route path="profile" element={<Profile />} />
             /********CHAT********* */
-            <Route path="/chat" element={<ChatHome />} />
+            <Route path="/chat" element={<ChatHome moodEmoji={moodEmoji} />} />
             <Route path="chat/compose" element={<Compose user={user} />} />
             <Route path="chat/conversation/:id" element={<Conversation />} />
             <Route
@@ -218,10 +220,17 @@ function App() {
               element={<ProfileSetting user={user} />}
             />
           </Routes>
+        ) : window.location.href != 'http://localhost:3000/' ? (
+          <div className="container loadingScreen">
+            Please Log in to get access
+            <IoIosLogOut
+              className="menu-icon faComments loadScreen-icon"
+              onClick={handleLogout}
+            />
+          </div>
         ) : (
-          <div className="container">Sign In</div>
+          ''
         )}
-        {/* <SignUp /> */}
       </main>
       <footer></footer>
     </div>

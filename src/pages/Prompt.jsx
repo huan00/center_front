@@ -16,13 +16,9 @@ const Prompt = ({ setSurvey, survey }) => {
     'Not Sure'
   ])
 
-  console.log(survey)
-
   const handleClick = (ans) => {
     setSurvey({ ...survey, reason: ans })
   }
-
-  console.log(survey)
 
   useEffect(() => {}, [])
   return (

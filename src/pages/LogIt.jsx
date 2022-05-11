@@ -8,7 +8,6 @@ const LogIt = ({ user, setSurvey, survey, postSurveyResult }) => {
     userId: user.id,
     private: true
   })
-  console.log(message)
 
   useEffect(() => {
     postSurveyResult()

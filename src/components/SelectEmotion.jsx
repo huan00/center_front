@@ -4,9 +4,9 @@ const SelectEmotion = ({ handleChange }) => {
   return (
     <div>
       <form>
-        <label htmlFor="">Emotion: </label>
-        <select name="mood" id="" onChange={handleChange}>
-          <option value="all">All</option>
+        {/* <label htmlFor="">Emotion: </label> */}
+        <select className="chat-sort" name="mood" id="" onChange={handleChange}>
+          <option value="all">All Emotion</option>
           <option value="sad">Sad</option>
           <option value="happy">Happy</option>
           <option value="angry">Angry</option>

@@ -37,7 +37,6 @@ const ActivityDetail = ({ user, id }) => {
 
   const getActivityDetail = async (id) => {
     const detail = await getUserDetails(id)
-    console.log(detail)
     setActivityDetails(detail.Surveys)
   }
   const getBreathingActivity = (activityDetails) => {
@@ -49,7 +48,6 @@ const ActivityDetail = ({ user, id }) => {
   }
   const handleChangeReason = (e) => {
     setReasonFilter(e.target.value)
-    console.log(reasonfilter)
   }
 
   const render = () => {

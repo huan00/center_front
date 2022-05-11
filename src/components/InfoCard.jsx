@@ -11,39 +11,53 @@ import '../styles/component.css'
 import profile from '../assets/images/profile.svg'
 import { Link } from 'react-router-dom'
 
-const InfoCard = ({ mood, message, user, all, posted, commentCount }) => {
+const InfoCard = ({
+  mood,
+  message,
+  user,
+  all,
+  posted,
+  commentCount,
+  moodEmoji
+}) => {
   const [username, setUsername] = useState(user)
   const [filter, setFilter] = useState('')
 
   return (
     <div className="infoCard">
-      <div className="infoCard-title">
-        <img src={profile} alt="" />
-        <h4>
-          {username} <FontAwesomeIcon icon={faCrown} />
-        </h4>
-        <FontAwesomeIcon className="thumbTack" icon={faThumbtack} />
-        <FontAwesomeIcon className="ellispsisVert" icon={faEllipsisVertical} />
-      </div>
-      <Link to={`/chat/conversation/${all.id}`}>
-        <div className="infoCard-content">
-          <h4>{all.messageMood[0] ? all.messageMood[0].mood : 'General'}</h4>
-          <p>{message}</p>
+      <div className="infoCard-container">
+        <div className="infoCard-title">
+          {/* <img src={profile} alt="" /> */}
+          <h4>{username}</h4>
         </div>
-      </Link>
-      <div className="infoCard-social">
-        <FontAwesomeIcon className="faEye" icon={faEye} />
-        <span>0</span>
         <Link to={`/chat/conversation/${all.id}`}>
-          <FontAwesomeIcon className="faComment" icon={faComment} />
-          <span>{commentCount}</span>
+          <div className="infoCard-content">
+            <p>{message}</p>
+            <div className="infocard-chat-emoji">
+              {all.messageMood[0]
+                ? moodEmoji[all.messageMood[0].MessageMood.moodId]
+                : 'General'}
+            </div>
+          </div>
         </Link>
-        <span className="spanHeart">0</span>
-        <FontAwesomeIcon className="faHeart" icon={faHeart} />
-      </div>
-      <hr></hr>
-      <div className="infoCard-footer">
-        <p>Posted on: {posted}</p>
+        <div className="infoCard-social">
+          <Link to={`/chat/conversation/${all.id}`}>
+            <div className="social-icon">
+              <FontAwesomeIcon className="faComment" icon={faComment} />
+              <span>{commentCount}</span>
+            </div>
+          </Link>
+          <Link to="">
+            <div className="social-icon">
+              <span className="spanHeart">0</span>
+              <FontAwesomeIcon className="faHeart" icon={faHeart} />
+            </div>
+          </Link>
+        </div>
+        <hr></hr>
+        <div className="infoCard-footer">
+          <p>{posted}</p>
+        </div>
       </div>
     </div>
   )

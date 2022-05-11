@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { IoCreateOutline } from 'react-icons/io5'
+import { FiSend } from 'react-icons/fi'
 import InfoCard from '../../components/InfoCard'
 import ReplyMsg from '../../components/ReplyMsg'
 import {
@@ -27,11 +28,11 @@ const Conversation = () => {
 
   return (
     <div className="container convesation">
-      <div className="conversation-compose">
+      {/* <div className="conversation-compose">
         <Link to={`comment/${message.id}`}>
           <IoCreateOutline className="chat-write" />
         </Link>
-      </div>
+      </div> */}
       <div>
         {message && (
           <InfoCard
@@ -55,6 +56,12 @@ const Conversation = () => {
                 createdAt={new Date(comment.createdAt).toDateString()}
               />
             ))}
+      </div>
+      <div className="chat-compose-input">
+        <input type="text" name="" id="" placeholder="Type a thought" />
+        <div className="chat-send">
+          <FiSend />
+        </div>
       </div>
     </div>
   )

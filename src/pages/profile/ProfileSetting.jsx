@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { getUserDetails, updateUserInfo } from '../../services/User-service'
+import { useNavigate } from 'react-router-dom'
+import {
+  getUserDetails,
+  updateUserInfo,
+  deleteUser
+} from '../../services/User-service'
 
 const ProfileSetting = ({ user }) => {
+  const navigate = useNavigate()
   const [userInfo, setUserInfo] = useState('')
   const [updateUser, setUpdateUser] = useState({
     firstName: userInfo.firstName,
@@ -10,12 +16,12 @@ const ProfileSetting = ({ user }) => {
     password: ''
   })
   const [password, setPassword] = useState('')
+  const [checkPassword, setCheckPassword] = useState('password')
 
   useEffect(() => {
     getUserById(user.id)
   }, [])
 
-  console.log(user.id)
   const getUserById = async (id) => {
     const userDetail = await getUserDetails(id)
     setUserInfo(userDetail)
@@ -25,10 +31,8 @@ const ProfileSetting = ({ user }) => {
       email: userDetail.email,
       password: ''
     })
+    setPassword('')
   }
-
-  console.log(userInfo)
-  console.log(updateUser)
 
   const handleChange = (e) => {
     setUpdateUser({ ...updateUser, [e.target.name]: e.target.value })
@@ -41,13 +45,23 @@ const ProfileSetting = ({ user }) => {
     e.preventDefault()
     if (updateUser.password === password.password) {
       const updated = await updateUserInfo(user.id, updateUser)
-    } else {
-      console.log(updateUser.password)
-      console.log(password.password)
-      alert('password does not match')
+      getUserById(user.id)
+      setCheckPassword('Updated!')
+      return
+    } else if (updateUser.password !== password.password) {
+      setUpdateUser({ ...updateUser, password: '' })
+      setPassword('')
+      setCheckPassword('Password does not match!!')
+      return
     }
   }
-  console.log(password)
+
+  const handleDelete = async (e) => {
+    e.preventDefault()
+    const res = await deleteUser(user.id)
+    localStorage.clear()
+    navigate('/')
+  }
 
   return (
     <div className="container">
@@ -92,25 +106,25 @@ const ProfileSetting = ({ user }) => {
           <label htmlFor="newPassword">New Password</label>
           <input
             onChange={handleChange}
-            required
+            value={updateUser.password}
             name="password"
-            type="text"
+            type="password"
             id="newPassword"
-            placeholder=""
+            placeholder={checkPassword}
           />
 
           <label htmlFor="newPassword2">Confirm New Password</label>
           <input
-            required
             onChange={handlePassword}
+            value={password.password}
             name="password"
-            type="text"
+            type="password"
             id="newPassword2"
-            placeholder=""
+            placeholder={checkPassword}
           />
         </section>
         <div className="setting-btn">
-          <button>Delete</button>
+          <button onClick={handleDelete}>Delete</button>
           <button onClick={handleUpdate}>Update</button>
         </div>
       </form>

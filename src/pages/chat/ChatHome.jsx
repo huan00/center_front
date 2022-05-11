@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react'
 import InfoCard from '../../components/InfoCard'
 import SelectEmotion from '../../components/SelectEmotion'
 import { IoCreateOutline } from 'react-icons/io5'
+import { FiSend } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 import { getAllMessageChat } from '../../services/Message-service'
 
-const ChatHome = () => {
+const ChatHome = ({ moodEmoji }) => {
   const [messages, setMessages] = useState([])
-  const [sortRecent, setSortRecent] = useState('most recent')
+  const [sortRecent, setSortRecent] = useState('Most recent')
   const [sortEmotion, setEmotion] = useState('all')
 
   useEffect(() => {
@@ -15,9 +16,9 @@ const ChatHome = () => {
   }, [])
 
   const toggleSortRecent = () => {
-    sortRecent === 'most recent'
-      ? setSortRecent('oldest')
-      : setSortRecent('most recent')
+    sortRecent === 'Most recent'
+      ? setSortRecent('Oldest')
+      : setSortRecent('Most recent')
   }
 
   const getMessages = async () => {
@@ -30,7 +31,7 @@ const ChatHome = () => {
   }
 
   const filterSort = (a, b, sort) => {
-    if (sort === 'most recent') {
+    if (sort === 'Most recent') {
       return new Date(b.createdAt) - new Date(a.createdAt)
     } else {
       return new Date(a.createdAt) - new Date(b.createdAt)
@@ -38,17 +39,27 @@ const ChatHome = () => {
   }
 
   return (
-    <div className="container">
+    <div className="chat">
+      <div className="chat-compose">
+        <p>Speaks</p>
+        {/* <div className="chat-compose-input">
+          <input type="text" name="" id="" placeholder="Type a thought" />
+          <div className="chat-send">
+            <FiSend />
+          </div>
+        </div> */}
+      </div>
       <div className="chat-sort-form">
         <form>
           <select
+            className="chat-sort"
             name="sortRecent"
             id=""
             onChange={(e) => setSortRecent(e.target.value)}
           >
-            <option value="most recent">most recent</option>
+            <option value="Most recent">Most recent</option>
             {/* <option value="">Top Likes</option> */}
-            <option value="oldest">oldest</option>
+            <option value="Oldest">Oldest</option>
           </select>
         </form>
         <SelectEmotion handleChange={handleSortEmotion} />
@@ -68,6 +79,7 @@ const ChatHome = () => {
                   all={message}
                   posted={new Date(message.createdAt).toDateString()}
                   commentCount={parseInt(message.commentMsg.length)}
+                  moodEmoji={moodEmoji}
                 />
               ))
           : messages

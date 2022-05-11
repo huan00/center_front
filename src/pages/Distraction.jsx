@@ -17,7 +17,7 @@ const Distraction = ({ postSurveyResult, setSurvey, survey }) => {
 
   const getVideo = async () => {
     const video = await getYoutube()
-    console.log(video)
+
     setVideos(video.data.items)
   }
 
@@ -34,7 +34,6 @@ const Distraction = ({ postSurveyResult, setSurvey, survey }) => {
     // access to player in all event handlers via event.target
     event.target.pauseVideo()
   }
-  console.log(videos)
 
   return (
     <div className="distraction container">
