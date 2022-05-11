@@ -53,6 +53,7 @@ const Comment = ({ user }) => {
         handleChange={handleChange}
         handleSubmit={handleSubmit}
         privateMsg={false}
+        emotion={false}
         title={'What would you like to comment?'}
       />
     </div>

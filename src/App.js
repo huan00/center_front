@@ -4,7 +4,7 @@ import NavBar from './components/NavBar'
 import SignUp from './components/SignUp'
 import Home from './pages/Home'
 import Prompt from './pages/Prompt'
-import Profile from './pages/Profile'
+import Profile from './pages/profile/Profile'
 import './styles/index.css'
 import { useEffect, useState } from 'react'
 import PromptActivity from './pages/PromptActivity'
@@ -21,6 +21,7 @@ import ActivityHistoryDetail from './pages/activitydetail/ActivityHistoryDetail'
 import ChatHome from './pages/chat/ChatHome'
 import Conversation from './pages/chat/Conversation'
 import Comment from './pages/chat/Comment'
+import ProfileSetting from './pages/profile/ProfileSetting'
 
 function App() {
   let navigate = useNavigate()
@@ -210,6 +211,11 @@ function App() {
             <Route
               path="chat/conversation/:id/comment/:id"
               element={<Comment user={user} />}
+            />
+            /**********Profile************* */
+            <Route
+              path="user/setting"
+              element={<ProfileSetting user={user} />}
             />
           </Routes>
         ) : (

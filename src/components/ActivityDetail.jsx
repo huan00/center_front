@@ -38,7 +38,7 @@ const ActivityDetail = ({ user, id }) => {
   const getActivityDetail = async (id) => {
     const detail = await getUserDetails(id)
     console.log(detail)
-    setActivityDetails(detail)
+    setActivityDetails(detail.Surveys)
   }
   const getBreathingActivity = (activityDetails) => {
     setBreathing(activityDetails.filter((act) => act.activity === 'Breathing'))

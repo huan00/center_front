@@ -31,6 +31,7 @@ const LogIt = ({ user, setSurvey, survey, postSurveyResult }) => {
         message={message}
         handleSubmit={handleSubmit}
         privateMsg={false}
+        emotion={false}
         title={'What is on your mind?'}
       />
     </div>

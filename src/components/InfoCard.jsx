@@ -34,7 +34,7 @@ const InfoCard = ({ mood, message, user, all, posted, commentCount }) => {
       <div className="infoCard-social">
         <FontAwesomeIcon className="faEye" icon={faEye} />
         <span>0</span>
-        <Link to={`/conversation/${all.id}`}>
+        <Link to={`/chat/conversation/${all.id}`}>
           <FontAwesomeIcon className="faComment" icon={faComment} />
           <span>{commentCount}</span>
         </Link>

@@ -1,12 +1,14 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import MessageInput from '../../components/MessageInput'
 import { postNewJoinMessage } from '../../services/Message-service'
 
 const Compose = ({ user }) => {
+  const navigate = useNavigate()
   const [message, setMessage] = useState({
     message: '',
     userId: user.id,
-    private: '',
+    private: false,
     mood: ''
   })
 
@@ -19,6 +21,7 @@ const Compose = ({ user }) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     postMessage(message)
+    navigate('/chat')
   }
 
   const postMessage = async (data) => {
@@ -30,7 +33,8 @@ const Compose = ({ user }) => {
       <MessageInput
         handleChange={handleChange}
         handleSubmit={handleSubmit}
-        privateMsg={true}
+        privateMsg={false}
+        emotion={true}
         title={'What would you like comments on?'}
       />
     </div>

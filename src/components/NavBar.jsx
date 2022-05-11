@@ -32,7 +32,9 @@ const NavBar = ({ handleLogout, user }) => {
         <Link to="user/activity">
           <BiHourglass className="menu-icon BiHourGlass" />
         </Link>
-        <BiMenu className="menu-icon BiMenu" />
+        <Link to="user/setting">
+          <BiMenu className="menu-icon BiMenu" />
+        </Link>
         <Link to="/chat">
           <IoChatbubblesOutline className="menu-icon faComments" />
         </Link>

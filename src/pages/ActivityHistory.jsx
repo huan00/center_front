@@ -12,8 +12,7 @@ const ActivityHistory = ({ user, checkToken }) => {
 
   const getActivityDetail = async (id) => {
     const detail = await getUserDetails(id)
-    console.log(detail)
-    setActivityDetail(detail)
+    setActivityDetail(detail.Surveys)
   }
 
   return (

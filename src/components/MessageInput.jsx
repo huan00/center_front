@@ -1,13 +1,19 @@
 import React, { useState } from 'react'
 import SelectEmotion from './SelectEmotion'
 
-const MessageInput = ({ handleChange, handleSubmit, privateMsg, title }) => {
+const MessageInput = ({
+  handleChange,
+  handleSubmit,
+  privateMsg,
+  emotion,
+  title
+}) => {
   return (
     <div className="message-input">
       <form onSubmit={handleSubmit}>
         <label htmlFor="msg">{title}</label>
 
-        {privateMsg && (
+        {emotion && (
           <>
             <label htmlFor="">What is your current emotion?</label>
             <SelectEmotion handleChange={handleChange} />
