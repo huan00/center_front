@@ -67,6 +67,7 @@ const ChatHome = () => {
                   message={message.message}
                   all={message}
                   posted={new Date(message.createdAt).toDateString()}
+                  commentCount={parseInt(message.commentMsg.length)}
                 />
               ))
           : messages
@@ -81,6 +82,7 @@ const ChatHome = () => {
                   message={message.message}
                   all={message}
                   posted={new Date(message.createdAt).toDateString()}
+                  commentCount={parseInt(message.commentMsg.length)}
                 />
               ))}
       </div>

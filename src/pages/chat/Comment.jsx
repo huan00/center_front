@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import MessageInput from '../../components/MessageInput'
 import {
   getMessageDetailById,
@@ -8,6 +8,7 @@ import {
 
 const Comment = ({ user }) => {
   const { id } = useParams()
+  const navigate = useNavigate()
   const [mood, setMood] = useState('')
   const [commentData, setCommentData] = useState({
     userId: user.id,
@@ -43,6 +44,8 @@ const Comment = ({ user }) => {
       private: true,
       mood: mood
     })
+
+    navigate(`/chat/conversation/${id}`)
   }
   return (
     <div className="container">

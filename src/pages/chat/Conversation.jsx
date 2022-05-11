@@ -25,13 +25,11 @@ const Conversation = () => {
     setComments(comment.commentMsg)
   }
 
-  console.log(message)
-
   return (
-    <div className="container">
-      <div>
+    <div className="container convesation">
+      <div className="conversation-compose">
         <Link to={`comment/${message.id}`}>
-          <IoCreateOutline />
+          <IoCreateOutline className="chat-write" />
         </Link>
       </div>
       <div>
@@ -41,19 +39,22 @@ const Conversation = () => {
             user={message.User.firstName}
             message={message.message}
             posted={new Date(message.createdAt).toDateString()}
+            commentCount={comments.length}
           />
         )}
       </div>
-      <div>
+      <div className="conversation-comment">
         {comments &&
-          comments.map((comment) => (
-            <ReplyMsg
-              key={comment.id}
-              message={comment.message}
-              username={comment.User.firstName}
-              createdAt={new Date(comment.createdAt).toDateString()}
-            />
-          ))}
+          comments
+            .sort((a, b) => b.id - a.id)
+            .map((comment) => (
+              <ReplyMsg
+                key={comment.id}
+                message={comment.message}
+                username={comment.User.firstName}
+                createdAt={new Date(comment.createdAt).toDateString()}
+              />
+            ))}
       </div>
     </div>
   )

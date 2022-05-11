@@ -11,9 +11,11 @@ import '../styles/component.css'
 import profile from '../assets/images/profile.svg'
 import { Link } from 'react-router-dom'
 
-const InfoCard = ({ mood, message, user, all, posted }) => {
+const InfoCard = ({ mood, message, user, all, posted, commentCount }) => {
   const [username, setUsername] = useState(user)
   const [filter, setFilter] = useState('')
+
+  console.log(commentCount)
 
   return (
     <div className="infoCard">
@@ -36,7 +38,7 @@ const InfoCard = ({ mood, message, user, all, posted }) => {
         <span>0</span>
         <Link to={`/conversation/${all.id}`}>
           <FontAwesomeIcon className="faComment" icon={faComment} />
-          <span>0</span>
+          <span>{commentCount}</span>
         </Link>
         <span className="spanHeart">0</span>
         <FontAwesomeIcon className="faHeart" icon={faHeart} />

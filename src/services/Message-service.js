@@ -23,8 +23,6 @@ export const getMessageDetailById = async (id) => {
 
 export const getComments = async (id) => {
   const comment = await Client.get(`/messages/msgtomsg/${id}`)
-  console.log(comment)
-
   return comment.data
 }
 

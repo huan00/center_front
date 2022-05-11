@@ -372,3 +372,26 @@ font-size: 32px;
   overflow-y: hidden;
   background-color: black;
 }
+
+/************conversation****************/
+
+.converation {
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+}
+
+.conversation-compose {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.conversation-comment{
+  height: 300px;
+
+  display: flex;
+  flex-direction: column;
+
+  overflow-y: auto;
+}
