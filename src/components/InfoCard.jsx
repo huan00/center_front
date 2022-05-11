@@ -15,8 +15,6 @@ const InfoCard = ({ mood, message, user, all, posted, commentCount }) => {
   const [username, setUsername] = useState(user)
   const [filter, setFilter] = useState('')
 
-  console.log(commentCount)
-
   return (
     <div className="infoCard">
       <div className="infoCard-title">

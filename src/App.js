@@ -63,6 +63,13 @@ function App() {
     }
   }
 
+  const handleLogout = () => {
+    console.log('click')
+    setUser(null)
+    localStorage.clear()
+    navigate('/')
+  }
+
   const handleSurvey = (e) => {
     setSurvey({ ...survey, [e.target.name]: e.target.value })
   }
@@ -105,11 +112,11 @@ function App() {
   return (
     <div className="App">
       <nav>
-        <NavBar />
+        <NavBar handleLogout={handleLogout} user={user} />
       </nav>
       <main>
         <Routes>
-          <Route path="" element={<Login setUser={setUser} user={user} />} />
+          <Route path="/" element={<Login setUser={setUser} user={user} />} />
         </Routes>
         {user ? (
           <Routes>
@@ -206,7 +213,7 @@ function App() {
             />
           </Routes>
         ) : (
-          <div>loading</div>
+          <div className="container">Sign In</div>
         )}
         {/* <SignUp /> */}
       </main>

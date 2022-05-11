@@ -5,9 +5,12 @@ import { useNavigate } from 'react-router-dom'
 
 const Login = ({ setUser, user }) => {
   let navigate = useNavigate()
+  const [authStatus, SetAuthStatus] = 'Log in'
+
+  const handleAuthStatus = () => {}
 
   return (
-    <div>
+    <div className="container">
       {user ? (
         <>{navigate('select')}</>
       ) : (

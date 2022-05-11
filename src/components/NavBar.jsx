@@ -1,16 +1,22 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { BiMehBlank, BiHourglass, BiMenu } from 'react-icons/bi'
 import { IoChatbubblesOutline } from 'react-icons/io5'
+import { IoIosLogOut } from 'react-icons/io'
 
-const NavBar = ({}) => {
+const NavBar = ({ handleLogout, user }) => {
   const [active, setActive] = useState(window.location.href)
   const [hightlight, setHighlight] = useState('active')
+  const navgiate = useNavigate
   useEffect(() => {}, [])
 
   const hightlightNav = () => {
     if (active.includes('select')) {
     }
+  }
+
+  const navigateHome = () => {
+    navgiate('/')
   }
 
   return (
@@ -30,6 +36,8 @@ const NavBar = ({}) => {
         <Link to="/chat">
           <IoChatbubblesOutline className="menu-icon faComments" />
         </Link>
+
+        <IoIosLogOut className="menu-icon faComments" onClick={handleLogout} />
       </div>
     </div>
   )
