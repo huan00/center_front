@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Timer from '../components/Timer'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 const Breathing = ({ postSurveyResult, setSurvey, survey, user }) => {
   let naviage = useNavigate()
@@ -37,7 +37,9 @@ const Breathing = ({ postSurveyResult, setSurvey, survey, user }) => {
           <p>Done!</p>
           <p>Awesome Job</p>
           <p>Let enjoy the rest of the day!</p>
-          <button>Done</button>
+          <Link to="/user/activity">
+            <button className="btn">Done</button>
+          </Link>
         </>
       )}
     </div>

@@ -30,6 +30,22 @@ main {
   margin: 20px auto 0;
 }
 
+.btn {
+  height: 49px;
+  width: 315px;
+  background-color: #333333;
+  color: white;
+  font-size: 22px;
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+
+
 /******HOME*******/
 .home {
   height: 90%;
@@ -332,6 +348,19 @@ font-size: 32px;
 
 .videos {
   margin: 10px 0;
+}
+
+.distraction-btn {
+  height: 49px;
+  width: 315px;
+  background-color: #333333;
+  color: white;
+  font-size: 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
 }
 
 

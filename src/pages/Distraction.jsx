@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { getYoutube } from '../services/Api'
 import YouTube from 'react-youtube'
+import { Link } from 'react-router-dom'
 
 const Distraction = ({ postSurveyResult, setSurvey, survey }) => {
   const [videos, setVideos] = useState([])
@@ -49,7 +50,9 @@ const Distraction = ({ postSurveyResult, setSurvey, survey }) => {
               allowfullscreen
             ></iframe>
           ))}
-          <div>Done</div>
+          <Link to="/user/activity">
+            <div className="distraction-btn">Done</div>
+          </Link>
         </div>
       ) : (
         <div>Loading</div>

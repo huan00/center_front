@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
-import { IoCreateOutline } from 'react-icons/io5'
 import { FiSend } from 'react-icons/fi'
 import InfoCard from '../../components/InfoCard'
 import ReplyMsg from '../../components/ReplyMsg'
@@ -15,7 +14,6 @@ const Conversation = ({ moodEmoji, user }) => {
   const [comments, setComments] = useState('')
   const { id } = useParams()
   const navigate = useNavigate()
-  // const [mood, setMood] = useState('')
   const [commentData, setCommentData] = useState({
     userId: user.id,
     message: '',
@@ -58,8 +56,6 @@ const Conversation = ({ moodEmoji, user }) => {
     })
     getMessageDetail(id)
   }
-
-  console.log(comments)
 
   return (
     <div className="container convesation">

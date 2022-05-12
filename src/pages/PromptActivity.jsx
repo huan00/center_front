@@ -51,17 +51,29 @@ const PromptActivity = ({ survey, setSurvey, postSurveyResult }) => {
         <>
           <div className="prompt-message">{message}</div>
           <div className="prompt-selection">
-            {answer.map((ans, idx) => (
-              <div className="prompt-selection-ans" key={idx}>
-                <Link
-                  to={ans}
-                  onClick={() => setSurvey({ ...survey, activity: ans })}
-                >
-                  <p>{ans}</p>
-                </Link>
-                <BsArrowRight />
-              </div>
-            ))}
+            {answer.map((ans, idx) =>
+              idx < answer.length - 1 ? (
+                <div className="prompt-selection-ans" key={idx}>
+                  <Link
+                    to={ans}
+                    onClick={() => setSurvey({ ...survey, activity: ans })}
+                  >
+                    <p>{ans}</p>
+                  </Link>
+                  <BsArrowRight />
+                </div>
+              ) : (
+                <div className="prompt-selection-ans" key={idx}>
+                  <Link
+                    to="/user/activity"
+                    onClick={() => setSurvey({ ...survey, activity: ans })}
+                  >
+                    <p>{ans}</p>
+                  </Link>
+                  <BsArrowRight />
+                </div>
+              )
+            )}
           </div>
         </>
       )}

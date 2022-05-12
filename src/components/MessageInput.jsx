@@ -41,7 +41,9 @@ const MessageInput = ({
           </section>
         )}
         <textarea id="msg" name="message" onChange={handleChange}></textarea>
-        <button type="submit">submit</button>
+        <button type="submit" className="btn">
+          submit
+        </button>
       </form>
     </div>
   )

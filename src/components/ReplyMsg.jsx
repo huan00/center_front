@@ -1,9 +1,7 @@
 import { useState } from 'react'
 import { AiFillHeart } from 'react-icons/ai'
 import { updateLike } from '../services/Like-service'
-
 import '../styles/component.css'
-import profile from '../assets/images/profile.svg'
 
 const ReplyMsg = ({
   message,

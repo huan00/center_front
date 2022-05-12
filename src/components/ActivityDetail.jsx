@@ -6,7 +6,7 @@ const ActivityDetail = ({ user, id }) => {
   const [activityDetails, setActivityDetails] = useState([])
   const [breathing, setBreathing] = useState([])
   const [month, setMonth] = useState([
-    null,
+    'All',
     'Jan',
     'Feb',
     'Mar',
@@ -21,12 +21,12 @@ const ActivityDetail = ({ user, id }) => {
     'Dec'
   ])
   const [reasons, setReasons] = useState([
-    null,
+    'All',
     'Breathing',
     'Distraction',
     'Logit'
   ])
-  const [monthfilter, setMonthFilter] = useState('')
+  const [monthfilter, setMonthFilter] = useState(0)
   const [reasonfilter, setReasonFilter] = useState(id)
   const [title, setTitle] = useState('Your centers')
 
@@ -35,6 +35,7 @@ const ActivityDetail = ({ user, id }) => {
     getBreathingActivity(activityDetails)
   }, [])
 
+  console.log(monthfilter)
   const getActivityDetail = async (id) => {
     const detail = await getUserDetails(id)
     setActivityDetails(detail.Surveys)
@@ -53,7 +54,9 @@ const ActivityDetail = ({ user, id }) => {
   const render = () => {
     let renderArr = []
 
-    if (monthfilter && reasonfilter) {
+    if (monthfilter === 0 && reasonfilter === 'All') {
+      renderArr = [...activityDetails]
+    } else if (monthfilter && reasonfilter) {
       renderArr = activityDetails
         .filter((act) => act.activity === reasonfilter)
         .filter((mon) => parseInt(mon.createdAt.split('-')[1]) === monthfilter)
@@ -76,7 +79,7 @@ const ActivityDetail = ({ user, id }) => {
         <p>Answer: {act.answer}</p>
         <p>Reason: {act.reason}</p>
         <p>Activity: {act.activity}</p>
-        <p>Created: {act.createdAt}</p>
+        <p>Created: {new Date(act.createdAt).toDateString()}</p>
       </div>
     ))
   }
@@ -91,13 +94,17 @@ const ActivityDetail = ({ user, id }) => {
           <label htmlFor="">Month: </label>
           <select onChange={handleChangeMonth}>
             {month.map((mon, idx) => (
-              <option value={idx}>{mon}</option>
+              <option key={idx} value={idx}>
+                {mon}
+              </option>
             ))}
           </select>
           <label htmlFor="">Reason: </label>
           <select onChange={handleChangeReason}>
-            {reasons.map((reason) => (
-              <option value={reason}>{reason}</option>
+            {reasons.map((reason, idx) => (
+              <option key={idx} value={reason}>
+                {reason}
+              </option>
             ))}
           </select>
         </form>
