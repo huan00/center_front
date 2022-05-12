@@ -1,14 +1,20 @@
 import { useState } from 'react'
-import { BsSuitHeart } from 'react-icons/bs'
-import {
-  faThumbtack,
-  faEllipsisVertical,
-  faCrown
-} from '@fortawesome/free-solid-svg-icons'
+import { AiFillHeart } from 'react-icons/ai'
+import { updateLike } from '../services/Like-service'
+
 import '../styles/component.css'
 import profile from '../assets/images/profile.svg'
 
-const ReplyMsg = ({ message, createdAt, username }) => {
+const ReplyMsg = ({ message, createdAt, username, commentId, comment }) => {
+  const [likes, setLikes] = useState({
+    messageId: commentId,
+    rating: 1
+  })
+
+  const handleLikes = async () => {
+    const res = await updateLike(likes)
+    // getMessages()
+  }
   return (
     <div className="reply-card">
       <div className="reply-card-content">
@@ -21,9 +27,15 @@ const ReplyMsg = ({ message, createdAt, username }) => {
           <div className="reply-date">
             <p>{createdAt}</p>
           </div>
-          <div className="reply-card-social">
-            <span className="spanHeart">0</span>
-            <BsSuitHeart />
+          <div className="reply-card-social" onClick={handleLikes}>
+            <span className="spanHeart">
+              {comment.Ratings[0] ? comment.Ratings[0].rating : '0'}
+            </span>
+            {comment.Ratings[0] ? (
+              <AiFillHeart className="aiHeart" style={{ color: 'red' }} />
+            ) : (
+              <AiFillHeart className="aiHeart" />
+            )}
           </div>
         </div>
       </div>

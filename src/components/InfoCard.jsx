@@ -1,15 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {
-  faThumbtack,
-  faEllipsisVertical,
-  faEye,
-  faCrown
-} from '@fortawesome/free-solid-svg-icons'
 import { faComment, faHeart } from '@fortawesome/free-regular-svg-icons'
+import { AiFillHeart } from 'react-icons/ai'
 import '../styles/component.css'
 import profile from '../assets/images/profile.svg'
 import { Link } from 'react-router-dom'
+import { updateLike } from '../services/Like-service'
 
 const InfoCard = ({
   mood,
@@ -18,10 +14,19 @@ const InfoCard = ({
   all,
   posted,
   commentCount,
-  moodEmoji
+  moodEmoji,
+  getMessages
 }) => {
   const [username, setUsername] = useState(user)
-  const [filter, setFilter] = useState('')
+  const [likes, setLikes] = useState({
+    messageId: all.id,
+    rating: 1
+  })
+
+  const handleLikes = async () => {
+    const res = await updateLike(likes)
+    getMessages()
+  }
 
   return (
     <div className="infoCard">
@@ -47,12 +52,17 @@ const InfoCard = ({
               <span>{commentCount}</span>
             </div>
           </Link>
-          <Link to="">
-            <div className="social-icon">
-              <span className="spanHeart">0</span>
-              <FontAwesomeIcon className="faHeart" icon={faHeart} />
-            </div>
-          </Link>
+
+          <div className="social-icon" onClick={handleLikes}>
+            <span className="spanHeart">
+              {all.Ratings[0] ? all.Ratings[0].rating : '0'}
+            </span>
+            {all.Ratings[0] ? (
+              <AiFillHeart style={{ color: 'red' }} className="aiHeart" />
+            ) : (
+              <AiFillHeart className="aiHeart" />
+            )}
+          </div>
         </div>
         <hr></hr>
         <div className="infoCard-footer">

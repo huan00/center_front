@@ -59,15 +59,10 @@ const Conversation = ({ moodEmoji, user }) => {
     getMessageDetail(id)
   }
 
-  console.log(commentData)
+  console.log(comments)
 
   return (
     <div className="container convesation">
-      {/* <div className="conversation-compose">
-        <Link to={`comment/${message.id}`}>
-          <IoCreateOutline className="chat-write" />
-        </Link>
-      </div> */}
       <div>
         {message && (
           <InfoCard
@@ -77,6 +72,7 @@ const Conversation = ({ moodEmoji, user }) => {
             posted={new Date(message.createdAt).toDateString()}
             commentCount={comments.length}
             moodEmoji={moodEmoji}
+            commentId={message.id}
           />
         )}
       </div>
@@ -90,6 +86,8 @@ const Conversation = ({ moodEmoji, user }) => {
                 message={comment.message}
                 username={comment.User.firstName}
                 createdAt={new Date(comment.createdAt).toDateString()}
+                commentId={comment.id}
+                comment={comment}
               />
             ))}
       </div>

@@ -5,11 +5,16 @@ import { IoCreateOutline } from 'react-icons/io5'
 import { FiSend } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 import { getAllMessageChat } from '../../services/Message-service'
+import { updateLike } from '../../services/Like-service'
 
 const ChatHome = ({ moodEmoji }) => {
   const [messages, setMessages] = useState([])
   const [sortRecent, setSortRecent] = useState('Most recent')
   const [sortEmotion, setEmotion] = useState('all')
+  // const [likes, setLikes] = useState({
+  //   messageId: '',
+  //   rating: 1
+  // })
 
   useEffect(() => {
     getMessages()
@@ -37,6 +42,14 @@ const ChatHome = ({ moodEmoji }) => {
       return new Date(a.createdAt) - new Date(b.createdAt)
     }
   }
+
+  // const handleLikes = async (id) => {
+  //   setLikes({ ...likes, messageId: id })
+  //   const res = await updateLike(likes)
+  //   getMessages()
+  // }
+
+  console.log(messages)
 
   return (
     <div className="chat">
@@ -80,6 +93,9 @@ const ChatHome = ({ moodEmoji }) => {
                   posted={new Date(message.createdAt).toDateString()}
                   commentCount={parseInt(message.commentMsg.length)}
                   moodEmoji={moodEmoji}
+                  // handleLikes={handleLikes}
+                  // setLikes={setLikes}
+                  getMessages={getMessages}
                 />
               ))
           : messages
@@ -95,6 +111,10 @@ const ChatHome = ({ moodEmoji }) => {
                   all={message}
                   posted={new Date(message.createdAt).toDateString()}
                   commentCount={parseInt(message.commentMsg.length)}
+                  moodEmoji={moodEmoji}
+                  // setLikes={setLikes}
+                  // handleLikes={handleLikes}
+                  getMessages={getMessages}
                 />
               ))}
       </div>
