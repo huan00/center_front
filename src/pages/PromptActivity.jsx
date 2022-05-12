@@ -18,7 +18,7 @@ const PromptActivity = ({ survey, setSurvey, postSurveyResult }) => {
 
   return (
     <div className="prompt">
-      {survey.moodId === '2' || survey.moodId === '4' ? (
+      {survey.moodId === '2' || survey.moodId === '5' ? (
         <div className="prompt-happy">
           <p>So good to hear you are having a good day.</p>
           <div className="prompt-happy-video">
@@ -35,7 +35,7 @@ const PromptActivity = ({ survey, setSurvey, postSurveyResult }) => {
           </div>
           <p>Or</p>
           <Link
-            to="/user/activity"
+            to="/activity"
             onClick={() => {
               setSurvey({ ...survey, activity: 'Not right now' })
               postSurveyResult()
@@ -65,7 +65,7 @@ const PromptActivity = ({ survey, setSurvey, postSurveyResult }) => {
               ) : (
                 <div className="prompt-selection-ans" key={idx}>
                   <Link
-                    to="/user/activity"
+                    to="/activity"
                     onClick={() => setSurvey({ ...survey, activity: ans })}
                   >
                     <p>{ans}</p>

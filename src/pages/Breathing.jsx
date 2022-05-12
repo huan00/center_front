@@ -37,7 +37,7 @@ const Breathing = ({ postSurveyResult, setSurvey, survey, user }) => {
           <p>Done!</p>
           <p>Awesome Job</p>
           <p>Let enjoy the rest of the day!</p>
-          <Link to="/user/activity">
+          <Link to="/activity">
             <button className="btn">Done</button>
           </Link>
         </>

@@ -29,7 +29,7 @@ const NavBar = ({ handleLogout, user }) => {
         <Link to="select">
           <BiMehBlank className={`menu-icon BiMehBlank ${hightlight}`} />
         </Link>
-        <Link to="user/activity">
+        <Link to="/activity">
           <BiHourglass className="menu-icon BiHourGlass" />
         </Link>
         <Link to="/chat">

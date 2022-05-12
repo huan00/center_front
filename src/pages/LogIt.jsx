@@ -24,7 +24,7 @@ const LogIt = ({ user, setSurvey, survey, postSurveyResult }) => {
 
     const msg = await postMessage(message)
     setMessage({ message: '', userId: user.id, private: true })
-    navigate('/user/activity')
+    navigate('/activity')
   }
 
   return (

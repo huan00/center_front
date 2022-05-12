@@ -24,7 +24,7 @@ const Prompt = ({ setSurvey, survey }) => {
   return (
     <div className="prompt">
       <div className="prompt-message">
-        {survey.moodId === '2' || survey.moodId === '4' ? (
+        {survey.moodId === '2' || survey.moodId === '5' ? (
           <h1>{message[1]}</h1>
         ) : (
           <h1>{message[0]}</h1>

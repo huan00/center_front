@@ -417,11 +417,14 @@ font-size: 32px;
 }
 
 .sad {
-  background-color: red;
+  background-color: #828282;
 }
 
 .happy {
-  background-color: aqua;
+  background-color: #2d9cdb;
+}
+.normal {
+  background-color:  #F2c94C;
 }
 
 .activity-detail-comp {
@@ -436,9 +439,12 @@ font-size: 32px;
 
 .render-detail {
   overflow: hidden;
-  height: 150px;
+  height: 41px;
   /* background-color: #000000; */
-  margin: 10px 0;
+  /* margin: 10px 0; */
+  border-top: #333333 1px solid;
+  display: flex;
+  align-items: center;
 }
 
 .render-detail * {
@@ -526,4 +532,17 @@ font-size: 32px;
 
 .reply-card-social span{
   margin: 0 10px 0 0;
+}
+
+/**********Survey-detail***************/
+
+.survey-detail-content {
+  padding: 10px;
+  line-height: 25px;
+
+  border: 1px solid #828282;
+}
+
+.activity-detail-page-title * {
+  margin: 0 0 15px 0;
 }

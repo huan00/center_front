@@ -23,6 +23,7 @@ import Conversation from './pages/chat/Conversation'
 import Comment from './pages/chat/Comment'
 import ProfileSetting from './pages/profile/ProfileSetting'
 import { IoIosLogOut } from 'react-icons/io'
+import ActivityDetailPage from './pages/activitydetail/ActivityDetailPage'
 
 function App() {
   let navigate = useNavigate()
@@ -191,9 +192,10 @@ function App() {
                 />
               }
             />
+            /************Activity********* */
             {user && (
               <Route
-                path="user/activity"
+                path="activity"
                 element={
                   <ActivityHistory user={user} checkToken={checkToken} />
                 }
@@ -201,10 +203,15 @@ function App() {
             )}
             {user && (
               <Route
-                path="user/activity/history/:id"
+                path="activity/history/:id"
                 element={<ActivityHistoryDetail user={user} />}
               />
             )}
+            <Route
+              path="activity/history/:id/detail/:id"
+              element={<ActivityDetailPage user={user} />}
+            />
+            /*********Profile********* */
             <Route path="profile" element={<Profile />} />
             /********CHAT********* */
             <Route path="/chat" element={<ChatHome moodEmoji={moodEmoji} />} />

@@ -50,7 +50,7 @@ const Distraction = ({ postSurveyResult, setSurvey, survey }) => {
               allowfullscreen
             ></iframe>
           ))}
-          <Link to="/user/activity">
+          <Link to="/activity">
             <div className="distraction-btn">Done</div>
           </Link>
         </div>

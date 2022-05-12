@@ -1,6 +1,7 @@
 import { getUserDetails } from '../services/User-service'
 import React, { useEffect, useState } from 'react'
 import { BiSad } from 'react-icons/bi'
+import { Link } from 'react-router-dom'
 
 const ActivityDetail = ({ user, id }) => {
   const [activityDetails, setActivityDetails] = useState([])
@@ -35,7 +36,6 @@ const ActivityDetail = ({ user, id }) => {
     getBreathingActivity(activityDetails)
   }, [])
 
-  console.log(monthfilter)
   const getActivityDetail = async (id) => {
     const detail = await getUserDetails(id)
     setActivityDetails(detail.Surveys)
@@ -72,14 +72,20 @@ const ActivityDetail = ({ user, id }) => {
     return renderArr.map((act) => (
       <div
         className={`render-detail ${
-          act.answer !== 'happy' && act.answer !== 'loved' ? 'sad' : 'happy'
+          act.answer !== 'happy' && act.answer !== 'loved'
+            ? act.answer !== 'sad' && act.answer !== 'angry'
+              ? 'normal'
+              : 'sad'
+            : 'happy'
         }`}
       >
-        <p>Question: {act.question}</p>
+        {/* <p>Question: {act.question}</p>
         <p>Answer: {act.answer}</p>
         <p>Reason: {act.reason}</p>
-        <p>Activity: {act.activity}</p>
-        <p>Created: {new Date(act.createdAt).toDateString()}</p>
+        <p>Activity: {act.activity}</p> */}
+        <Link to={`detail/${act.id}`}>
+          <p> {new Date(act.createdAt).toDateString()}</p>
+        </Link>
       </div>
     ))
   }
