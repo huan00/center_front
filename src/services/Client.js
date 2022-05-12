@@ -1,7 +1,7 @@
 import Axios from 'axios'
 
 export const BASE_URL =
-  process.env.Node_ENV === 'production'
+  process.env.NODE_ENV === 'production'
     ? 'https://center-backend.herokuapp.com/'
     : 'http://localhost:3001'
 
