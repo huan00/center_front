@@ -62,3 +62,8 @@ nav {
 .loadScreen-icon {
   font-size: 50px;
 }
+
+.hightlight-url {
+  background-color: #000000;
+  color: white
+}

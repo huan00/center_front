@@ -6,12 +6,15 @@ import { IoIosLogOut } from 'react-icons/io'
 
 const NavBar = ({ handleLogout, user }) => {
   const [active, setActive] = useState(window.location.href)
-  const [hightlight, setHighlight] = useState('active')
+  // const [hightlight, setHighlight] = useState('active')
   const navgiate = useNavigate
   useEffect(() => {}, [])
 
-  const hightlightNav = () => {
-    if (active.includes('select')) {
+  const activeUrl = (url) => {
+    if (window.location.href.includes(url)) {
+      return 'hightlight-url'
+    } else {
+      return ''
     }
   }
 
@@ -27,19 +30,28 @@ const NavBar = ({ handleLogout, user }) => {
 
       <div className="navBar-menu-icon">
         <Link to="select">
-          <BiMehBlank className={`menu-icon BiMehBlank ${hightlight}`} />
+          <BiMehBlank
+            className={`menu-icon BiMehBlank ${activeUrl('select')}`}
+          />
         </Link>
         <Link to="/activity">
-          <BiHourglass className="menu-icon BiHourGlass" />
+          <BiHourglass
+            className={`menu-icon BiHourGlass ${activeUrl('activity')}`}
+          />
         </Link>
         <Link to="/chat">
-          <IoChatbubblesOutline className="menu-icon faComments" />
+          <IoChatbubblesOutline
+            className={`menu-icon faComments ${activeUrl('chat')}`}
+          />
         </Link>
         <Link to="user/setting">
-          <BiMenu className="menu-icon BiMenu" />
+          <BiMenu className={`menu-icon BiMenu ${activeUrl('user')}`} />
         </Link>
 
-        <IoIosLogOut className="menu-icon faComments" onClick={handleLogout} />
+        <IoIosLogOut
+          className={`menu-icon faComments `}
+          onClick={handleLogout}
+        />
       </div>
     </div>
   )

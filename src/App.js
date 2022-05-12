@@ -58,8 +58,6 @@ function App() {
     getMoodList()
   }, [])
 
-  console.log(window.location.href)
-
   const checkToken = async () => {
     const user = await CheckSession()
     setUser(user)

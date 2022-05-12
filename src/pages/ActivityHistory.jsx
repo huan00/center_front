@@ -44,7 +44,7 @@ const ActivityHistory = ({ user, checkToken }) => {
       </div>
       <div className="activity-history-logit">
         <p>{activityDetail.filter((act) => act.activity === 'Logit').length}</p>
-        <Link to={`history/LogIt`}>
+        <Link to={`history/Logit`}>
           <div className="activity-history-link">
             <h1>Logs</h1>
             <BsArrowRight className="activity-arrow" />

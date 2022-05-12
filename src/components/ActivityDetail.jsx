@@ -69,8 +69,10 @@ const ActivityDetail = ({ user, id }) => {
     } else {
       renderArr = [...activityDetails]
     }
+
     return renderArr.map((act) => (
       <div
+        key={act.id}
         className={`render-detail ${
           act.answer !== 'happy' && act.answer !== 'loved'
             ? act.answer !== 'sad' && act.answer !== 'angry'
@@ -79,10 +81,6 @@ const ActivityDetail = ({ user, id }) => {
             : 'happy'
         }`}
       >
-        {/* <p>Question: {act.question}</p>
-        <p>Answer: {act.answer}</p>
-        <p>Reason: {act.reason}</p>
-        <p>Activity: {act.activity}</p> */}
         <Link to={`detail/${act.id}`}>
           <p> {new Date(act.createdAt).toDateString()}</p>
         </Link>

@@ -43,14 +43,6 @@ const ChatHome = ({ moodEmoji }) => {
     }
   }
 
-  // const handleLikes = async (id) => {
-  //   setLikes({ ...likes, messageId: id })
-  //   const res = await updateLike(likes)
-  //   getMessages()
-  // }
-
-  console.log(messages)
-
   return (
     <div className="chat">
       <div className="chat-compose">

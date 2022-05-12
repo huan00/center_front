@@ -19,14 +19,6 @@ const ActivityDetailPage = ({ user }) => {
     setSurvey(detail.Surveys.filter((survey) => survey.id === id))
   }
 
-  // const getSurveyDetail = (data, id) => {
-  //   setSurvey(data.filter((survey) => survey.id === id))
-  // }
-
-  console.log(id)
-  console.log(surveyDetail)
-  // console.log(survey.question)
-
   return (
     <div className="container activity-detail-page">
       {surveyDetail && (
