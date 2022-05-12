@@ -1,9 +1,11 @@
 import Axios from 'axios'
 
-export let BASE_URL =
-  process.env.NODE_ENV === 'production'
-    ? 'https://center-backend.herokuapp.com'
-    : 'http://localhost:3001'
+export let BASE_URL = 'https://center-backend.herokuapp.com'
+
+// == 'production'
+// (process.env.NODE_ENV =
+// ?
+// : 'http://localhost:3001'
 
 const Client = Axios.create({ baseURL: BASE_URL })
 
