@@ -209,7 +209,10 @@ function App() {
             /********CHAT********* */
             <Route path="/chat" element={<ChatHome moodEmoji={moodEmoji} />} />
             <Route path="chat/compose" element={<Compose user={user} />} />
-            <Route path="chat/conversation/:id" element={<Conversation />} />
+            <Route
+              path="chat/conversation/:id"
+              element={<Conversation moodEmoji={moodEmoji} user={user} />}
+            />
             <Route
               path="chat/conversation/:id/comment/:id"
               element={<Comment user={user} />}

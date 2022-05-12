@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { BsSuitHeart } from 'react-icons/bs'
 import {
   faThumbtack,
   faEllipsisVertical,
@@ -10,21 +10,22 @@ import profile from '../assets/images/profile.svg'
 
 const ReplyMsg = ({ message, createdAt, username }) => {
   return (
-    <div className="infoCard" style={{ height: '200px' }}>
-      <div className="infoCard-title">
-        <img src={profile} alt="" />
-        <h4>
-          {username} <FontAwesomeIcon icon={faCrown} />
-        </h4>
-        <FontAwesomeIcon className="thumbTack" icon={faThumbtack} />
-        <FontAwesomeIcon className="ellispsisVert" icon={faEllipsisVertical} />
-      </div>
-      <div className="infoCard-content " style={{ height: '100px' }}>
-        <p>{message}</p>
-      </div>
-      <hr></hr>
-      <div className="infoCard-footer">
-        <p>Posted on: {createdAt}</p>
+    <div className="reply-card">
+      <div className="reply-card-content">
+        <div className="reply-card-title">{username}</div>
+        <div className="reply-card-message">
+          <p>{message}</p>
+        </div>
+
+        <div className="reply-card-misc">
+          <div className="reply-date">
+            <p>{createdAt}</p>
+          </div>
+          <div className="reply-card-social">
+            <span className="spanHeart">0</span>
+            <BsSuitHeart />
+          </div>
+        </div>
       </div>
     </div>
   )

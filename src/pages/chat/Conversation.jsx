@@ -1,18 +1,27 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 import { IoCreateOutline } from 'react-icons/io5'
 import { FiSend } from 'react-icons/fi'
 import InfoCard from '../../components/InfoCard'
 import ReplyMsg from '../../components/ReplyMsg'
 import {
   getComments,
-  getMessageDetailById
+  getMessageDetailById,
+  postComment
 } from '../../services/Message-service'
 
-const Conversation = () => {
+const Conversation = ({ moodEmoji, user }) => {
   const [message, setMessage] = useState('')
   const [comments, setComments] = useState('')
   const { id } = useParams()
+  const navigate = useNavigate()
+  // const [mood, setMood] = useState('')
+  const [commentData, setCommentData] = useState({
+    userId: user.id,
+    message: '',
+    private: true,
+    mood: ''
+  })
 
   useEffect(() => {
     getMessageDetail(id)
@@ -24,7 +33,33 @@ const Conversation = () => {
 
     const comment = await getComments(id)
     setComments(comment.commentMsg)
+
+    setCommentData({
+      ...commentData,
+      mood: msg.messageMood[0].MessageMood.moodId,
+      message: ''
+    })
   }
+
+  const handleChange = (e) => {
+    setCommentData({
+      ...commentData,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    const comment = await postComment(id, commentData)
+    setCommentData({
+      ...commentData,
+      message: ''
+    })
+    getMessageDetail(id)
+  }
+
+  console.log(commentData)
 
   return (
     <div className="container convesation">
@@ -41,6 +76,7 @@ const Conversation = () => {
             message={message.message}
             posted={new Date(message.createdAt).toDateString()}
             commentCount={comments.length}
+            moodEmoji={moodEmoji}
           />
         )}
       </div>
@@ -58,9 +94,16 @@ const Conversation = () => {
             ))}
       </div>
       <div className="chat-compose-input">
-        <input type="text" name="" id="" placeholder="Type a thought" />
+        <input
+          onChange={handleChange}
+          type="text"
+          value={commentData.message}
+          name="message"
+          id="message"
+          placeholder="Type a thought"
+        />
         <div className="chat-send">
-          <FiSend />
+          <FiSend onClick={handleSubmit} />
         </div>
       </div>
     </div>

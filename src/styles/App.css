@@ -430,6 +430,7 @@ font-size: 32px;
   flex-direction: column;
 
   justify-content: center;
+  
 }
 
 .conversation-compose {
@@ -439,9 +440,61 @@ font-size: 32px;
 
 .conversation-comment{
   height: 300px;
+  width: 315px;
 
   display: flex;
   flex-direction: column;
 
   overflow-y: auto;
+  border: 1px solid #E0E0E0;
+}
+
+/**************Reply********************/
+
+.reply-card {
+  /* width: 315px; */
+
+  padding: 22px;
+  margin: 0 0 5px 0;
+  border: 1px solid #E0E0E0;
+}
+
+.reply-card-title {
+  display: flex;
+  align-items: center;
+  height: 24px;
+  width: fit-content;
+  font-size: 12px;
+
+  position: relative;
+  background-color: #f2f2f2;
+  color: #4f4f4f;
+  padding: 0px 15px;
+  border-radius: 20px;
+}
+
+.reply-card-message {
+  padding: 10px 0;
+  height: fit-content;
+  font-size: 18px;
+  color: #333333;
+}
+
+.reply-card-misc {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  border-top: 1px solid #333333;
+  padding: 10px 0 0 0;
+}
+
+.reply-card-social {
+  
+  display: flex;
+  align-items: center;
+}
+
+.reply-card-social span{
+  margin: 0 10px 0 0;
 }
