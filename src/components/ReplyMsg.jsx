@@ -5,7 +5,15 @@ import { updateLike } from '../services/Like-service'
 import '../styles/component.css'
 import profile from '../assets/images/profile.svg'
 
-const ReplyMsg = ({ message, createdAt, username, commentId, comment }) => {
+const ReplyMsg = ({
+  message,
+  createdAt,
+  username,
+  commentId,
+  comment,
+  id,
+  getMessageDetail
+}) => {
   const [likes, setLikes] = useState({
     messageId: commentId,
     rating: 1
@@ -13,7 +21,7 @@ const ReplyMsg = ({ message, createdAt, username, commentId, comment }) => {
 
   const handleLikes = async () => {
     const res = await updateLike(likes)
-    // getMessages()
+    getMessageDetail(id)
   }
   return (
     <div className="reply-card">

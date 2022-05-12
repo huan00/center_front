@@ -88,6 +88,8 @@ const Conversation = ({ moodEmoji, user }) => {
                 createdAt={new Date(comment.createdAt).toDateString()}
                 commentId={comment.id}
                 comment={comment}
+                id={id}
+                getMessageDetail={getMessageDetail}
               />
             ))}
       </div>
