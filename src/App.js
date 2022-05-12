@@ -138,7 +138,7 @@ function App() {
               }
             />
             <Route
-              path="select/prompt"
+              path="/select/prompt"
               element={
                 <Prompt
                   handleSlider={handleSlider}
@@ -148,7 +148,7 @@ function App() {
               }
             />
             <Route
-              path="select/prompt/activity"
+              path="/select/prompt/activity"
               element={
                 <PromptActivity
                   handleSlider={handleSlider}
@@ -159,7 +159,7 @@ function App() {
               }
             />
             <Route
-              path="select/prompt/activity/breathing"
+              path="/select/prompt/activity/breathing"
               element={
                 <Breathing
                   postSurveyResult={postSurveyResult}
@@ -170,7 +170,7 @@ function App() {
               }
             />
             <Route
-              path="select/prompt/activity/distraction"
+              path="/select/prompt/activity/distraction"
               element={
                 <Distraction
                   postSurveyResult={postSurveyResult}
@@ -180,7 +180,7 @@ function App() {
               }
             />
             <Route
-              path="select/prompt/activity/logit"
+              path="/select/prompt/activity/logit"
               element={
                 <LogIt
                   user={user}
@@ -193,7 +193,7 @@ function App() {
             /************Activity********* */
             {user && (
               <Route
-                path="activity"
+                path="/activity"
                 element={
                   <ActivityHistory user={user} checkToken={checkToken} />
                 }
@@ -201,34 +201,34 @@ function App() {
             )}
             {user && (
               <Route
-                path="activity/history/:id"
+                path="/activity/history/:id"
                 element={<ActivityHistoryDetail user={user} />}
               />
             )}
             <Route
-              path="activity/history/:id/detail/:id"
+              path="/activity/history/:id/detail/:id"
               element={<ActivityDetailPage user={user} />}
             />
             /*********Profile********* */
-            <Route path="profile" element={<Profile />} />
+            <Route path="/profile" element={<Profile />} />
             /********CHAT********* */
             <Route path="/chat" element={<ChatHome moodEmoji={moodEmoji} />} />
-            <Route path="chat/compose" element={<Compose user={user} />} />
+            <Route path="/chat/compose" element={<Compose user={user} />} />
             <Route
-              path="chat/conversation/:id"
+              path="/chat/conversation/:id"
               element={<Conversation moodEmoji={moodEmoji} user={user} />}
             />
             <Route
-              path="chat/conversation/:id/comment/:id"
+              path="/chat/conversation/:id/comment/:id"
               element={<Comment user={user} />}
             />
             /**********Profile************* */
             <Route
-              path="user/setting"
+              path="/user/setting"
               element={<ProfileSetting user={user} />}
             />
           </Routes>
-        ) : window.location.href != 'http://localhost:3000/' ? (
+        ) : window.location.href != '/' ? (
           <div className="container loadingScreen">
             Please Log in to get access
             <IoIosLogOut
@@ -240,7 +240,6 @@ function App() {
           ''
         )}
       </main>
-      <footer></footer>
     </div>
   )
 }

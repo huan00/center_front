@@ -93,7 +93,9 @@ const ChatHome = ({ moodEmoji }) => {
           : messages
               .sort((a, b) => filterSort(a, b, sortRecent))
               .filter(
-                (mess) => mess.messageMood[0].mood === sortEmotion.toLowerCase()
+                (mess) =>
+                  !mess.messageMood[0] ||
+                  mess.messageMood[0].mood === sortEmotion.toLowerCase()
               )
               .map((message) => (
                 <InfoCard

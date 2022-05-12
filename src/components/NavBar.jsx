@@ -29,7 +29,7 @@ const NavBar = ({ handleLogout, user }) => {
       </div>
 
       <div className="navBar-menu-icon">
-        <Link to="select">
+        <Link to="/select">
           <BiMehBlank
             className={`menu-icon BiMehBlank ${activeUrl('select')}`}
           />
@@ -44,12 +44,12 @@ const NavBar = ({ handleLogout, user }) => {
             className={`menu-icon faComments ${activeUrl('chat')}`}
           />
         </Link>
-        <Link to="user/setting">
+        <Link to="/user/setting">
           <BiMenu className={`menu-icon BiMenu ${activeUrl('user')}`} />
         </Link>
 
         <IoIosLogOut
-          className={`menu-icon faComments `}
+          className={`menu-icon faComments }`}
           onClick={handleLogout}
         />
       </div>

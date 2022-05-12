@@ -8,7 +8,6 @@ import { Link } from 'react-router-dom'
 import { updateLike } from '../services/Like-service'
 
 const InfoCard = ({
-  mood,
   message,
   user,
   all,
@@ -41,7 +40,7 @@ const InfoCard = ({
             <div className="infocard-chat-emoji">
               {all.messageMood[0]
                 ? moodEmoji[all.messageMood[0].MessageMood.moodId]
-                : 'General'}
+                : '🤯'}
             </div>
           </div>
         </Link>
