@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faComment } from '@fortawesome/free-regular-svg-icons'
 import { AiFillHeart } from 'react-icons/ai'
-import '../styles/component.css'
+import '../styles/App.css'
 import { Link } from 'react-router-dom'
 import { updateLike } from '../services/Like-service'
 

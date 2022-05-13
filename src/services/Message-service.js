@@ -15,6 +15,12 @@ export const getAllMessageChat = async (data) => {
   return messages.data
 }
 
+export const getPrivateMesssage = async (id) => {
+  const messages = await Client.get(`/messages/private/${id}`)
+  console.log(messages)
+  return messages.data
+}
+
 export const getMessageDetailById = async (id) => {
   const message = await Client.get(`/messages/messagedetail/${id}`)
   return message.data

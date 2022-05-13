@@ -2,7 +2,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom'
 import NavBar from './components/NavBar'
 import Home from './pages/Home'
 import Prompt from './pages/Prompt'
-import './styles/index.css'
+import './styles/App.css'
 import { useEffect, useState } from 'react'
 import PromptActivity from './pages/PromptActivity'
 import Login from './pages/Login'
@@ -20,6 +20,7 @@ import Conversation from './pages/chat/Conversation'
 import Comment from './pages/chat/Comment'
 import ProfileSetting from './pages/profile/ProfileSetting'
 import ActivityDetailPage from './pages/activitydetail/ActivityDetailPage'
+import SelfMessage from './pages/activitydetail/SelfMessage'
 
 function App() {
   let navigate = useNavigate()
@@ -192,6 +193,12 @@ function App() {
             path="/activity/history/:id/detail/:id"
             element={<ActivityDetailPage user={user} />}
           />
+          {user && (
+            <Route
+              path="/activity/history/Logit/selfmessage"
+              element={<SelfMessage user={user} />}
+            />
+          )}
           /********CHAT********* */
           <Route path="/chat" element={<ChatHome moodEmoji={moodEmoji} />} />
           <Route path="/chat/compose" element={<Compose user={user} />} />

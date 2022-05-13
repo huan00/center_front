@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { postMessage } from '../services/Message-service'
+import { postNewJoinMessage } from '../services/Message-service'
 import MessageInput from '../components/MessageInput'
 import { useNavigate } from 'react-router-dom'
 
 const LogIt = ({ user, postSurveyResult }) => {
   const [message, setMessage] = useState({
     message: '',
+    mood: '',
     userId: user.id,
     private: true
   })
@@ -23,10 +24,11 @@ const LogIt = ({ user, postSurveyResult }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const msg = await postMessage(message)
-    setMessage({ message: '', userId: user.id, private: true })
+    const msg = await postNewJoinMessage(message)
+    setMessage({ message: '', userId: user.id, private: true, mood: '' })
     navigate('/activity')
   }
+  console.log(message)
 
   return (
     <div className="container">
@@ -35,7 +37,7 @@ const LogIt = ({ user, postSurveyResult }) => {
         message={message}
         handleSubmit={handleSubmit}
         privateMsg={false}
-        emotion={false}
+        emotion={true}
         title={'What is on your mind?'}
       />
     </div>

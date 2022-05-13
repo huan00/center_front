@@ -1,10 +1,12 @@
 import { getUserDetails } from '../services/User-service'
+import { getPrivateMesssage } from '../services/Message-service'
 import React, { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const ActivityDetail = ({ user, id }) => {
   const [activityDetails, setActivityDetails] = useState([])
   const [breathing, setBreathing] = useState([])
+
   const [month, setMonth] = useState([
     'All',
     'Jan',
@@ -29,6 +31,7 @@ const ActivityDetail = ({ user, id }) => {
   const [monthfilter, setMonthFilter] = useState(0)
   const [reasonfilter, setReasonFilter] = useState(id)
   const [title, setTitle] = useState('Your centers')
+  const navigate = useNavigate()
 
   useEffect(() => {
     getActivityDetail(user.id)
@@ -111,7 +114,20 @@ const ActivityDetail = ({ user, id }) => {
             ))}
           </select>
         </form>
-        {render()}
+        <div>{render()}</div>
+
+        {reasonfilter === 'Logit' && (
+          <div>
+            <button
+              className="btn"
+              onClick={() => {
+                navigate('selfmessage')
+              }}
+            >
+              Self Message
+            </button>
+          </div>
+        )}
       </div>
     </div>
   )

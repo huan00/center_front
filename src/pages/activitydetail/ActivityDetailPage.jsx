@@ -22,8 +22,6 @@ const ActivityDetailPage = ({ user }) => {
       detail.Surveys.filter((survey) => parseInt(survey.id) === parseInt(id))
     )
   }
-  console.log(id)
-  console.log(survey)
 
   return (
     <div className="container activity-detail-page">

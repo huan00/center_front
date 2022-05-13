@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { AiFillHeart } from 'react-icons/ai'
 import { updateLike } from '../services/Like-service'
-import '../styles/component.css'
+import '../styles/App.css'
 
 const ReplyMsg = ({
   message,
