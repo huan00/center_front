@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { BsArrowRight } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 
@@ -10,7 +10,6 @@ const Prompt = ({ setSurvey, survey }) => {
     setSurvey({ ...survey, reason: ans })
   }
 
-  useEffect(() => {}, [])
   return (
     <div className="prompt">
       <div className="prompt-message">

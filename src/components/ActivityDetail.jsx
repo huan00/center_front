@@ -30,7 +30,7 @@ const ActivityDetail = ({ user, id }) => {
   useEffect(() => {
     getActivityDetail(user.id)
     getBreathingActivity(activityDetails)
-  })
+  }, [])
 
   const getActivityDetail = async (id) => {
     const detail = await getUserDetails(id)

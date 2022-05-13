@@ -43,7 +43,7 @@ const NavBar = ({ handleLogout, user }) => {
         </Link>
 
         <IoIosLogOut
-          className={`menu-icon faComments ${user ? '' : hightlightUrl}`}
+          className={`menu-icon faComments `}
           onClick={handleLogout}
         />
       </div>
