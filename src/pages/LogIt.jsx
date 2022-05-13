@@ -13,7 +13,7 @@ const LogIt = ({ user, postSurveyResult }) => {
 
   useEffect(() => {
     postSurveyResult()
-  })
+  }, [])
 
   const handleMessage = (e) => {
     setMessage({ ...message, [e.target.name]: e.target.value })

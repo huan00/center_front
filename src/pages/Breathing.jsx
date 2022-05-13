@@ -9,7 +9,7 @@ const Breathing = ({ postSurveyResult }) => {
 
   useEffect(() => {
     postSurveyResult()
-  })
+  }, [])
 
   return (
     <div className="breath">

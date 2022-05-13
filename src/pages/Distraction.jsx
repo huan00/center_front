@@ -13,7 +13,7 @@ const Distraction = ({ postSurveyResult, setSurvey, survey }) => {
     return () => {
       setSurvey(null)
     }
-  })
+  }, [])
 
   const getVideo = async () => {
     const video = await getYoutube()

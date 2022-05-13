@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { BsArrowRight } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 
@@ -12,8 +12,6 @@ const PromptActivity = ({ survey, setSurvey, postSurveyResult }) => {
     'Logit',
     'Not right now'
   ])
-
-  useEffect(() => {}, [])
 
   return (
     <div className="prompt">

@@ -10,7 +10,7 @@ const ActivityHistory = ({ user }) => {
     if (user) {
       getActivityDetail(user.id)
     }
-  })
+  }, [])
 
   const getActivityDetail = async (id) => {
     const detail = await getUserDetails(id)

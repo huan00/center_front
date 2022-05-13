@@ -6,7 +6,7 @@ const SelfMessage = ({ user }) => {
 
   useEffect(() => {
     getPrivateMsg(user.id)
-  })
+  }, [])
 
   const getPrivateMsg = async (id) => {
     const privateMsg = await getPrivateMesssage(id)

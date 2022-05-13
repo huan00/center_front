@@ -22,7 +22,7 @@ const Conversation = ({ moodEmoji, user }) => {
 
   useEffect(() => {
     getMessageDetail(id)
-  })
+  }, [])
 
   const getMessageDetail = async (id) => {
     const msg = await getMessageDetailById(id)

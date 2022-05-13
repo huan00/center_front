@@ -14,8 +14,6 @@ const Home = ({
 }) => {
   const [greeting] = useState(`How are you feeling right now?`)
 
-  useEffect(() => {}, [])
-
   return user ? (
     <div className="home">
       <div className="home-greeting">

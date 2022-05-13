@@ -44,7 +44,7 @@ function App() {
       checkToken()
     }
     getMoodList()
-  })
+  }, [])
 
   const checkToken = async () => {
     const user = await CheckSession()

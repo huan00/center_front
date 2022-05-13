@@ -6,7 +6,6 @@ import { IoIosLogOut } from 'react-icons/io'
 
 const NavBar = ({ handleLogout, user }) => {
   const [hightlightUrl] = useState('hightlight-url')
-  useEffect(() => {}, [])
   const [navigateToSignIn] = useState('/')
 
   const activeUrl = (url) => {
