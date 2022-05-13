@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { FiSend } from 'react-icons/fi'
 import InfoCard from '../../components/InfoCard'
 import ReplyMsg from '../../components/ReplyMsg'
@@ -13,7 +13,6 @@ const Conversation = ({ moodEmoji, user }) => {
   const [message, setMessage] = useState('')
   const [comments, setComments] = useState('')
   const { id } = useParams()
-  const navigate = useNavigate()
   const [commentData, setCommentData] = useState({
     userId: user.id,
     message: '',

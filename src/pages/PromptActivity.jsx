@@ -53,10 +53,11 @@ const PromptActivity = ({ survey, setSurvey, postSurveyResult }) => {
             {answer.map((ans, idx) =>
               idx < answer.length - 1 ? (
                 <Link
+                  key={idx}
                   to={ans}
                   onClick={() => setSurvey({ ...survey, activity: ans })}
                 >
-                  <div className="prompt-selection-ans" key={idx}>
+                  <div className="prompt-selection-ans">
                     <p>{ans}</p>
                     <BsArrowRight />
                   </div>

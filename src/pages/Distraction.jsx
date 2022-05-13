@@ -21,20 +21,6 @@ const Distraction = ({ postSurveyResult, setSurvey, survey }) => {
     setVideos(video.data.items)
   }
 
-  const opts = {
-    height: '390',
-    width: '640',
-    playerVars: {
-      // https://developers.google.com/youtube/player_parameters
-      autoplay: 1
-    }
-  }
-
-  const _onReady = (event) => {
-    // access to player in all event handlers via event.target
-    event.target.pauseVideo()
-  }
-
   return (
     <div className="distraction container">
       {videos ? (

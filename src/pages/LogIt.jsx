@@ -19,6 +19,7 @@ const LogIt = ({ user, postSurveyResult }) => {
   }
 
   const navigate = useNavigate()
+
   const handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -30,7 +31,7 @@ const LogIt = ({ user, postSurveyResult }) => {
   return (
     <div className="container">
       <MessageInput
-        handleMessage={handleMessage}
+        handleChange={handleMessage}
         message={message}
         handleSubmit={handleSubmit}
         privateMsg={false}

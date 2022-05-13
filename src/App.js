@@ -86,6 +86,7 @@ function App() {
       reason: '',
       userId: user.id
     })
+    setSlider(0)
   }
 
   const handleSlider = (e) => {

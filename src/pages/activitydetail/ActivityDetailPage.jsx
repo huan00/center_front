@@ -14,12 +14,16 @@ const ActivityDetailPage = ({ user }) => {
     }
   }, [])
 
-  const getActivityDetail = async (id) => {
-    const detail = await getUserDetails(id)
+  const getActivityDetail = async (uid) => {
+    const detail = await getUserDetails(uid)
 
     setSurveyDetail(detail)
-    setSurvey(detail.Surveys.filter((survey) => survey.id === id))
+    setSurvey(
+      detail.Surveys.filter((survey) => parseInt(survey.id) === parseInt(id))
+    )
   }
+  console.log(id)
+  console.log(survey)
 
   return (
     <div className="container activity-detail-page">

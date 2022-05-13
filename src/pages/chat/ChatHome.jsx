@@ -60,7 +60,7 @@ const ChatHome = ({ moodEmoji }) => {
               .map((message) => (
                 <InfoCard
                   key={message.id}
-                  user={message.User.email}
+                  user={message.User.firstName}
                   message={message.message}
                   all={message}
                   posted={new Date(message.createdAt).toDateString()}
