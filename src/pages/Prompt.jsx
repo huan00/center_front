@@ -3,17 +3,8 @@ import { BsArrowRight } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 
 const Prompt = ({ setSurvey, survey }) => {
-  const [message, setMessage] = useState([
-    'Oh no, why?',
-    "Awesome that's great to hear!"
-  ])
-  const [answer, setAnswer] = useState([
-    'Parsonal',
-    'Work',
-    'Life',
-    'Family',
-    'Not Sure'
-  ])
+  const [message] = useState(['Oh no, why?', "Awesome that's great to hear!"])
+  const [answer] = useState(['Parsonal', 'Work', 'Life', 'Family', 'Not Sure'])
 
   const handleClick = (ans) => {
     setSurvey({ ...survey, reason: ans })

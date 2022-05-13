@@ -13,7 +13,7 @@ const Distraction = ({ postSurveyResult, setSurvey, survey }) => {
     return () => {
       setSurvey(null)
     }
-  }, [])
+  })
 
   const getVideo = async () => {
     const video = await getYoutube()
@@ -27,6 +27,7 @@ const Distraction = ({ postSurveyResult, setSurvey, survey }) => {
         <div className="distraction-video">
           {videos.map((video, idx) => (
             <iframe
+              title="idx"
               key={idx}
               className="videos"
               width="320px"

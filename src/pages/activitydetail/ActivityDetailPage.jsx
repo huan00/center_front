@@ -12,7 +12,7 @@ const ActivityDetailPage = ({ user }) => {
     if (user) {
       getActivityDetail(user.id)
     }
-  }, [])
+  })
 
   const getActivityDetail = async (uid) => {
     const detail = await getUserDetails(uid)

@@ -22,7 +22,7 @@ const Conversation = ({ moodEmoji, user }) => {
 
   useEffect(() => {
     getMessageDetail(id)
-  }, [])
+  })
 
   const getMessageDetail = async (id) => {
     const msg = await getMessageDetailById(id)
@@ -48,7 +48,7 @@ const Conversation = ({ moodEmoji, user }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const comment = await postComment(id, commentData)
+    await postComment(id, commentData)
     setCommentData({
       ...commentData,
       message: ''

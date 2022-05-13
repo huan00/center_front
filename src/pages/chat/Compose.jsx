@@ -23,7 +23,7 @@ const Compose = ({ user }) => {
   }
 
   const postMessage = async (data) => {
-    const msg = await postNewJoinMessage(data)
+    await postNewJoinMessage(data)
   }
 
   return (

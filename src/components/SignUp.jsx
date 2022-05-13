@@ -7,8 +7,8 @@ const SignUp = ({ setUser }) => {
   const [loginActive, setLoginActive] = useState('loginActive')
   const [signupActive, setSignUpActive] = useState('signup-active')
   const [login, setLogin] = useState(true)
-  const [authMsg, setAuthMsg] = useState('Log in')
-  const [signUp, setSignUp] = useState('Sign Up')
+  const [authMsg] = useState('Log in')
+  const [signUp] = useState('Sign Up')
   const [inputActive, setInputActive] = useState('')
   const [btnMsg, setBtnMsg] = useState('Log in')
   const [formData, setFormData] = useState({
@@ -32,7 +32,7 @@ const SignUp = ({ setUser }) => {
   }
 
   const handleSignUp = async (data) => {
-    const res = await SignUpUser(data)
+    await SignUpUser(data)
     setFormData({ email: '', password: '' })
     toggleLogin()
   }

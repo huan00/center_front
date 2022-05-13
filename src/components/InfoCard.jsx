@@ -15,14 +15,14 @@ const InfoCard = ({
   moodEmoji,
   getMessages
 }) => {
-  const [username, setUsername] = useState(user)
-  const [likes, setLikes] = useState({
+  const [username] = useState(user)
+  const [likes] = useState({
     messageId: all.id,
     rating: 1
   })
 
   const handleLikes = async () => {
-    const res = await updateLike(likes)
+    await updateLike(likes)
     getMessages()
   }
 

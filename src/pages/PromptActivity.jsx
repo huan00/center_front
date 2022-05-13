@@ -3,10 +3,10 @@ import { BsArrowRight } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 
 const PromptActivity = ({ survey, setSurvey, postSurveyResult }) => {
-  const [message, setMessage] = useState(
+  const [message] = useState(
     "Let's help with that. Pick something that you have a moment for right now"
   )
-  const [answer, setAnswer] = useState([
+  const [answer] = useState([
     'Breathing',
     'Distraction',
     'Logit',

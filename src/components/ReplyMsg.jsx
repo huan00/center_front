@@ -12,13 +12,13 @@ const ReplyMsg = ({
   id,
   getMessageDetail
 }) => {
-  const [likes, setLikes] = useState({
+  const [likes] = useState({
     messageId: commentId,
     rating: 1
   })
 
   const handleLikes = async () => {
-    const res = await updateLike(likes)
+    await updateLike(likes)
     getMessageDetail(id)
   }
   return (

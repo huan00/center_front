@@ -2,6 +2,7 @@ import Client from './Client'
 
 export const postMessage = async (data) => {
   const message = await Client.post(`/messages/new`, data)
+  return message
 }
 
 export const postNewJoinMessage = async (data) => {
@@ -17,7 +18,6 @@ export const getAllMessageChat = async (data) => {
 
 export const getPrivateMesssage = async (id) => {
   const messages = await Client.get(`/messages/private/${id}`)
-  console.log(messages)
   return messages.data
 }
 

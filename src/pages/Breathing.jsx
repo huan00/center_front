@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import Timer from '../components/Timer'
-import { useNavigate, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const Breathing = ({ postSurveyResult }) => {
-  let naviage = useNavigate()
-  const [breathing, setBreathing] = useState(['inhale', 'exhale'])
+  const [breathing] = useState(['inhale', 'exhale'])
   const [minutes, setMinutes] = useState(1)
   const [seconds, setSeconds] = useState(0)
 
   useEffect(() => {
     postSurveyResult()
-  }, [])
+  })
 
   return (
     <div className="breath">

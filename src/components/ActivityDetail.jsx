@@ -1,13 +1,12 @@
 import { getUserDetails } from '../services/User-service'
-import { getPrivateMesssage } from '../services/Message-service'
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 const ActivityDetail = ({ user, id }) => {
   const [activityDetails, setActivityDetails] = useState([])
-  const [breathing, setBreathing] = useState([])
+  const [setBreathing] = useState([])
 
-  const [month, setMonth] = useState([
+  const [month] = useState([
     'All',
     'Jan',
     'Feb',
@@ -22,21 +21,16 @@ const ActivityDetail = ({ user, id }) => {
     'Nov',
     'Dec'
   ])
-  const [reasons, setReasons] = useState([
-    'All',
-    'Breathing',
-    'Distraction',
-    'Logit'
-  ])
+  const [reasons] = useState(['All', 'Breathing', 'Distraction', 'Logit'])
   const [monthfilter, setMonthFilter] = useState(0)
   const [reasonfilter, setReasonFilter] = useState(id)
-  const [title, setTitle] = useState('Your centers')
+  const [title] = useState('Your centers')
   const navigate = useNavigate()
 
   useEffect(() => {
     getActivityDetail(user.id)
     getBreathingActivity(activityDetails)
-  }, [])
+  })
 
   const getActivityDetail = async (id) => {
     const detail = await getUserDetails(id)

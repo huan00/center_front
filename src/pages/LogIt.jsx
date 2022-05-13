@@ -13,7 +13,7 @@ const LogIt = ({ user, postSurveyResult }) => {
 
   useEffect(() => {
     postSurveyResult()
-  }, [])
+  })
 
   const handleMessage = (e) => {
     setMessage({ ...message, [e.target.name]: e.target.value })
@@ -24,7 +24,7 @@ const LogIt = ({ user, postSurveyResult }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
 
-    const msg = await postNewJoinMessage(message)
+    await postNewJoinMessage(message)
     setMessage({ message: '', userId: user.id, private: true, mood: '' })
     navigate('/activity')
   }

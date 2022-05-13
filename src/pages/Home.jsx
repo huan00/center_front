@@ -12,7 +12,7 @@ const Home = ({
   handleSurvey,
   user
 }) => {
-  const [greeting, setGreeting] = useState(`How are you feeling right now?`)
+  const [greeting] = useState(`How are you feeling right now?`)
 
   useEffect(() => {}, [])
 
