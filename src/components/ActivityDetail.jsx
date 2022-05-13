@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 
 const ActivityDetail = ({ user, id }) => {
   const [activityDetails, setActivityDetails] = useState([])
-  const [setBreathing] = useState([])
+  const [breathing, setBreathing] = useState([])
 
   const [month] = useState([
     'All',
