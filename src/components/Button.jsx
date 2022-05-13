@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Button = () => {
-  const [btnTxt, setBtnText] = useState('done')
+  const [btnTxt] = useState('done')
   return (
     <div>
       <button>{btnTxt}</button>

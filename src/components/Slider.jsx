@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Slider = ({ handleSlider, mood, slider, setSlider }) => {
+const Slider = ({ handleSlider, mood, slider }) => {
   return (
     <div className="slider">
       {mood && slider > 0 && <h1>{mood[slider].mood}</h1>}

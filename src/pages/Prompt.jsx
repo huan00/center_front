@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { BsArrowRight } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
-import { postSurvey } from '../services/survey-service'
 
 const Prompt = ({ setSurvey, survey }) => {
   const [message, setMessage] = useState([
@@ -32,12 +31,12 @@ const Prompt = ({ setSurvey, survey }) => {
       </div>
       <div className="prompt-selection">
         {answer.map((ans, idx) => (
-          <div key={idx} className="prompt-selection-ans">
-            <Link to="activity" onClick={() => handleClick(ans)}>
+          <Link key={idx} to="activity" onClick={() => handleClick(ans)}>
+            <div className="prompt-selection-ans">
               <p>{ans}</p>
-            </Link>
-            <BsArrowRight className="prompt-arrow" />
-          </div>
+              <BsArrowRight className="prompt-arrow" />
+            </div>
+          </Link>
         ))}
       </div>
     </div>

@@ -9,7 +9,9 @@ const ActivityDetailPage = ({ user }) => {
   const [survey, setSurvey] = useState()
 
   useEffect(() => {
-    getActivityDetail(user.id)
+    if (user) {
+      getActivityDetail(user.id)
+    }
   }, [])
 
   const getActivityDetail = async (id) => {

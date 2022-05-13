@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import '../styles/App.css'
-import SignUp from '../components/SignUp'
 import Slider from '../components/Slider'
 import Mood from '../components/Mood'
 
@@ -44,7 +43,7 @@ const Home = ({
       </div>
     </div>
   ) : (
-    <div>
+    <div className="container">
       <h3>Loading...</h3>
     </div>
   )

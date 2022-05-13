@@ -1,11 +1,8 @@
 import React, { useState } from 'react'
-import { faXmark } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { Login, SignUpUser } from '../services/Auth-service'
 
-const SignUp = ({ setUser, user }) => {
+const SignUp = ({ setUser }) => {
   const [errorMsg, setErrorMsg] = useState('')
   const [loginActive, setLoginActive] = useState('loginActive')
   const [signupActive, setSignUpActive] = useState('signup-active')
@@ -17,8 +14,6 @@ const SignUp = ({ setUser, user }) => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
-    // firstName: '',
-    // lastName: ''
   })
 
   let navigate = useNavigate()
@@ -51,20 +46,15 @@ const SignUp = ({ setUser, user }) => {
     navigate(`/select`)
   }
 
-  // const toggleXMark = () => {
-  //   xMark === 'show' ? setXMark('none') : setXMark('show')
-  // }
   const toggleLogin = () => {
     if (login) {
       setLogin(false)
-      // setAuthMsg('Sign Up')
       setLoginActive('')
       setSignUpActive('signupActive')
       setInputActive('inputActive')
       setBtnMsg('Create your center')
     } else {
       setLogin(true)
-      // setAuthMsg('Login')
       setInputActive('')
       setSignUpActive('')
       setBtnMsg('Login')
@@ -128,25 +118,6 @@ const SignUp = ({ setUser, user }) => {
         )}
         <button className="sign-up-btn">{btnMsg}</button>
       </form>
-      {/* <div className="signup-login">
-        <p>
-          {login ? (
-            <>
-              Not a member?
-              <span onClick={toggleLogin} className="signup-click">
-                Sign Up
-              </span>{' '}
-            </>
-          ) : (
-            <>
-              Already a member?
-              <span onClick={toggleLogin} className="signup-click">
-                Login
-              </span>
-            </>
-          )}
-        </p>
-      </div> */}
     </div>
   )
 }

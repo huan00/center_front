@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useParams, useNavigate } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 import { FiSend } from 'react-icons/fi'
 import InfoCard from '../../components/InfoCard'
 import ReplyMsg from '../../components/ReplyMsg'

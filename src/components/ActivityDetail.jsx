@@ -1,6 +1,5 @@
 import { getUserDetails } from '../services/User-service'
 import React, { useEffect, useState } from 'react'
-import { BiSad } from 'react-icons/bi'
 import { Link } from 'react-router-dom'
 
 const ActivityDetail = ({ user, id }) => {

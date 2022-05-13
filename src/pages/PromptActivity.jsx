@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { BsArrowRight } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
-import { postSurvey } from '../services/survey-service'
 
 const PromptActivity = ({ survey, setSurvey, postSurveyResult }) => {
   const [message, setMessage] = useState(
@@ -53,25 +52,25 @@ const PromptActivity = ({ survey, setSurvey, postSurveyResult }) => {
           <div className="prompt-selection">
             {answer.map((ans, idx) =>
               idx < answer.length - 1 ? (
-                <div className="prompt-selection-ans" key={idx}>
-                  <Link
-                    to={ans}
-                    onClick={() => setSurvey({ ...survey, activity: ans })}
-                  >
+                <Link
+                  to={ans}
+                  onClick={() => setSurvey({ ...survey, activity: ans })}
+                >
+                  <div className="prompt-selection-ans" key={idx}>
                     <p>{ans}</p>
-                  </Link>
-                  <BsArrowRight />
-                </div>
+                    <BsArrowRight />
+                  </div>
+                </Link>
               ) : (
-                <div className="prompt-selection-ans" key={idx}>
-                  <Link
-                    to="/activity"
-                    onClick={() => setSurvey({ ...survey, activity: ans })}
-                  >
+                <Link
+                  to="/activity"
+                  onClick={() => setSurvey({ ...survey, activity: ans })}
+                >
+                  <div className="prompt-selection-ans" key={idx}>
                     <p>{ans}</p>
-                  </Link>
-                  <BsArrowRight />
-                </div>
+                    <BsArrowRight />
+                  </div>
+                </Link>
               )
             )}
           </div>

@@ -4,7 +4,6 @@ const SelectEmotion = ({ handleChange }) => {
   return (
     <div>
       <form>
-        {/* <label htmlFor="">Emotion: </label> */}
         <select className="chat-sort" name="mood" id="" onChange={handleChange}>
           <option value="all">All Emotion</option>
           <option value="sad">Sad</option>

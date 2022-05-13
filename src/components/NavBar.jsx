@@ -1,25 +1,20 @@
-import React, { useState, useEffect } from 'react'
-import { Link, Navigate, useNavigate } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { BiMehBlank, BiHourglass, BiMenu } from 'react-icons/bi'
 import { IoChatbubblesOutline } from 'react-icons/io5'
 import { IoIosLogOut } from 'react-icons/io'
 
 const NavBar = ({ handleLogout, user }) => {
-  const [active, setActive] = useState(window.location.href)
-  // const [hightlight, setHighlight] = useState('active')
-  const navgiate = useNavigate
+  const [hightlightUrl] = useState('hightlight-url')
   useEffect(() => {}, [])
+  const [navigateToSignIn] = useState('/')
 
   const activeUrl = (url) => {
     if (window.location.href.includes(url)) {
-      return 'hightlight-url'
+      return hightlightUrl
     } else {
       return ''
     }
-  }
-
-  const navigateHome = () => {
-    navgiate('/')
   }
 
   return (
@@ -29,27 +24,27 @@ const NavBar = ({ handleLogout, user }) => {
       </div>
 
       <div className="navBar-menu-icon">
-        <Link to="/select">
+        <Link to={user ? `/select` : navigateToSignIn}>
           <BiMehBlank
             className={`menu-icon BiMehBlank ${activeUrl('select')}`}
           />
         </Link>
-        <Link to="/activity">
+        <Link to={user ? `/activity` : navigateToSignIn}>
           <BiHourglass
             className={`menu-icon BiHourGlass ${activeUrl('activity')}`}
           />
         </Link>
-        <Link to="/chat">
+        <Link to={user ? `/chat` : navigateToSignIn}>
           <IoChatbubblesOutline
             className={`menu-icon faComments ${activeUrl('chat')}`}
           />
         </Link>
-        <Link to="/user/setting">
+        <Link to={user ? `/user/setting` : navigateToSignIn}>
           <BiMenu className={`menu-icon BiMenu ${activeUrl('user')}`} />
         </Link>
 
         <IoIosLogOut
-          className={`menu-icon faComments }`}
+          className={`menu-icon faComments ${user ? '' : hightlightUrl}`}
           onClick={handleLogout}
         />
       </div>

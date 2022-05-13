@@ -1,10 +1,7 @@
 import { Routes, Route, useNavigate } from 'react-router-dom'
-import InfoCard from './components/InfoCard'
 import NavBar from './components/NavBar'
-import SignUp from './components/SignUp'
 import Home from './pages/Home'
 import Prompt from './pages/Prompt'
-import Profile from './pages/profile/Profile'
 import './styles/index.css'
 import { useEffect, useState } from 'react'
 import PromptActivity from './pages/PromptActivity'
@@ -22,23 +19,13 @@ import ChatHome from './pages/chat/ChatHome'
 import Conversation from './pages/chat/Conversation'
 import Comment from './pages/chat/Comment'
 import ProfileSetting from './pages/profile/ProfileSetting'
-import { IoIosLogOut } from 'react-icons/io'
 import ActivityDetailPage from './pages/activitydetail/ActivityDetailPage'
 
 function App() {
   let navigate = useNavigate()
   const [user, setUser] = useState(null)
-  const [currentUrl, setCurrentUrl] = useState(window.location.href)
   const [slider, setSlider] = useState(0)
-  const [moodEmoji, setMoodEmoji] = useState([
-    '',
-    '😔',
-    '😁',
-    '😡',
-    '😱',
-    '😍',
-    '😬'
-  ])
+  const [moodEmoji] = useState(['', '😔', '😁', '😡', '😱', '😍', '😬'])
   const [mood, setMood] = useState([''])
 
   const [survey, setSurvey] = useState({
@@ -86,7 +73,6 @@ function App() {
       survey.question &&
       survey.answer &&
       survey.moodId &&
-      // survey.activity &&
       survey.reason &&
       survey.userId
     ) {
@@ -119,126 +105,111 @@ function App() {
       <main>
         <Routes>
           <Route path="/" element={<Login setUser={setUser} user={user} />} />
-        </Routes>
-        {user ? (
-          <Routes>
-            <Route
-              path="/select"
-              element={
-                <Home
-                  handleSurvey={handleSurvey}
-                  handleSlider={handleSlider}
-                  slider={slider}
-                  user={user}
-                  setSlider={setSlider}
-                  moodEmoji={moodEmoji}
-                  mood={mood}
-                  handleConfirmMood={handleConfirmMood}
-                />
-              }
-            />
-            <Route
-              path="/select/prompt"
-              element={
-                <Prompt
-                  handleSlider={handleSlider}
-                  setSurvey={setSurvey}
-                  survey={survey}
-                />
-              }
-            />
-            <Route
-              path="/select/prompt/activity"
-              element={
-                <PromptActivity
-                  handleSlider={handleSlider}
-                  survey={survey}
-                  setSurvey={setSurvey}
-                  postSurveyResult={postSurveyResult}
-                />
-              }
-            />
-            <Route
-              path="/select/prompt/activity/breathing"
-              element={
-                <Breathing
-                  postSurveyResult={postSurveyResult}
-                  setSurvey={setSurvey}
-                  survey={survey}
-                  user={user}
-                />
-              }
-            />
-            <Route
-              path="/select/prompt/activity/distraction"
-              element={
-                <Distraction
-                  postSurveyResult={postSurveyResult}
-                  setSurvey={setSurvey}
-                  survey={survey}
-                />
-              }
-            />
-            <Route
-              path="/select/prompt/activity/logit"
-              element={
-                <LogIt
-                  user={user}
-                  postSurveyResult={postSurveyResult}
-                  setSurvey={setSurvey}
-                  survey={survey}
-                />
-              }
-            />
-            /************Activity********* */
-            {user && (
-              <Route
-                path="/activity"
-                element={
-                  <ActivityHistory user={user} checkToken={checkToken} />
-                }
+          {/* {user ? ( */}
+          <Route
+            path="/select"
+            element={
+              <Home
+                handleSurvey={handleSurvey}
+                handleSlider={handleSlider}
+                slider={slider}
+                user={user}
+                setSlider={setSlider}
+                moodEmoji={moodEmoji}
+                mood={mood}
+                handleConfirmMood={handleConfirmMood}
               />
-            )}
-            {user && (
-              <Route
-                path="/activity/history/:id"
-                element={<ActivityHistoryDetail user={user} />}
+            }
+          />
+          <Route
+            path="/select/prompt"
+            element={
+              <Prompt
+                handleSlider={handleSlider}
+                setSurvey={setSurvey}
+                survey={survey}
               />
-            )}
+            }
+          />
+          <Route
+            path="/select/prompt/activity"
+            element={
+              <PromptActivity
+                handleSlider={handleSlider}
+                survey={survey}
+                setSurvey={setSurvey}
+                postSurveyResult={postSurveyResult}
+              />
+            }
+          />
+          <Route
+            path="/select/prompt/activity/breathing"
+            element={
+              <Breathing
+                postSurveyResult={postSurveyResult}
+                setSurvey={setSurvey}
+                survey={survey}
+                user={user}
+              />
+            }
+          />
+          <Route
+            path="/select/prompt/activity/distraction"
+            element={
+              <Distraction
+                postSurveyResult={postSurveyResult}
+                setSurvey={setSurvey}
+                survey={survey}
+              />
+            }
+          />
+          <Route
+            path="/select/prompt/activity/logit"
+            element={
+              <LogIt
+                user={user}
+                postSurveyResult={postSurveyResult}
+                setSurvey={setSurvey}
+                survey={survey}
+              />
+            }
+          />
+          /************Activity********* */
+          {user && (
             <Route
-              path="/activity/history/:id/detail/:id"
-              element={<ActivityDetailPage user={user} />}
+              path="/activity"
+              element={<ActivityHistory user={user} checkToken={checkToken} />}
             />
-            /*********Profile********* */
-            <Route path="/profile" element={<Profile />} />
-            /********CHAT********* */
-            <Route path="/chat" element={<ChatHome moodEmoji={moodEmoji} />} />
-            <Route path="/chat/compose" element={<Compose user={user} />} />
+          )}
+          {user && (
             <Route
-              path="/chat/conversation/:id"
-              element={<Conversation moodEmoji={moodEmoji} user={user} />}
+              path="/activity/history/:id"
+              element={<ActivityHistoryDetail user={user} />}
             />
-            <Route
-              path="/chat/conversation/:id/comment/:id"
-              element={<Comment user={user} />}
-            />
-            /**********Profile************* */
+          )}
+          <Route
+            path="/activity/history/:id/detail/:id"
+            element={<ActivityDetailPage user={user} />}
+          />
+          /********CHAT********* */
+          <Route path="/chat" element={<ChatHome moodEmoji={moodEmoji} />} />
+          <Route path="/chat/compose" element={<Compose user={user} />} />
+          <Route
+            path="/chat/conversation/:id"
+            element={<Conversation moodEmoji={moodEmoji} user={user} />}
+          />
+          <Route
+            path="/chat/conversation/:id/comment/:id"
+            element={<Comment user={user} />}
+          />
+          /**********Profile************* */
+          {user && (
             <Route
               path="/user/setting"
               element={<ProfileSetting user={user} />}
             />
-          </Routes>
-        ) : window.location.href != '/' ? (
-          <div className="container loadingScreen">
-            Please Log in to get access
-            <IoIosLogOut
-              className="menu-icon faComments loadScreen-icon"
-              onClick={handleLogout}
-            />
-          </div>
-        ) : (
-          ''
-        )}
+          )}
+        </Routes>
       </main>
     </div>
   )

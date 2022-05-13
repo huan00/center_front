@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import SelectEmotion from './SelectEmotion'
 
 const MessageInput = ({

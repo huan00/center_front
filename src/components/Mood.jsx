@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 const Mood = ({ slider, moodEmoji, handleConfirmMood }) => {
   return (
     <div className="mood">

@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { getYoutube } from '../services/Api'
-import YouTube from 'react-youtube'
 import { Link } from 'react-router-dom'
 
 const Distraction = ({ postSurveyResult, setSurvey, survey }) => {
@@ -40,14 +39,15 @@ const Distraction = ({ postSurveyResult, setSurvey, survey }) => {
     <div className="distraction container">
       {videos ? (
         <div className="distraction-video">
-          {videos.map((video) => (
+          {videos.map((video, idx) => (
             <iframe
+              key={idx}
               className="videos"
               width="320px"
               height="240px"
               src={`https://www.youtube.com/embed/${video.id.videoId}`}
-              frameborder="0"
-              allowfullscreen
+              frameBorder="0"
+              allowFullScreen
             ></iframe>
           ))}
           <Link to="/activity">
@@ -55,7 +55,7 @@ const Distraction = ({ postSurveyResult, setSurvey, survey }) => {
           </Link>
         </div>
       ) : (
-        <div>Loading</div>
+        <div className="container">Loading</div>
       )}
     </div>
   )

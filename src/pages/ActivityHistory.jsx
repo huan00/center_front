@@ -3,11 +3,13 @@ import { getUserDetails } from '../services/User-service'
 import { BsArrowRight } from 'react-icons/bs'
 import { Link } from 'react-router-dom'
 
-const ActivityHistory = ({ user, checkToken }) => {
+const ActivityHistory = ({ user }) => {
   const [activityDetail, setActivityDetail] = useState([])
 
   useEffect(() => {
-    getActivityDetail(user.id)
+    if (user) {
+      getActivityDetail(user.id)
+    }
   }, [])
 
   const getActivityDetail = async (id) => {
@@ -15,7 +17,7 @@ const ActivityHistory = ({ user, checkToken }) => {
     setActivityDetail(detail.Surveys)
   }
 
-  return (
+  return user ? (
     <div className="activity-history container">
       <div className="activity-history-breathing">
         <p>
@@ -61,6 +63,8 @@ const ActivityHistory = ({ user, checkToken }) => {
         </Link>
       </div>
     </div>
+  ) : (
+    <div className="container">Loading</div>
   )
 }
 

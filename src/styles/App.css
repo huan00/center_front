@@ -3,15 +3,18 @@ body {
   width: 375px;
   height: 812px;
   /* background-color: rgb(24,19,62); */
-  overflow: hidden;
+  /* overflow: hidden; */
+  margin: 0 auto;
 }
 
 #root {
   height: 100%;
+  margin: 0 auto;
 }
 
 .App {
   height: 760px;
+  margin: 0 auto;
 }
 
 main {
@@ -19,10 +22,10 @@ main {
   /* overflow: hidden; */
 }
 
-/* a {
+a {
   text-decoration: none;
-  color: white;
-} */
+  color: black;
+}
 
 .container {
   height: 90%;
@@ -263,10 +266,14 @@ font-size: 32px;
   align-items: center;
   justify-content: space-between;
 
-  border-bottom: 1px solid #000000;
   padding: 0 0 10px 0;
   font-size: 32px;
 }
+
+.prompt-selection a {
+  border-bottom: 1px solid #000000;
+}
+
 .prompt-selection-ans:last-child {
   border: none;
 }

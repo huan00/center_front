@@ -67,3 +67,7 @@ nav {
   background-color: #000000;
   color: white
 }
+
+.navBar a {
+  color: black
+}

@@ -3,7 +3,7 @@ import { postMessage } from '../services/Message-service'
 import MessageInput from '../components/MessageInput'
 import { useNavigate } from 'react-router-dom'
 
-const LogIt = ({ user, setSurvey, survey, postSurveyResult }) => {
+const LogIt = ({ user, postSurveyResult }) => {
   const [message, setMessage] = useState({
     message: '',
     userId: user.id,

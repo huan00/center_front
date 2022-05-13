@@ -175,6 +175,7 @@ position: absolute;
 .loginSignUp {
   margin: 0 20px 0 0;
   color: #BDBDBD;
+  cursor: pointer;
 }
 
 .signup-form {
@@ -203,10 +204,6 @@ position: absolute;
   padding: 12px 12px 0 12px;
 }
 
-
-
-  
-
 .sign-up-btn {
   position: absolute;
   bottom: 0;
@@ -218,7 +215,7 @@ position: absolute;
   background-color: #333333;
   color: white;
   font-size: 22px;
-
+  cursor: pointer;
 }
 
 .inputActive {
@@ -234,80 +231,6 @@ position: absolute;
   text-decoration:  underline;
 }
 
-/* .signup {
-  width: 30vh;
-  height: fit-content;
-  background-color: rgb(24,19,62);
-  padding: 40px 20px 20px;
-  color: white;
-  text-align: center;
-
-  position: absolute;
-  top: 20%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 100;
-}
-
-.signup-close {
-  color: white;
-  font-weight: 100;
-  font-size: 1.5em;
-  text-align: right;
-  position: absolute;
-  right: 20px;
-  top: 10px;
-  cursor: pointer;
-}
-
-.signup-img {
-  height: 250px;
-  background-image: url('../assets/images/signUp.jpg');
-  background-position: center center;
-  background-size: cover;
-}
-
-.signup-msg {
-  margin: 20px 0;
-}
-
-.signup-msg * {
-  margin: 20px 0;
-}
-
-.signup-form {
-  display: flex;
-  flex-direction: column;
-}
-
-.signup-form input {
-  background-color: rgb(24,19,62);
-  color: white;
-  padding: 10px;
-  margin: 5px 0;
-}
-
-.signup-form input::placeholder {
-  color: white
-}
-
-.signup-form button {
-  height: 30px;
-  
-}
-
-.signup-login {
-  margin: 10px 0;
-}
-
-.signup-click {
-  cursor: pointer;
-}
-
-.signup-click:hover {
-  color: red
-} */
-
 
 /*********Slider*********/
 .slider {
@@ -322,6 +245,7 @@ position: absolute;
   width: 100%;
   height: 2px;
   background: black;
+  cursor: pointer;
 }
 
 /********Mood************/

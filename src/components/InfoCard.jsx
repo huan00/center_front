@@ -1,9 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faComment, faHeart } from '@fortawesome/free-regular-svg-icons'
+import { faComment } from '@fortawesome/free-regular-svg-icons'
 import { AiFillHeart } from 'react-icons/ai'
 import '../styles/component.css'
-import profile from '../assets/images/profile.svg'
 import { Link } from 'react-router-dom'
 import { updateLike } from '../services/Like-service'
 
