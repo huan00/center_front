@@ -43,7 +43,7 @@ const SignUp = ({ setUser }) => {
     setUser(payload)
     setFormData({ email: '', password: '' })
     setErrorMsg('')
-    navigate(`/select`)
+    navigate(`/survey`)
   }
 
   const toggleLogin = () => {

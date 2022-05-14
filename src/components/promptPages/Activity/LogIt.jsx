@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import { postNewJoinMessage } from '../services/Message-service'
-import MessageInput from '../components/MessageInput'
+import { postNewJoinMessage } from '../../../services/Message-service'
+import MessageInput from '../../MessageInput'
 import { useNavigate } from 'react-router-dom'
 
 const LogIt = ({ user, postSurveyResult }) => {

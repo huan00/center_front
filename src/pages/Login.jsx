@@ -8,7 +8,7 @@ const Login = ({ setUser, user }) => {
   return (
     <div className="container">
       {user ? (
-        <>{navigate('select')}</>
+        <>{navigate('survey')}</>
       ) : (
         <SignUp setUser={setUser} user={user} />
       )}

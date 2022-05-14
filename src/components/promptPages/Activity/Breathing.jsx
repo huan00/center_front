@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Timer from '../components/Timer'
+import Timer from '../../Timer'
 import { Link } from 'react-router-dom'
 
 const Breathing = ({ postSurveyResult }) => {

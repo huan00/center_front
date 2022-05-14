@@ -23,9 +23,9 @@ const NavBar = ({ handleLogout, user }) => {
       </div>
 
       <div className="navBar-menu-icon">
-        <Link to={user ? `/select` : navigateToSignIn}>
+        <Link to={user ? `/survey` : navigateToSignIn}>
           <BiMehBlank
-            className={`menu-icon BiMehBlank ${activeUrl('select')}`}
+            className={`menu-icon BiMehBlank ${activeUrl('survey')}`}
           />
         </Link>
         <Link to={user ? `/activity` : navigateToSignIn}>
