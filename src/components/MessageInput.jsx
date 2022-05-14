@@ -5,7 +5,8 @@ const MessageInput = ({
   handleSubmit,
   privateMsg,
   emotion,
-  title
+  title,
+  handleChatReset
 }) => {
   return (
     <div className="message-input">

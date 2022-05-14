@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import '../../styles/App.css'
-import Slider from '../../components/Slider'
+import Slider from '../Slider'
 import Mood from '../../components/Mood'
 
 const Survey = ({

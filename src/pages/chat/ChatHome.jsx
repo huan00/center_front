@@ -5,7 +5,7 @@ import { IoCreateOutline } from 'react-icons/io5'
 import { Link } from 'react-router-dom'
 import { getAllMessageChat } from '../../services/Message-service'
 
-const ChatHome = ({ moodEmoji }) => {
+const ChatHome = ({ moodEmoji, handleChatCompose, handleConversation }) => {
   const [messages, setMessages] = useState([])
   const [sortRecent, setSortRecent] = useState('Most recent')
   const [sortEmotion, setEmotion] = useState('all')
@@ -49,9 +49,13 @@ const ChatHome = ({ moodEmoji }) => {
           </select>
         </form>
         <SelectEmotion handleChange={handleSortEmotion} />
-        <Link to="compose">
-          <IoCreateOutline className="chat-write" />
-        </Link>
+        {handleChatCompose ? (
+          <IoCreateOutline className="chat-write" onClick={handleChatCompose} />
+        ) : (
+          <Link to="compose">
+            <IoCreateOutline className="chat-write" />
+          </Link>
+        )}
       </div>
       <div className="chat-content">
         {sortEmotion === 'all'
@@ -67,6 +71,7 @@ const ChatHome = ({ moodEmoji }) => {
                   commentCount={parseInt(message.commentMsg.length)}
                   moodEmoji={moodEmoji}
                   getMessages={getMessages}
+                  handleConversation={handleConversation}
                 />
               ))
           : messages
@@ -86,6 +91,7 @@ const ChatHome = ({ moodEmoji }) => {
                   commentCount={parseInt(message.commentMsg.length)}
                   moodEmoji={moodEmoji}
                   getMessages={getMessages}
+                  handleConversation={handleConversation}
                 />
               ))}
       </div>

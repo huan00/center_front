@@ -9,6 +9,9 @@ import Breathing from '../components/promptPages/Activity/Breathing'
 import Distraction from '../components/promptPages/Activity/Distraction'
 import LogIt from '../components/promptPages/Activity/LogIt'
 import ActivityDetailPage from './activitydetail/ActivityDetailPage'
+import Compose from './chat/Compose'
+import Conversation from './chat/Conversation'
+import Comment from './chat/Comment'
 
 const DesktopPage = ({
   handleSlider,
@@ -25,6 +28,8 @@ const DesktopPage = ({
   const [historyPage, setHistoryPage] = useState(1)
   const [historyAct, setHistoryAct] = useState('')
   const [historyLog, setHistoryLog] = useState('')
+  const [chatPage, setChatPage] = useState(1)
+  const [convId, setConvId] = useState('')
 
   const handleConfirmMood = () => {
     setSurvey({ ...survey, answer: mood[slider].mood, moodId: slider })
@@ -153,18 +158,54 @@ const DesktopPage = ({
     }
   }
 
+  const handleChatCompose = () => {
+    setChatPage('compose')
+  }
+  const handleChatReset = () => {
+    setChatPage(1)
+  }
+  const handleConversation = (data) => {
+    console.log(data)
+    setConvId(data)
+    setChatPage('conversation')
+  }
+
+  const renderChat = () => {
+    switch (chatPage) {
+      case 1:
+        return (
+          <ChatHome
+            moodEmoji={moodEmoji}
+            handleChatCompose={handleChatCompose}
+            handleConversation={handleConversation}
+          />
+        )
+      case 'compose':
+        return <Compose user={user} handleChatReset={handleChatReset} />
+      case 'conversation':
+        return (
+          <Conversation
+            moodEmoji={moodEmoji}
+            user={user}
+            convId={convId}
+            handleChatReset={handleChatReset}
+          />
+        )
+      case 4:
+        return <Comment user={user} />
+
+      default:
+        break
+    }
+  }
+
   return (
     <div className="desktop">
       <div className="desktop-slider">{renderSurvey()}</div>
       <div className="desktop-history-container">
         <div className="desktop-history">{renderActivity()}</div>
-        {/* <div className="desktop-history-detail">
-          <ActivityHistoryDetail user={user} />
-        </div> */}
       </div>
-      <div className="desktop-chat">
-        <ChatHome moodEmoji={moodEmoji} />
-      </div>
+      <div className="desktop-chat">{renderChat()}</div>
     </div>
   )
 }
