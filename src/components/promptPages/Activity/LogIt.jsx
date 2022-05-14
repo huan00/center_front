@@ -28,7 +28,6 @@ const LogIt = ({ user, postSurveyResult }) => {
     setMessage({ message: '', userId: user.id, private: true, mood: '' })
     navigate('/activity')
   }
-  console.log(message)
 
   return (
     <div className="container">

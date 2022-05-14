@@ -2,7 +2,7 @@ import { getUserDetails } from '../services/User-service'
 import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
-const ActivityDetail = ({ user, id }) => {
+const ActivityDetail = ({ user, id, handleSelectLog }) => {
   const [activityDetails, setActivityDetails] = useState([])
   const [breathing, setBreathing] = useState([])
 
@@ -77,9 +77,9 @@ const ActivityDetail = ({ user, id }) => {
             : 'happy'
         }`}
       >
-        <Link to={`detail/${act.id}`}>
-          <p> {new Date(act.createdAt).toDateString()}</p>
-        </Link>
+        <p onClick={() => handleSelectLog(act.id)}>
+          {new Date(act.createdAt).toDateString()}
+        </p>
       </div>
     ))
   }

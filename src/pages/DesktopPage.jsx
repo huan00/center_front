@@ -8,6 +8,7 @@ import ChatHome from './chat/ChatHome'
 import Breathing from '../components/promptPages/Activity/Breathing'
 import Distraction from '../components/promptPages/Activity/Distraction'
 import LogIt from '../components/promptPages/Activity/LogIt'
+import ActivityDetailPage from './activitydetail/ActivityDetailPage'
 
 const DesktopPage = ({
   handleSlider,
@@ -21,11 +22,12 @@ const DesktopPage = ({
   postSurveyResult
 }) => {
   const [pageCount, setPageCount] = useState(1)
-  const [actPage, setActPage] = useState(1)
+  const [historyPage, setHistoryPage] = useState(1)
+  const [historyAct, setHistoryAct] = useState('')
+  const [historyLog, setHistoryLog] = useState('')
 
   const handleConfirmMood = () => {
     setSurvey({ ...survey, answer: mood[slider].mood, moodId: slider })
-    console.log(2)
     setPageCount(pageCount + 1)
   }
 
@@ -107,19 +109,45 @@ const DesktopPage = ({
         return <LogIt user={user} postSurveyResult={postSurveyResult} />
     }
   }
+
+  const handleHistoryPage = (data) => {
+    if (data === '') {
+      data = 'All'
+    }
+    setHistoryAct(data)
+
+    setHistoryPage(historyPage + 1)
+  }
+  const handleSelectLog = (data) => {
+    setHistoryLog(data)
+    setHistoryPage(historyPage + 1)
+  }
+  const handleResetHistoryPage = () => {
+    setHistoryPage(1)
+  }
+
   const renderActivity = () => {
-    switch (actPage) {
+    switch (historyPage) {
       case 1:
         return (
-          <Breathing
-            handleActPage={handleActPage}
-            postSurveyResult={postSurveyResult}
-            survey={survey}
-            setSurvey={setSurvey}
+          <ActivityHistory user={user} handleHistoryPage={handleHistoryPage} />
+        )
+      case 2:
+        return (
+          <ActivityHistoryDetail
+            user={user}
+            category={historyAct}
+            handleSelectLog={handleSelectLog}
           />
         )
-        break
-
+      case 3:
+        return (
+          <ActivityDetailPage
+            user={user}
+            historyLog={historyLog}
+            handleResetHistoryPage={handleResetHistoryPage}
+          />
+        )
       default:
         break
     }
@@ -127,26 +155,12 @@ const DesktopPage = ({
 
   return (
     <div className="desktop">
-      <div className="desktop-slider">
-        {renderSurvey()}
-        {/* <PromptPage
-          className="desktop-home"
-          user={user}
-          handleSurvey={handleSurvey}
-          handleSlider={handleSlider}
-          slider={slider}
-          moodEmoji={moodEmoji}
-          mood={mood}
-          handleConfirmMood={handleConfirmMood}
-        /> */}
-      </div>
+      <div className="desktop-slider">{renderSurvey()}</div>
       <div className="desktop-history-container">
-        <div className="desktop-history">
-          <ActivityHistory user={user} />
-        </div>
-        <div className="desktop-history-detail">
+        <div className="desktop-history">{renderActivity()}</div>
+        {/* <div className="desktop-history-detail">
           <ActivityHistoryDetail user={user} />
-        </div>
+        </div> */}
       </div>
       <div className="desktop-chat">
         <ChatHome moodEmoji={moodEmoji} />

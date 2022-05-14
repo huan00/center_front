@@ -3,10 +3,11 @@ import { getUserDetails } from '../../services/User-service'
 import SurveyDetail from '../../components/SurveyDetail'
 import { useParams } from 'react-router-dom'
 
-const ActivityDetailPage = ({ user }) => {
+const ActivityDetailPage = ({ user, historyLog, handleResetHistoryPage }) => {
   const { id } = useParams()
   const [surveyDetail, setSurveyDetail] = useState()
   const [survey, setSurvey] = useState()
+  const log = historyLog ? historyLog : id
 
   useEffect(() => {
     if (user) {
@@ -19,7 +20,7 @@ const ActivityDetailPage = ({ user }) => {
 
     setSurveyDetail(detail)
     setSurvey(
-      detail.Surveys.filter((survey) => parseInt(survey.id) === parseInt(id))
+      detail.Surveys.filter((survey) => parseInt(survey.id) === parseInt(log))
     )
   }
 
@@ -28,7 +29,7 @@ const ActivityDetailPage = ({ user }) => {
       {surveyDetail && (
         <div className="activity-detail-page-title">
           <p>{surveyDetail.firstName},</p>
-          <p>SurveyId: {id}</p>
+          <p>SurveyId: {log}</p>
         </div>
       )}
       {survey && (
@@ -40,6 +41,9 @@ const ActivityDetailPage = ({ user }) => {
           date={new Date(survey[0].createdAt).toDateString()}
         />
       )}
+      <button className="btn" onClick={handleResetHistoryPage}>
+        Done
+      </button>
     </div>
   )
 }

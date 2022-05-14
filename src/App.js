@@ -1,17 +1,11 @@
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import NavBar from './components/NavBar'
-// import Home from './pages/Home'
-// import Prompt from './pages/Prompt'
 import '../src/styles/App.css'
 import { useEffect, useState } from 'react'
-// import PromptActivity from './pages/PromptActivity'
 import Login from './pages/Login'
 import { getMood } from './services/mood-service'
 import { CheckSession } from './services/Auth-service'
 import { postSurvey } from './services/survey-service'
-// import Breathing from './pages/prompt/activity'
-// import Distraction from './pages/Distraction'
-// import LogIt from './pages/LogIt'
 import ActivityHistory from './pages/ActivityHistory'
 import Compose from './pages/chat/Compose'
 import ActivityHistoryDetail from './pages/activitydetail/ActivityHistoryDetail'
@@ -37,6 +31,7 @@ function App() {
   const [moodEmoji] = useState(['', '😔', '😁', '😡', '😱', '😍', '😬'])
   const [mood, setMood] = useState([''])
   const [windowWidth, setWindowWidth] = useState('375')
+  const [logData, setLogData] = useState('')
 
   const [survey, setSurvey] = useState({
     question: 'How are you feeling right now?',
@@ -107,6 +102,23 @@ function App() {
   const handleConfirmMood = () => {
     setSurvey({ ...survey, answer: mood[slider].mood, moodId: slider })
     navigate('/survey/cause')
+  }
+
+  const handleHistoryPage = (data) => {
+    setLogData(data)
+    if (data === '') {
+      data = 'All'
+    }
+    navigate(`activity/history/${data}`)
+  }
+
+  const handleSelectLog = (data) => {
+    navigate(`activity/history/${logData}/detail/${data}`)
+  }
+
+  const handleResetHistoryPage = () => {
+    console.log('hit')
+    navigate(`activity`)
   }
 
   const navigateToDesktop = () => {
@@ -187,18 +199,34 @@ function App() {
           {user && (
             <Route
               path="/activity"
-              element={<ActivityHistory user={user} checkToken={checkToken} />}
+              element={
+                <ActivityHistory
+                  user={user}
+                  checkToken={checkToken}
+                  handleHistoryPage={handleHistoryPage}
+                />
+              }
             />
           )}
           {user && (
             <Route
               path="/activity/history/:id"
-              element={<ActivityHistoryDetail user={user} />}
+              element={
+                <ActivityHistoryDetail
+                  user={user}
+                  handleSelectLog={handleSelectLog}
+                />
+              }
             />
           )}
           <Route
             path="/activity/history/:id/detail/:id"
-            element={<ActivityDetailPage user={user} />}
+            element={
+              <ActivityDetailPage
+                user={user}
+                handleResetHistoryPage={handleResetHistoryPage}
+              />
+            }
           />
           {user && (
             <Route
@@ -229,6 +257,7 @@ function App() {
     </div>
   ) : (
     /*********Desktop********** */
+
     <div className="desktop-container">
       <main>
         <nav className="desktop-nav">
