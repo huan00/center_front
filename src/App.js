@@ -58,7 +58,7 @@ function App() {
       setSurvey({ ...survey, userId: user.id })
     }
   }
-  console.log(windowWidth)
+
   const handleLogout = () => {
     setUser(null)
     localStorage.clear()
@@ -259,13 +259,17 @@ function App() {
     /*********Desktop********** */
 
     <div className="desktop-container">
-      <main>
+      <main className="desktop-main">
         <nav className="desktop-nav">
-          <DesktopNav />
+          <DesktopNav user={user} handleLogout={handleLogout} />
         </nav>
         <Routes>
           <Route
             path="/"
+            element={<Login setUser={setUser} user={user} desktop={true} />}
+          />
+          <Route
+            path="/dashboard"
             element={
               <DesktopPage
                 user={user}
@@ -281,6 +285,10 @@ function App() {
                 postSurveyResult={postSurveyResult}
               />
             }
+          />
+          <Route
+            path="/user/setting"
+            element={<ProfileSetting user={user} />}
           />
         </Routes>
       </main>

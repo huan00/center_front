@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Timer from '../../Timer'
 import { Link } from 'react-router-dom'
 
-const Breathing = ({ postSurveyResult }) => {
+const Breathing = ({ postSurveyResult, handleRestPage }) => {
   const [breathing] = useState(['inhale', 'exhale'])
   const [minutes, setMinutes] = useState(1)
   const [seconds, setSeconds] = useState(0)
@@ -34,9 +34,15 @@ const Breathing = ({ postSurveyResult }) => {
           <p>Done!</p>
           <p>Awesome Job</p>
           <p>Let enjoy the rest of the day!</p>
-          <Link to="/activity">
-            <button className="btn">Done</button>
-          </Link>
+          {handleRestPage ? (
+            <button className="btn" onClick={handleRestPage}>
+              Done
+            </button>
+          ) : (
+            <Link to="/activity">
+              <button className="btn">Done</button>
+            </Link>
+          )}
         </>
       )}
     </div>

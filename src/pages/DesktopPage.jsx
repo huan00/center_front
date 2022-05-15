@@ -40,6 +40,9 @@ const DesktopPage = ({
     setSurvey({ ...survey, reason: ans })
     setPageCount(pageCount + 1)
   }
+  const handleRestPage = () => {
+    setPageCount(1)
+  }
 
   const handleActPage = (ans) => {
     setSurvey({ ...survey, activity: ans })
@@ -98,6 +101,7 @@ const DesktopPage = ({
             postSurveyResult={postSurveyResult}
             survey={survey}
             setSurvey={setSurvey}
+            handleRestPage={handleRestPage}
           />
         )
       case 'Distraction':

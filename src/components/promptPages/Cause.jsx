@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import { BsArrowRight } from 'react-icons/bs'
-import { Link } from 'react-router-dom'
 
 const Cause = ({ survey, handleCause }) => {
   const [message] = useState(['Oh no, why?', "Awesome that's great to hear!"])
-  const [answer] = useState(['Parsonal', 'Work', 'Life', 'Family', 'Not Sure'])
+  const [answer] = useState(['Personal', 'Work', 'Life', 'Family', 'Not Sure'])
 
   return (
     <div className="prompt">
