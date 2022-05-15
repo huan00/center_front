@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import '../../styles/App.css'
 import Slider from '../Slider'
 import Mood from '../../components/Mood'

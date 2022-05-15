@@ -116,6 +116,8 @@ const DesktopPage = ({
 
       case 'Logit':
         return <LogIt user={user} postSurveyResult={postSurveyResult} />
+      default:
+        break
     }
   }
 

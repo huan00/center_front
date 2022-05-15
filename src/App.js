@@ -82,7 +82,7 @@ function App() {
       survey.reason &&
       survey.userId
     ) {
-      const res = await postSurvey(survey)
+      await postSurvey(survey)
     }
     setSurvey({
       question: 'How are you feeling right now?',
@@ -119,10 +119,6 @@ function App() {
   const handleResetHistoryPage = () => {
     console.log('hit')
     navigate(`activity`)
-  }
-
-  const navigateToDesktop = () => {
-    navigate('/')
   }
 
   return windowWidth <= 768 ? (

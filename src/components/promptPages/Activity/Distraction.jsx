@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { getYoutube } from '../../../services/Api'
-import { Link } from 'react-router-dom'
 
 const Distraction = ({
   postSurveyResult,

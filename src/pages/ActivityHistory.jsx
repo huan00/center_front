@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { getUserDetails } from '../services/User-service'
 import { BsArrowRight } from 'react-icons/bs'
-import { Link } from 'react-router-dom'
 
 const ActivityHistory = ({ user, handleHistoryPage }) => {
   const [activityDetail, setActivityDetail] = useState([])
