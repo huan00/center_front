@@ -26,7 +26,7 @@ body {
 }
 
 main {
-  height: 100%;
+  height: 762px;
   /* overflow: hidden; */
   
 }
@@ -37,7 +37,7 @@ a {
 }
 
 .container {
-  height: 812px;
+  height: 762px;
   width: 315px;
   margin: 20px auto 0;
 }
@@ -183,7 +183,7 @@ nav {
 }
 
 .setting-form {
-  margin: 45px auto 0 ;
+  margin: 20px auto 0 ;
 
   display: flex;
   flex-direction: column;
@@ -212,7 +212,7 @@ nav {
 }
 
 .setting-btn {
-  margin: 0 10px;
+  margin: 20px 10px;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -363,6 +363,21 @@ font-size: 32px;
   cursor: pointer;
 }
 
+.video-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.video-btn button {
+  width: 50px;
+  height: 30px;
+
+  border-radius: 100px;
+  border: none;
+  padding: 5px 10px;
+}
+
 
 
 /**********Log it**********************/
@@ -393,9 +408,6 @@ font-size: 32px;
 /**********ActivityHistory*************/
 .activity-history {
 
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
 }
 
 .activity-history p {
@@ -856,6 +868,7 @@ position: absolute;
 
 .chat {
   width: 315px;
+  height: 700px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -1050,8 +1063,32 @@ position: absolute;
 
 
 @media (min-width: 480px) {
+
+  .desktop-main {
+    width: 1440px;
+  }
+
+  .desktop {
+    display: flex;
+    /* align-items: center; */
+    justify-content: space-around;
+  }
+
   .setting-form input {
     width: 90%;
+  }
+.desktop-slider {
+  padding: 0 50px 0 0;
+}
+  .desktop-history {
+    border-right: 1px solid black;
+    display: flex;
+    padding: 0 50px 0 0;
+  }
+
+  .activity-history-breathing  {
+    width: 500px;
+    margin: 0 auto;
   }
 
   .activity-history-breathing div{

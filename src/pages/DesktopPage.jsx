@@ -208,9 +208,9 @@ const DesktopPage = ({
   return (
     <div className="desktop">
       <div className="desktop-slider">{renderSurvey()}</div>
-      <div className="desktop-history-container">
-        <div className="desktop-history">{renderActivity()}</div>
-      </div>
+
+      <div className="desktop-history">{renderActivity()}</div>
+
       <div className="desktop-chat">{renderChat()}</div>
     </div>
   )

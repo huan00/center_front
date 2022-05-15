@@ -31,7 +31,7 @@ function App() {
   const [moodEmoji] = useState(['', '😔', '😁', '😡', '😱', '😍', '😬'])
   const [mood, setMood] = useState([''])
   const [windowWidth, setWindowWidth] = useState('375')
-  const [logData, setLogData] = useState('')
+  let [logData, setLogData] = useState('')
 
   const [survey, setSurvey] = useState({
     question: 'How are you feeling right now?',
@@ -113,11 +113,13 @@ function App() {
   }
 
   const handleSelectLog = (data) => {
+    if (logData === '') {
+      logData = 'All'
+    }
     navigate(`activity/history/${logData}/detail/${data}`)
   }
 
   const handleResetHistoryPage = () => {
-    console.log('hit')
     navigate(`activity`)
   }
 
