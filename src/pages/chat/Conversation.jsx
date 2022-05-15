@@ -9,10 +9,13 @@ import {
   postComment
 } from '../../services/Message-service'
 
-const Conversation = ({ moodEmoji, user }) => {
+const Conversation = ({ moodEmoji, user, convId, handleChatReset }) => {
   const [message, setMessage] = useState('')
   const [comments, setComments] = useState('')
-  const { id } = useParams()
+  let { id } = useParams()
+
+  id = convId ? convId : id
+
   const [commentData, setCommentData] = useState({
     userId: user.id,
     message: '',
@@ -57,7 +60,10 @@ const Conversation = ({ moodEmoji, user }) => {
   }
 
   return (
-    <div className="container convesation">
+    <div className="container conversation">
+      <button onClick={handleChatReset} className="conversation-back">
+        back
+      </button>
       <div>
         {message && (
           <InfoCard

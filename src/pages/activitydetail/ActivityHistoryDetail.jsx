@@ -1,10 +1,21 @@
 import { useParams } from 'react-router-dom'
 import ActivityDetail from '../../components/ActivityDetail'
 
-const ActivityHistoryDetail = ({ user }) => {
+const ActivityHistoryDetail = ({ user, category, handleSelectLog }) => {
   const { id } = useParams()
+  const cate = category ? category : id
 
-  return <div>{user && <ActivityDetail user={user} id={id} />}</div>
+  return (
+    <div>
+      {user && (
+        <ActivityDetail
+          user={user}
+          id={cate}
+          handleSelectLog={handleSelectLog}
+        />
+      )}
+    </div>
+  )
 }
 
 export default ActivityHistoryDetail

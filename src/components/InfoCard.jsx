@@ -13,7 +13,8 @@ const InfoCard = ({
   posted,
   commentCount,
   moodEmoji,
-  getMessages
+  getMessages,
+  handleConversation
 }) => {
   const [username] = useState(user)
   const [likes] = useState({
@@ -33,8 +34,11 @@ const InfoCard = ({
           {/* <img src={profile} alt="" /> */}
           <h4>{username}</h4>
         </div>
-        <Link to={`/chat/conversation/${all.id}`}>
-          <div className="infoCard-content">
+        {handleConversation ? (
+          <div
+            className="infoCard-content"
+            onClick={() => handleConversation(all.id)}
+          >
             <p>{message}</p>
             <div className="infocard-chat-emoji">
               {all.messageMood[0]
@@ -42,14 +46,35 @@ const InfoCard = ({
                 : '🤯'}
             </div>
           </div>
-        </Link>
-        <div className="infoCard-social">
+        ) : (
           <Link to={`/chat/conversation/${all.id}`}>
-            <div className="social-icon">
+            <div className="infoCard-content">
+              <p>{message}</p>
+              <div className="infocard-chat-emoji">
+                {all.messageMood[0]
+                  ? moodEmoji[all.messageMood[0].MessageMood.moodId]
+                  : '🤯'}
+              </div>
+            </div>
+          </Link>
+        )}
+        <div className="infoCard-social">
+          {handleConversation ? (
+            <div
+              className="social-icon"
+              onClick={() => handleConversation(all.id)}
+            >
               <FontAwesomeIcon className="faComment" icon={faComment} />
               <span>{commentCount}</span>
             </div>
-          </Link>
+          ) : (
+            <Link to={`/chat/conversation/${all.id}`}>
+              <div className="social-icon">
+                <FontAwesomeIcon className="faComment" icon={faComment} />
+                <span>{commentCount}</span>
+              </div>
+            </Link>
+          )}
 
           <div className="social-icon" onClick={handleLikes}>
             <span className="spanHeart">

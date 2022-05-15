@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react'
-import '../styles/App.css'
-import Slider from '../components/Slider'
-import Mood from '../components/Mood'
+import React, { useState } from 'react'
+import '../../styles/App.css'
+import Slider from '../Slider'
+import Mood from '../../components/Mood'
 
-const Home = ({
+const Survey = ({
   handleSlider,
   slider,
   mood,
@@ -47,4 +47,4 @@ const Home = ({
   )
 }
 
-export default Home
+export default Survey

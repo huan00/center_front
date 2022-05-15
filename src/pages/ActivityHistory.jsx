@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { getUserDetails } from '../services/User-service'
 import { BsArrowRight } from 'react-icons/bs'
-import { Link } from 'react-router-dom'
 
-const ActivityHistory = ({ user }) => {
+const ActivityHistory = ({ user, handleHistoryPage }) => {
   const [activityDetail, setActivityDetail] = useState([])
+  const [titles, setTitles] = useState([
+    'Breathing',
+    'Distraction',
+    'Logit',
+    ''
+  ])
 
   useEffect(() => {
     if (user) {
@@ -20,15 +25,19 @@ const ActivityHistory = ({ user }) => {
   return user ? (
     <div className="activity-history container">
       <div className="activity-history-breathing">
-        <p>
-          {activityDetail.filter((act) => act.activity === 'Breathing').length}
-        </p>
-        <Link to={`history/Breathing`}>
-          <div className="activity-history-link">
-            <h1>Breathing</h1>
-            <BsArrowRight className="activity-arrow" />
+        {titles.map((title, idx) => (
+          <div onClick={() => handleHistoryPage(title)} key={idx}>
+            <p>
+              {activityDetail.filter((act) => act.activity === title).length}
+            </p>
+            <div className="activity-history-link">
+              <h1>{title ? title : 'All'}</h1>
+              <BsArrowRight className="activity-arrow" />
+            </div>
           </div>
-        </Link>
+        ))}
+        {/* 
+        <Link to={`history/Breathing`}></Link>
       </div>
       <div className="activity-history-distraction">
         <p>
@@ -60,7 +69,7 @@ const ActivityHistory = ({ user }) => {
             <h1>All</h1>
             <BsArrowRight className="activity-arrow" />
           </div>
-        </Link>
+        </Link> */}
       </div>
     </div>
   ) : (

@@ -1,14 +1,9 @@
 import React, { useState } from 'react'
 import { BsArrowRight } from 'react-icons/bs'
-import { Link } from 'react-router-dom'
 
-const Prompt = ({ setSurvey, survey }) => {
+const Cause = ({ survey, handleCause }) => {
   const [message] = useState(['Oh no, why?', "Awesome that's great to hear!"])
-  const [answer] = useState(['Parsonal', 'Work', 'Life', 'Family', 'Not Sure'])
-
-  const handleClick = (ans) => {
-    setSurvey({ ...survey, reason: ans })
-  }
+  const [answer] = useState(['Personal', 'Work', 'Life', 'Family', 'Not Sure'])
 
   return (
     <div className="prompt">
@@ -21,16 +16,18 @@ const Prompt = ({ setSurvey, survey }) => {
       </div>
       <div className="prompt-selection">
         {answer.map((ans, idx) => (
-          <Link key={idx} to="activity" onClick={() => handleClick(ans)}>
-            <div className="prompt-selection-ans">
-              <p>{ans}</p>
-              <BsArrowRight className="prompt-arrow" />
-            </div>
-          </Link>
+          <div
+            key={idx}
+            className="prompt-selection-ans"
+            onClick={() => handleCause(ans)}
+          >
+            <p>{ans}</p>
+            <BsArrowRight className="prompt-arrow" />
+          </div>
         ))}
       </div>
     </div>
   )
 }
 
-export default Prompt
+export default Cause

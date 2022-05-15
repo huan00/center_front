@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Login, SignUpUser } from '../services/Auth-service'
 
-const SignUp = ({ setUser }) => {
+const SignUp = ({ setUser, desktop }) => {
   const [errorMsg, setErrorMsg] = useState('')
   const [loginActive, setLoginActive] = useState('loginActive')
   const [signupActive, setSignUpActive] = useState('signup-active')
@@ -43,7 +43,11 @@ const SignUp = ({ setUser }) => {
     setUser(payload)
     setFormData({ email: '', password: '' })
     setErrorMsg('')
-    navigate(`/select`)
+    if (desktop) {
+      navigate(`/dashboard`)
+    } else {
+      navigate(`/survey`)
+    }
   }
 
   const toggleLogin = () => {
