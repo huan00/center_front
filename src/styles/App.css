@@ -1055,10 +1055,18 @@ position: absolute;
     padding: 0 72px 0 45px;
   }
 
+  .activity-history-link {
+    cursor: pointer;
+  }
+
   .activity-history {
     margin: 0;
     display: flex;
     justify-content: flex-start;
+  }
+
+  .render-detail {
+    cursor: pointer;
   }
 
   .desktop-chat {
