@@ -139,7 +139,6 @@ const DesktopPage = ({
     setHistoryPage(1)
   }
   const handleSelfMessage = () => {
-    console.log(4)
     setHistoryPage(4)
   }
 
@@ -156,7 +155,6 @@ const DesktopPage = ({
             category={historyAct}
             handleSelectLog={handleSelectLog}
             handleSelfMessage={handleSelfMessage}
-            desktop={true}
           />
         )
       case 3:
@@ -186,7 +184,6 @@ const DesktopPage = ({
     setChatPage(1)
   }
   const handleConversation = (data) => {
-    console.log(data)
     setConvId(data)
     setChatPage('conversation')
   }
