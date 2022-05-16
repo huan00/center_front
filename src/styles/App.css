@@ -1092,4 +1092,8 @@ position: absolute;
     margin: 0 0 10px 0;
     cursor: pointer;
   }
+
+  .chat-write {
+    cursor: pointer;
+  }
 }
