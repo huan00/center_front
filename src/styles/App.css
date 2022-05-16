@@ -1079,5 +1079,17 @@ position: absolute;
     width: 315px;
   }
 
-  
+  .infoCard-content {
+    cursor: pointer;
+  }
+
+  .conversation-back {
+    height: 30px;
+    width: 50px;
+    border-radius: 100px;
+    border: none;
+    padding: 5px 10px;
+    margin: 0 0 10px 0;
+    cursor: pointer;
+  }
 }

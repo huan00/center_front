@@ -61,9 +61,13 @@ const Conversation = ({ moodEmoji, user, convId, handleChatReset }) => {
 
   return (
     <div className="container conversation">
-      <button onClick={handleChatReset} className="conversation-back">
-        back
-      </button>
+      {handleChatReset ? (
+        <button onClick={handleChatReset} className="conversation-back">
+          back
+        </button>
+      ) : (
+        ''
+      )}
       <div>
         {message && (
           <InfoCard
@@ -74,6 +78,7 @@ const Conversation = ({ moodEmoji, user, convId, handleChatReset }) => {
             commentCount={comments.length}
             moodEmoji={moodEmoji}
             commentId={message.id}
+            desktop={true}
           />
         )}
       </div>

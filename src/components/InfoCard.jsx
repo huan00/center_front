@@ -14,7 +14,8 @@ const InfoCard = ({
   commentCount,
   moodEmoji,
   getMessages,
-  handleConversation
+  handleConversation,
+  desktop
 }) => {
   const [username] = useState(user)
   const [likes] = useState({
@@ -31,13 +32,14 @@ const InfoCard = ({
     <div className="infoCard">
       <div className="infoCard-container">
         <div className="infoCard-title">
-          {/* <img src={profile} alt="" /> */}
           <h4>{username}</h4>
         </div>
         {handleConversation ? (
           <div
             className="infoCard-content"
-            onClick={() => handleConversation(all.id)}
+            onClick={() => {
+              handleConversation(all.id)
+            }}
           >
             <p>{message}</p>
             <div className="infocard-chat-emoji">
@@ -47,7 +49,7 @@ const InfoCard = ({
             </div>
           </div>
         ) : (
-          <Link to={`/chat/conversation/${all.id}`}>
+          <Link to={desktop ? '' : `/chat/conversation/${all.id}`}>
             <div className="infoCard-content">
               <p>{message}</p>
               <div className="infocard-chat-emoji">
