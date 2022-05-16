@@ -58,7 +58,7 @@ const ProfileSetting = ({ user }) => {
 
   const handleDelete = async (e) => {
     e.preventDefault()
-    const res = await deleteUser(user.id)
+    await deleteUser(user.id)
     localStorage.clear()
     navigate('/')
   }

@@ -198,8 +198,8 @@ nav {
 
 /***********Prompt************/
 .prompt {
-  width: 315px;
-  height: 90%;
+  /* width: 100%;*/
+  height: 90%; 
   margin: 20px auto 0;
   font-size: 32px;
 
@@ -217,7 +217,7 @@ font-size: 32px;
   
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
 
 .prompt-selection-ans {
@@ -285,13 +285,13 @@ font-size: 32px;
 
 .breath-bg {
   height: 100%;
-  width: 375px;
-  background-color: #D5E8F9;
+  width: 100%;
+  background-color: rgba(213, 232, 249, .8);
 
   position: absolute;
   top: 0px;
   left: 0px;
-  z-index: -1;
+  z-index: 0;
 
   animation: mybg 60s forwards linear
 }
@@ -675,40 +675,6 @@ position: absolute;
   font-size: 12px;
 }
 
-
-
-
-
-/***********Banner************/
-.banner {
-  height: 250px;
-  width: 100%;
-}
-
-.banner-img {
-  height: 100%;
-  background-image: url('../assets/images/back.jpg');
-  background-position: center;
-  background-size: cover; 
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.banner-greeting {
-  font-size: 2.5em;
-  color: black;
-  margin: 0 0 20px;
-}
-
-.banner-msg {
-  font-size: 1.3em;
-  color: black;
-  
-}
-
 /*******SignUp*******/
 
 .signup-msg {
@@ -1011,37 +977,69 @@ position: absolute;
 
 
   .home {
-    width: 300px;
+    all: none;
+    width: 90%;
   }
 
   .desktop-slider {
     margin: 0;
-    width: 50%;
+    width: 600px;
   
     border-right: 1px solid black;
 
   }
 
-  .desktop-slider > div {
+  /* .desktop-slider  div {
     width: 100%;
   
-  }
+  } */
 
   .home-greeting {
     font-size: 24px;
   }
   
   .home-mood {
+    display: flex;
     height: 220px;
     width: 200px;
   }
 
   .home-slider {
-    width: 505px;
+    width: 80%
   }
   .slider {
+    width: 100%
+  }
+
+  .prompt {
+    all: none;
     width: 100%;
   }
+
+  .breath{
+    position: relative;
+
+  }
+
+
+  .breath-bg {
+  
+    height: 100%;
+    width: 100%;
+    background-color: rgba(84, 153, 213, .5);
+  
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+/*   
+    animation: mybg 60s forwards linear */
+  }
+  
+  /* @keyframes mybg {
+    from {top: -100%}
+    to {top: 0%}
+  } */
 
   /**********desktop-history-container*********/ 
 
