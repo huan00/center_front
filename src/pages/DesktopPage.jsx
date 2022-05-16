@@ -12,6 +12,7 @@ import ActivityDetailPage from './activitydetail/ActivityDetailPage'
 import Compose from './chat/Compose'
 import Conversation from './chat/Conversation'
 import Comment from './chat/Comment'
+import SelfMessage from './activitydetail/SelfMessage'
 
 const DesktopPage = ({
   handleSlider,
@@ -116,6 +117,7 @@ const DesktopPage = ({
 
       case 'Logit':
         return <LogIt user={user} postSurveyResult={postSurveyResult} />
+
       default:
         break
     }
@@ -136,6 +138,10 @@ const DesktopPage = ({
   const handleResetHistoryPage = () => {
     setHistoryPage(1)
   }
+  const handleSelfMessage = () => {
+    console.log(4)
+    setHistoryPage(4)
+  }
 
   const renderActivity = () => {
     switch (historyPage) {
@@ -149,6 +155,8 @@ const DesktopPage = ({
             user={user}
             category={historyAct}
             handleSelectLog={handleSelectLog}
+            handleSelfMessage={handleSelfMessage}
+            desktop={true}
           />
         )
       case 3:
@@ -156,6 +164,13 @@ const DesktopPage = ({
           <ActivityDetailPage
             user={user}
             historyLog={historyLog}
+            handleResetHistoryPage={handleResetHistoryPage}
+          />
+        )
+      case 4:
+        return (
+          <SelfMessage
+            user={user}
             handleResetHistoryPage={handleResetHistoryPage}
           />
         )

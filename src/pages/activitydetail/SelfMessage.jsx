@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { getPrivateMesssage } from '../../services/Message-service'
 
-const SelfMessage = ({ user }) => {
+const SelfMessage = ({ user, handleResetHistoryPage }) => {
   const [privateMesages, setPrivateMessages] = useState([])
 
   useEffect(() => {
@@ -25,6 +25,13 @@ const SelfMessage = ({ user }) => {
               <p>Date: {new Date(msg.createdAt).toDateString()}</p>
             </div>
           ))}
+          {handleResetHistoryPage ? (
+            <button className="btn" onClick={handleResetHistoryPage}>
+              Back
+            </button>
+          ) : (
+            ''
+          )}
         </div>
       )}
     </div>

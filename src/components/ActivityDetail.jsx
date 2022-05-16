@@ -2,7 +2,7 @@ import { getUserDetails } from '../services/User-service'
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-const ActivityDetail = ({ user, id, handleSelectLog }) => {
+const ActivityDetail = ({ user, id, handleSelectLog, handleSelfMessage }) => {
   const [activityDetails, setActivityDetails] = useState([])
   const [breathing, setBreathing] = useState([])
 
@@ -110,18 +110,25 @@ const ActivityDetail = ({ user, id, handleSelectLog }) => {
         </form>
         <div>{render()}</div>
 
-        {reasonfilter === 'Logit' && (
-          <div>
-            <button
-              className="btn"
-              onClick={() => {
-                navigate('selfmessage')
-              }}
-            >
-              Self Message
-            </button>
-          </div>
-        )}
+        {reasonfilter === 'Logit' &&
+          (handleSelfMessage ? (
+            <div>
+              <button className="btn" onClick={handleSelfMessage}>
+                Self Message
+              </button>
+            </div>
+          ) : (
+            <div>
+              <button
+                className="btn"
+                onClick={() => {
+                  navigate('selfmessage')
+                }}
+              >
+                Self Message
+              </button>
+            </div>
+          ))}
       </div>
     </div>
   )

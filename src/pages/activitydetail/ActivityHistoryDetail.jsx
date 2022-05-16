@@ -1,7 +1,12 @@
 import { useParams } from 'react-router-dom'
 import ActivityDetail from '../../components/ActivityDetail'
 
-const ActivityHistoryDetail = ({ user, category, handleSelectLog }) => {
+const ActivityHistoryDetail = ({
+  user,
+  category,
+  handleSelectLog,
+  handleSelfMessage
+}) => {
   const { id } = useParams()
   const cate = category ? category : id
 
@@ -12,6 +17,7 @@ const ActivityHistoryDetail = ({ user, category, handleSelectLog }) => {
           user={user}
           id={cate}
           handleSelectLog={handleSelectLog}
+          handleSelfMessage={handleSelfMessage}
         />
       )}
     </div>
