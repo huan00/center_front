@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 export const DesktopNav = ({ user, handleLogout }) => {
   return (
-    <div className="desktop-nav">
+    <div className="desktop-navbar">
       <Link to={user ? `/dashboard` : '/'}>
         <p className="desktop-title">Center</p>
       </Link>
