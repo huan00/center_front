@@ -28,7 +28,9 @@ const ActivityHistory = ({ user, handleHistoryPage }) => {
         {titles.map((title, idx) => (
           <div onClick={() => handleHistoryPage(title)} key={idx}>
             <p>
-              {activityDetail.filter((act) => act.activity === title).length}
+              {title === ''
+                ? activityDetail.length
+                : activityDetail.filter((act) => act.activity === title).length}
             </p>
             <div className="activity-history-link">
               <h1>{title ? title : 'All'}</h1>
@@ -36,40 +38,6 @@ const ActivityHistory = ({ user, handleHistoryPage }) => {
             </div>
           </div>
         ))}
-        {/* 
-        <Link to={`history/Breathing`}></Link>
-      </div>
-      <div className="activity-history-distraction">
-        <p>
-          {
-            activityDetail.filter((act) => act.activity === 'Distraction')
-              .length
-          }
-        </p>
-        <Link to={`history/Distraction`}>
-          <div className="activity-history-link">
-            <h1>Distraction</h1>
-            <BsArrowRight className="activity-arrow" />
-          </div>
-        </Link>
-      </div>
-      <div className="activity-history-logit">
-        <p>{activityDetail.filter((act) => act.activity === 'Logit').length}</p>
-        <Link to={`history/Logit`}>
-          <div className="activity-history-link">
-            <h1>Logs</h1>
-            <BsArrowRight className="activity-arrow" />
-          </div>
-        </Link>
-      </div>
-      <div className="activity-history-logit">
-        <p>{activityDetail.filter((act) => act.activity === '').length}</p>
-        <Link to={`history/All`}>
-          <div className="activity-history-link">
-            <h1>All</h1>
-            <BsArrowRight className="activity-arrow" />
-          </div>
-        </Link> */}
       </div>
     </div>
   ) : (
