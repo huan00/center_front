@@ -1096,4 +1096,17 @@ position: absolute;
   .chat-write {
     cursor: pointer;
   }
+
+  .video-btn button {
+    cursor: pointer;
+  }
+
+  .prompt-selection-ans {
+    border-bottom: 1px solid black;
+    cursor: pointer;
+  }
+
+  .prompt-happy-video {
+    cursor: pointer;
+  }
 }
